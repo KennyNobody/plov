@@ -1,0 +1,70 @@
+.header {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: $light;
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__logo {
+        &:hover {
+            opacity: 0.7;
+        }
+        img {
+            display: block;
+            width: 156px;
+            height: auto;
+        }
+    }
+    &__nav {
+        display: flex;
+    }
+    &__link {
+        color: $dark;
+        text-decoration: none;
+        display: block;
+        font-weight: 300;
+        margin-left: 30px;
+        &:last-of-type {
+            margin-right: 0;
+        }
+        &:hover {
+            opacity: 0.7;
+        }
+        &--active {
+            color: $accent;
+            font-weight: 600;
+            pointer-events: none;
+        }
+    }
+    &__langs {
+        color: #e0e0e0;
+    }
+    &__lang {
+        text-decoration: none;
+        color: #e0e0e0;
+        font-weight: 600;
+        &--active {
+            color: $dark;
+        }
+    }
+    &__btn {
+        box-sizing: content-box;
+        position: relative;
+        right: -10px;
+        width: 28px;
+        height: 28px;
+        padding: 10px;
+        background-color: inherit;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.7;
+        }
+        svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

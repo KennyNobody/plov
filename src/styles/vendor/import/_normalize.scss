@@ -166,6 +166,8 @@ textarea {
 	font-size: 100%; /* 1 */
 	line-height: 1.15; /* 1 */
 	margin: 0; /* 2 */
+	padding: 0;
+	border: none;
 }
 
 /**
@@ -346,4 +348,12 @@ template {
 
 [hidden] {
 	display: none;
+}
+
+/*
+ * Add transition effects 
+ */
+
+a, button {
+	transition: 0.3s all;
 }

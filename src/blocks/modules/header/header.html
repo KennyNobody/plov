@@ -1,0 +1,38 @@
+<header class="header">
+	<div class="container">
+		<div class="header__content">
+			<a href="/" class="header__logo">
+				<img src="img/logo.svg" alt="Логотип">
+			</a>
+			<nav class="header__nav">
+				<a href="" class="header__link header__link--active">
+					Новости
+				</a>
+				<a href="" class="header__link">
+					Люди и Блоги
+				</a>
+				<a href="" class="header__link">
+					Точки роста
+				</a>
+				<a href="" class="header__link">
+					Важное знать
+				</a>
+			</nav>
+			<div class="header__langs">
+				<a href="" class="header__lang header__lang--active">
+					Ru
+				</a>
+				|
+				<a href="" class="header__lang">
+					Uz
+				</a>
+			</div>
+			@@include("../head-search/head-search.html")
+			<button class="header__btn">
+				<svg class="icon-svg">
+					<use xlink:href="img/sprites/sprite.svg#icon-burger"></use>
+				</svg>
+			</button>
+		</div>
+	</div>
+</header>
