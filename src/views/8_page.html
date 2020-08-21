@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Плов</title>
+    <title>8.Мероприятия</title>
     @@include("../blocks/modules/head/head.html")
 </head>
 <body class="body">
     @@include("../blocks/modules/header/header.html")
     <main class="main">
-        <section class="section--light section--top">
+        <section class="section section--breadcrumbs">
             <div class="container">
-                <div class="title-h2 title-h2--accent title-h2--bordered">
+                <div class="breadcrumbs">
+                    <a href="" class="breadcrumbs__link">
+                        Главная
+                    </a>
+                    <svg class="icon-svg breadcrumbs__icon">
+                        <use xlink:href="img/sprites/sprite.svg#icon-breadcrumbs-arrow"></use>
+                    </svg>
+                    <span class="breadcrumbs__link breadcrumbs__link--static">
+                        Точки роста
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="title-h2 title-h2--purple title-h2--bordered">
                     <div class="title-h2__content">
                         <h2 class="title-h2__text">
-                            Актуальное
+                            Мероприятия
                         </h2>
                     </div>
                     <div class="title-h2__toolbar">
-                        <a href="" class="btn btn--160 btn--accent">
+                        <a href="" class="btn btn--180 btn--purple">
                             <span>
                                 Показать еще
                             </span>
+                            <svg class="icon-svg btn__icon btn__icon--large">
+                                <use xlink:href="img/sprites/sprite.svg#icon-btn-question"></use>
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -27,17 +45,14 @@
         </section>
         <section class="section section--light">
             <div class="container">
-                <div class="title-h2 title-h2--bordered">
+                <div class="title-h2 title-h2--dark title-h2--bordered">
                     <div class="title-h2__content">
-                        <svg class="icon-svg title-h2__icon">
-                            <use xlink:href="img/sprites/sprite.svg#icon-title-bag"></use>
-                        </svg>
                         <h2 class="title-h2__text">
-                            Точки роста
+                            Прошедшие мероприятия
                         </h2>
                     </div>
                     <div class="title-h2__toolbar">
-                        <a href="" class="btn btn--160 btn--accent">
+                        <a href="" class="btn btn--160 btn--light">
                             <span>
                                 Показать еще
                             </span>
@@ -48,21 +63,11 @@
         </section>
         <section class="section">
             <div class="container">
-                <div class="title-h2 title-h2--bordered">
+                <div class="title-h2 title-h2--accent title-h2--bordered">
                     <div class="title-h2__content">
-                        <svg class="icon-svg title-h2__icon">
-                            <use xlink:href="img/sprites/sprite.svg#icon-title-gallery"></use>
-                        </svg>
                         <h2 class="title-h2__text">
-                            Галерея
+                            Мы и мир
                         </h2>
-                    </div>
-                    <div class="title-h2__toolbar">
-                        <a href="" class="btn btn--160 btn--accent">
-                            <span>
-                                Показать еще
-                            </span>
-                        </a>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,46 @@
+.title-h2 {
+	display: flex;
+	justify-content: space-between;
+	color: inherit;
+	margin-bottom: 30px;
+	&--bordered {
+		border-width: 0px 0px 1px 0px;
+		border-style: solid;
+	}
+	&--dark {
+		color: $dark;
+		border-color: $dark;
+	}
+	&--accent {
+		color: $accent;
+		border-color: $accent;
+	}
+	&--purple {
+		color: $purple;
+		border-style: $purple;
+	}
+	&--light {
+		border-color: $light;
+		color: $light;
+	}
+	&__content {
+		display: flex;
+		align-items: center;
+		flex-grow: 1;
+	}
+	&__toolbar {
+		display: flex;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+	&__icon {
+		display: block;
+		width: 16px;
+		height: 16px;
+		margin-right: 7px;
+	}
+	&__text {
+		font-weight: 600;
+		font-size: 18px;
+	}
+}

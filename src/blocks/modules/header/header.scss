@@ -2,6 +2,9 @@
     padding-top: 7px;
     padding-bottom: 7px;
     background-color: $light;
+    @include r(1200) {
+        
+    }
     &__content {
         display: flex;
         align-items: center;

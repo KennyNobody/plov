@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Плов</title>
+    <title>2.Новости</title>
     @@include("../blocks/modules/head/head.html")
 </head>
 <body class="body">
     @@include("../blocks/modules/header/header.html")
     <main class="main">
-        <section class="section--light section--top">
+        <section class="section section--breadcrumbs">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <a href="" class="breadcrumbs__link">
+                        Главная
+                    </a>
+                    <svg class="icon-svg breadcrumbs__icon">
+                        <use xlink:href="img/sprites/sprite.svg#icon-breadcrumbs-arrow"></use>
+                    </svg>
+                    <span class="breadcrumbs__link breadcrumbs__link--static">
+                        Новости
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section class="section--top">
             <div class="container">
                 <div class="title-h2 title-h2--accent title-h2--bordered">
                     <div class="title-h2__content">
@@ -25,19 +40,16 @@
                 </div>
             </div>
         </section>
-        <section class="section section--light">
+        <section class="section section--purple">
             <div class="container">
-                <div class="title-h2 title-h2--bordered">
+                <div class="title-h2 title-h2--light title-h2--bordered">
                     <div class="title-h2__content">
-                        <svg class="icon-svg title-h2__icon">
-                            <use xlink:href="img/sprites/sprite.svg#icon-title-bag"></use>
-                        </svg>
                         <h2 class="title-h2__text">
-                            Точки роста
+                            События дня
                         </h2>
                     </div>
                     <div class="title-h2__toolbar">
-                        <a href="" class="btn btn--160 btn--accent">
+                        <a href="" class="btn btn--160 btn--light">
                             <span>
                                 Показать еще
                             </span>
@@ -46,15 +58,12 @@
                 </div>
             </div>
         </section>
-        <section class="section">
+        <section class="section section--light">
             <div class="container">
                 <div class="title-h2 title-h2--bordered">
                     <div class="title-h2__content">
-                        <svg class="icon-svg title-h2__icon">
-                            <use xlink:href="img/sprites/sprite.svg#icon-title-gallery"></use>
-                        </svg>
                         <h2 class="title-h2__text">
-                            Галерея
+                            Мы и мир
                         </h2>
                     </div>
                     <div class="title-h2__toolbar">

@@ -5,4 +5,7 @@
 	margin-right: auto;
 	width: 100%;
 	max-width: 1200px;
+	@include r(1200) {
+		
+	}
 }
