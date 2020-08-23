@@ -1,0 +1,16 @@
+.sidebar {
+	border-radius: 5px;
+	display: block;
+	width: 100%;
+	padding: 20px;
+	&--light {
+		background-color: $light;
+	}
+	&--gray {
+		background: #F7F7F7;
+	}
+}
+
+@include r(1200) {
+	
+}

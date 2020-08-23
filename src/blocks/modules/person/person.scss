@@ -1,3 +1,37 @@
+.person {
+	display: flex;
+	align-items: center;
+	margin-bottom: 80px;
+	&__thumb {
+		width: 178px;
+		height: 178px;
+		overflow: hidden;
+		border-radius: 200px;
+		margin-right: 21px;
+		img {
+			display: block;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+	&__content {
+
+	}
+	&__block {
+		margin-bottom: 25px;
+		&:last-of-type {
+			margin-bottom: 0px;
+		}
+	}
+	&__title {
+
+	}
+	&__text {
+		font-weight: 300;
+	}
+}
+
 @include r(1200) {
 	
 }

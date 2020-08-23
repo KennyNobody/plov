@@ -1,3 +1,70 @@
+.article-main {
+	height: 444px;
+	position: relative;
+	display: block;
+	text-decoration: none;
+	color: $light;
+	&__thumb {
+		background-color: red;
+		display: block;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		left: 0px;
+		bottom: 0px;
+	}
+	&__picture {
+		overflow: hidden;
+		img {
+			height: 100%;
+			width: 100%;
+			display: block;
+			object-fit: cover;
+		}
+	}
+	&__content {
+		z-index: 2;
+		display: flex;
+		height: 100%;
+		width: 100%;
+		position: relative;
+		padding: 30px;
+		flex-direction: column;
+		justify-content: flex-end;
+		background-image: linear-gradient(-180deg,rgba(0,0,0,0) 7%,rgba(0,0,0,.08) 12%,rgba(0,0,0,.16) 17%,rgba(0,0,0,.22) 21%,rgba(0,0,0,.32) 26%,rgba(0,0,0,.42) 32%,rgba(0,0,0,.52) 38%,rgba(0,0,0,.62) 47%,rgba(0,0,0,.72) 57%,rgba(0,0,0,.82) 65%);
+	}
+	&__tags {
+		display: flex;
+		flex-wrap: wrap;
+		margin-bottom: 5px;
+	}
+	&__tag {
+		font-size: 12px;
+		display: inline-block;
+		padding: 5px 10px;
+		border-radius: 20px;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		&--yellow {
+			color: $dark;
+			background-color: $yellow;
+		}
+		&--purple {
+			color: $light;
+			background-color: $purple;
+		}
+	}
+	&__time {
+		margin-bottom: 15px;
+		font-weight: 600;
+		font-size: 14px;
+	}
+	&__title {
+		font-weight: bold;
+		font-size: 24px;
+	}
+}
+
 @include r(1200) {
 	
 }

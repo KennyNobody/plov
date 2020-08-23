@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>12.Все блоги</title>
+    <title>19.Поиск</title>
     @@include("../blocks/modules/head/head.html")
 </head>
 <body class="body">
@@ -16,33 +16,40 @@
                     <svg class="icon-svg breadcrumbs__icon">
                         <use xlink:href="img/sprites/sprite.svg#icon-breadcrumbs-arrow"></use>
                     </svg>
-                    <a href="" class="breadcrumbs__link">
-                        Люди и блоги
-                    </a>
-                    <svg class="icon-svg breadcrumbs__icon">
-                        <use xlink:href="img/sprites/sprite.svg#icon-breadcrumbs-arrow"></use>
-                    </svg>
                     <span class="breadcrumbs__link breadcrumbs__link--static">
-                        Все блоги
+                        Поиск
                     </span>
                 </div>
             </div>
         </section>
-        <section class="section section--top">
+        <section class="section section--light section--top">
             <div class="container">
-                <h1 class="title-h1">
-                    Все блоги
-                </h1>
                 <div class="articles">
                     <div class="articles__content articles__content--space-between">
-                        <div class="articles__item articles__item--25"></div>
-                        <div class="articles__item articles__item--25"></div>
-                        <div class="articles__item articles__item--25"></div>
-                        <div class="articles__item articles__item--25"></div>
-                        <div class="articles__item articles__item--25"></div>
-                        <div class="articles__item articles__item--25"></div>
-                        <div class="articles__item articles__item--25"></div>
-                        <div class="articles__item articles__item--25"></div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card--text.html")
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card.html")
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card--text.html")
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card.html")
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card--text.html")
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card.html")
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card--text.html")
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card.html")
+                        </div>
                         <div class="articles__item articles__item--clear articles__item--25"></div>
                         <div class="articles__item articles__item--clear articles__item--25"></div>
                     </div>

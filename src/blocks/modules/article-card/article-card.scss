@@ -1,3 +1,142 @@
+.article-card {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #E0E0E0;
+	border-radius: 5px;
+	overflow: hidden;
+	background-color: $light;
+	color: $dark;
+	text-decoration: none;
+	min-height: 444px;
+	&:hover {
+		opacity: 0.7;
+	}
+	&__thumb {
+		height: 210px;
+		display: block;
+		width: 100%;
+		position: relative;
+		&--overlay {
+			&:after {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				display: block;
+				content: "";
+				background: linear-gradient(180deg, rgba(199, 199, 199, 0) 0%, #000101 99.98%);
+			}
+		}
+	}
+	&__event-info {
+		border-radius: 20px;
+		padding: 3px 8px;
+		position: absolute;
+		z-index: 2;
+		left: 20px;
+		bottom: 20px;
+		font-size: 14px;
+		&--purple {
+			color: $light;
+			background-color: $purple;
+		}
+	}
+	&__picture {
+		img {
+			height: 100%;
+			width: 100%;
+			display: block;
+			object-fit: cover;
+		}
+	}
+	&__content {
+		height: 234px;
+		width: 100%;
+		padding: 15px 20px 20px 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		flex-grow: 1;
+	}
+	&__info {
+		position: relative;
+		padding-left: 10px;
+		color: #828282;
+		font-size: 14px;
+		font-weight: 300;
+		margin-bottom: 10px;
+		&:before {
+			position: absolute;
+			top: 50%;
+			left: 0px;
+			display: block;
+			border-radius: 10px;
+			background-color: $yellow;
+			content: "";
+			height: 4px;
+			width: 4px;
+			transform: translateY(-50%);
+		}
+	}
+	&__category {
+		display: inline-block;
+		margin-right: 15px;
+	}
+	&__title {
+		font-weight: 600;
+		margin-bottom: 10px;
+	}
+	&__text {
+		font-size: 14px;
+		flex-grow: 1;
+		line-clamp: 3;
+		&--large {
+			line-clamp: 12;
+		}
+		span {
+			text-decoration: underline;
+		}
+	}
+	&__counters {
+		display: flex;
+		align-items: center;
+	}
+	&__counter {
+		display: flex;
+		align-items: center;
+		margin-right: 16px;
+		font-weight: 300;
+		font-size: 14px;
+		line-height: 20px;
+		color: #828282;
+		&:last-of-type {
+			margin-right: 0px;
+		}
+	}
+	&__counter-icon {
+		height: 18px;
+		width: 18px;
+		margin-right: 6px;
+	}
+	&__link {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-shrink: 0;
+		border-top: 1px solid #E0E0E0;
+		padding-top: 14px;
+		span {
+
+		}
+		svg {
+			height: 14px;
+			width: 8px;
+			display: block;
+		}
+	}
+}
+
 @include r(1200) {
 	
 }

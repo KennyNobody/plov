@@ -24,6 +24,9 @@
         </section>
         <section class="section">
             <div class="container">
+                <h1 class="title-h1 title-h1--mb-small">
+                    Точки роста
+                </h1>
                 <div class="title-h2 title-h2--purple title-h2--bordered">
                     <div class="title-h2__content">
                         <h2 class="title-h2__text">
@@ -33,10 +36,65 @@
                     <div class="title-h2__toolbar">
                         <a href="" class="btn btn--180 btn--purple">
                             <span>
-                                Показать еще
+                                Задать вопрос
                             </span>
                             <svg class="icon-svg btn__icon btn__icon--large">
                                 <use xlink:href="img/sprites/sprite.svg#icon-btn-question"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="articles">
+                    <div class="articles__content articles__content--space-between">
+                        <div class="articles__item">
+                            <a href="" class="article-main">
+                                <div class="article-main__thumb">
+                                    <picture class="article-main__picture">
+                                        <source media="(max-width: 400px)" srcset="https://placehold.it/600x400"></source>
+                                        <source media="(max-width: 800px)" srcset="https://placehold.it/800x600"></source>
+                                        <img src="https://placehold.it/900x460" alt="Название новости">
+                                    </picture>
+                                </div>
+                                <div class="article-main__content">
+                                    <div class="article-main__tags">
+                                        <span class="article-main__tag article-main__tag--purple">
+                                            15 июля | 08:15
+                                        </span>
+                                    </div>
+<!--                                     <time class="article-main__time" datetime="2020-07-15 08:15">
+                                        15 июля | 08:15
+                                    </time> -->
+                                    <h2 class="article-main__title">
+                                        Новый порядок лечения больных коронавирусом в Узбекистане
+                                    </h2>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card--event.html")
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card--event.html")
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card--event.html")
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card--event.html")
+                        </div>
+                        <div class="articles__item articles__item--25">
+                            @@include("../blocks/modules/article-card/article-card--event.html")
+                        </div>
+                        <div class="articles__item articles__item--clear articles__item--33"></div>
+                        <div class="articles__item articles__item--clear articles__item--33"></div>
+                    </div>
+                    <div class="articles__toolbar">
+                        <a href="" class="btn btn--230 btn--purple">
+                            <span>
+                                Показать еще
+                            </span>
+                            <svg class="icon-svg btn__icon">
+                                <use xlink:href="img/sprites/sprite.svg#icon-btn-loading"></use>
                             </svg>
                         </a>
                     </div>

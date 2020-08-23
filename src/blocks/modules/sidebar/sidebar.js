@@ -1,4 +1,4 @@
-modules.define('articles-toolbar', ['i-bem-dom'], function(provide, bemDom) {
+modules.define('sidebar', ['i-bem-dom'], function(provide, bemDom) {
 
 provide(bemDom.declBlock(this.name, {
     onSetMod: {

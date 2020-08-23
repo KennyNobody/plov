@@ -1,3 +1,42 @@
+.articles {
+	&__content {
+		margin-bottom: 24px;
+		&--space-between {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+	}
+	&__item {
+		display: block;
+		min-height: 40px;
+		border-radius: 5px;
+		overflow: hidden;
+		margin-bottom: 20px;
+		&--75 {
+			width: calc(75% - 5px);
+		}
+		&--33 {
+			width: calc(33% - 12px);
+		}
+		&--25 {
+			width: calc(25% - 15px);
+		}
+		&--clear {
+			margin: 0px;
+			padding: 0px;
+			height: 0px;
+			visibility: hidden;
+			overflow: hidden;
+			min-height: 0px;
+		}
+	}
+	&__toolbar {
+		display: flex;
+		justify-content: center;
+	}
+}
+
 @include r(1200) {
 	
 }

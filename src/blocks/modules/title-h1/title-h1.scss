@@ -1,0 +1,14 @@
+.title-h1 {
+	font-weight: bold;
+	font-size: 36px;
+	margin-top: 0px;
+	margin-bottom: 40px;
+	text-transform: uppercase;
+	&--single {
+		font-size: 24px;
+		text-transform: unset;
+	}
+	&--mb-small {
+		margin-bottom: 30px;
+	}
+}
