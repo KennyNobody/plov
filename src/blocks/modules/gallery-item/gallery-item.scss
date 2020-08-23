@@ -1,3 +1,47 @@
+.gallery-item {
+	position: relative;
+	height: 290px;
+	display: block;
+	text-decoration: none;
+	color: $light;
+	&__thumb {
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		display: block;
+		background-color: red;
+		position: absolute;
+	}
+	&__picture {
+		display: block;
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+	&__content {
+		display: block;
+		position: relative;
+		background-color: green;
+		height: 100%;
+		padding: 30px 20px;
+		display: flex;
+		justify-content: flex-end;
+		flex-direction: column;
+		background: linear-gradient(180deg, rgba(199, 199, 199, 0) 0%, #000101 99.98%);
+	}
+	&__tag {
+		font-size: 14px;
+		margin-bottom: 10px;
+	}
+	&__title {
+		font-weight: 600;
+		font-size: 16px;
+	}
+}
+
 @include r(1200) {
 	
 }

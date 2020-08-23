@@ -21,6 +21,13 @@
 	&--230 {
 		width: 230px;
 	}
+	&--offer {
+		width: 280px;
+		justify-content: space-between;
+		padding-top: 9px;
+		padding-bottom: 9px;
+		padding-left: 20px;
+	}
 	&--grow {
 		width: 100%;
 	}
@@ -43,6 +50,14 @@
 			fill: $light;
 		}
 	}
+	&__offer-icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 20px;
+		border-left: 1px solid $light;
+		height: 100%;
+	}
 	&__icon {
 		display: block;
 		width: 19px;
@@ -52,6 +67,9 @@
 			height: 30px;
 			width: 30px;
 			margin-left: 10px;
+		}
+		&--offer {
+			margin: 0;
 		}
 	}
 }

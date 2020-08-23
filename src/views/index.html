@@ -79,7 +79,118 @@
                     </div>
                     <div class="layout__column layout__column--3">
                         <sidebar class="sidebar sidebar--light">
-                            1
+                            <div class="sidebar__title">
+                                <div class="title-h2 title-h2--accent title-h2--side title-h2--bordered">
+                                    <div class="title-h2__content">
+                                        <svg class="icon-svg title-h2__icon">
+                                            <use xlink:href="img/sprites/sprite.svg#icon-write"></use>
+                                        </svg>
+                                        <h2 class="title-h2__text">
+                                            Люди и блоги
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="sidebar__articles">
+                                <a href="" class="article-card article-card--side">
+                                    <div class="article-card__content article-card__content--side">
+                                        <div class="article-card__person">
+                                            @@include("../blocks/modules/person-preview/person-preview.html")
+                                        </div>
+                                        <h3 class="article-card__title">
+                                            10 советов начинающему блоггеру
+                                        </h3>
+                                        <p class="article-card__text">
+                                            Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
+                                        </p>
+                                        <div class="article-card__counters">
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    5
+                                                </span>
+                                            </div>
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    163
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="" class="article-card article-card--side">
+                                    <div class="article-card__content article-card__content--side">
+                                        <div class="article-card__person">
+                                            @@include("../blocks/modules/person-preview/person-preview.html")
+                                        </div>
+                                        <h3 class="article-card__title">
+                                            10 советов начинающему блоггеру
+                                        </h3>
+                                        <p class="article-card__text">
+                                            Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
+                                        </p>
+                                        <div class="article-card__counters">
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    5
+                                                </span>
+                                            </div>
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    163
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="" class="article-card article-card--side">
+                                    <div class="article-card__content article-card__content--side">
+                                        <div class="article-card__person">
+                                            @@include("../blocks/modules/person-preview/person-preview.html")
+                                        </div>
+                                        <h3 class="article-card__title">
+                                            10 советов начинающему блоггеру
+                                        </h3>
+                                        <p class="article-card__text">
+                                            Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
+                                        </p>
+                                        <div class="article-card__counters">
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    5
+                                                </span>
+                                            </div>
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    163
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <a href="" class="btn btn--accent btn--grow">
+                                <span>
+                                    Показать еще
+                                </span>
+                            </a>
                         </sidebar>
                     </div>
                 </div>
@@ -124,9 +235,9 @@
                 </div>
             </div>
         </section>
-        <section class="section">
+        <section class="section section--bottom">
             <div class="container">
-                <div class="title-h2 title-h2--bordered">
+                <div class="title-h2">
                     <div class="title-h2__content">
                         <svg class="icon-svg title-h2__icon">
                             <use xlink:href="img/sprites/sprite.svg#icon-title-gallery"></use>
@@ -143,6 +254,7 @@
                         </a>
                     </div>
                 </div>
+                @@include("../blocks/modules/slider-bottom/slider-bottom.html")
             </div>
         </section>
     </main>

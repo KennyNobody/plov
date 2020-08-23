@@ -24,6 +24,10 @@
 		border-color: $light;
 		color: $light;
 	}
+	&--side {
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+	}
 	&__content {
 		display: flex;
 		align-items: center;
@@ -32,7 +36,7 @@
 	&__toolbar {
 		display: flex;
 		align-items: center;
-		margin-bottom: 20px;
+		// margin-bottom: 20px;
 	}
 	&__icon {
 		display: block;
@@ -43,5 +47,6 @@
 	&__text {
 		font-weight: 600;
 		font-size: 18px;
+		text-transform: uppercase;
 	}
 }

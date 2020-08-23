@@ -1,0 +1,32 @@
+.person-preview {
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	&__thumb {
+		margin-right: 10px;
+		flex-shrink: 0;
+		border-radius: 20px;
+		overflow: hidden;
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			display: block;
+		}
+	}
+	&__content {
+
+	}
+	&__name {
+		font-weight: 600;
+		&--accent {
+			color: $accent;
+		}
+		&--purple {
+			color: $purple;
+		}
+	}
+	&__date {
+		font-weight: 300;
+	}
+}
