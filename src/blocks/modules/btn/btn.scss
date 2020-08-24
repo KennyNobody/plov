@@ -18,6 +18,9 @@
 	&--180 {
 		width: 180px;
 	}
+	&--200 {
+		width: 200px;
+	}
 	&--230 {
 		width: 230px;
 	}
@@ -49,6 +52,9 @@
 		svg {
 			fill: $light;
 		}
+	}
+	&--footer {
+		background-color: #25878A;
 	}
 	&__offer-icon {
 		display: flex;

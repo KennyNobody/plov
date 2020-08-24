@@ -1,0 +1,16 @@
+.single-content {
+	display: block;
+	&--flex {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__side {
+		width: 52px;
+		flex-shrink: 0;
+		margin-right: 28px;
+	}
+	&__main {
+		flex-grow: 1;
+		min-width: 0px;
+	}
+}

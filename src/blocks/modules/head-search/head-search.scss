@@ -1,3 +1,47 @@
+.head-search {
+	width: 200px;
+	&__label {
+		display: flex;
+		justify-content: space-between;
+		border: 1px solid #E0E0E0;
+	}
+	&__field {
+		height: 40px;
+		flex-grow: 1;
+		padding-left: 20px;
+		padding-right: 10px;
+		box-sizing: border-box;
+		min-width: 0px;
+		border: none;
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 300;
+		font-size: 14px;
+		&:placeholder {
+			font-family: 'Open Sans', sans-serif;
+		}
+	}
+	&__btn {
+		height: 40px;
+		width: 40px;
+		border: none;
+		flex-shrink: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: 0.3s all;
+		cursor: pointer;
+		background: none;
+		svg {
+			display: block;
+			width: 18px;
+			height: 18px;
+		}
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+}
+
 @include r(1200) {
 	
 }

@@ -1,4 +1,4 @@
-modules.define('single', ['i-bem-dom'], function(provide, bemDom) {
+modules.define('event-old', ['i-bem-dom'], function(provide, bemDom) {
 
 provide(bemDom.declBlock(this.name, {
     onSetMod: {

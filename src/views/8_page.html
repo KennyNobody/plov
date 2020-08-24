@@ -44,6 +44,28 @@
                         </a>
                     </div>
                 </div>
+                <div class="tabs">
+                    <a href="" class="tag tag--purple tag--active">
+                        <span>
+                            Все
+                        </span>
+                    </a>
+                    <a href="" class="tag">
+                        <span>
+                            Выставки
+                        </span>
+                    </a>
+                    <a href="" class="tag">
+                        <span>
+                            Анонсы
+                        </span>
+                    </a>
+                    <a href="" class="tag">
+                        <span>
+                            Поездки
+                        </span>
+                    </a>
+                </div>
                 <div class="articles">
                     <div class="articles__content articles__content--space-between">
                         <div class="articles__item">
@@ -109,12 +131,48 @@
                             Прошедшие мероприятия
                         </h2>
                     </div>
-                    <div class="title-h2__toolbar">
-                        <a href="" class="btn btn--160 btn--light">
-                            <span>
-                                Показать еще
-                            </span>
-                        </a>
+                </div>
+                <div class="slider-bottom">
+                    <div class="swiper-container slider-bottom__container slider-bottom__container--4">
+                        <div class="swiper-wrapper slider-bottom__wrapper">
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                        </div>
+                        <div class="slider-bottom__control">
+                            <div class="slider-bottom__link slider-bottom__link--prev">
+                                <svg class="icon-svg">
+                                    <use xlink:href="img/sprites/sprite.svg#icon-slider-prev"></use>
+                                </svg>
+                            </div>
+                            <div class="slider-bottom__link slider-bottom__link--next">
+                                <svg class="icon-svg">
+                                    <use xlink:href="img/sprites/sprite.svg#icon-slider-next"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="slider-bottom__pagination"></div>
                     </div>
                 </div>
             </div>
@@ -124,9 +182,16 @@
                 <div class="title-h2 title-h2--accent title-h2--bordered">
                     <div class="title-h2__content">
                         <h2 class="title-h2__text">
-                            Мы и мир
+                            FAQ
                         </h2>
                     </div>
+                </div>
+                <div class="articles">
+                    @@include("../blocks/modules/faq-item/faq-item.html")
+                    @@include("../blocks/modules/faq-item/faq-item.html")
+                    @@include("../blocks/modules/faq-item/faq-item.html")
+                    @@include("../blocks/modules/faq-item/faq-item.html")
+                    @@include("../blocks/modules/faq-item/faq-item.html")
                 </div>
             </div>
         </section>

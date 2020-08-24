@@ -14,15 +14,34 @@
 
 import Swiper from 'swiper';
 
-var mySwiper = new Swiper('.slider-bottom__container--3', {
+let sliderBottom3 = new Swiper('.slider-bottom__container--3', {
 	slidesPerView: 3,
 	spaceBetween: 20,
-	// navigation: {
-	// 	nextEl: '.swiper-button-next',
-	// 	prevEl: '.swiper-button-prev',
-	// },
-	pagination: {
-		el: '.slider-bottom__pagination',
-		type: 'bullets',
+	navigation: {
+		nextEl: '.slider-bottom__link--next',
+		prevEl: '.slider-bottom__link--prev',
+		disabledClass: 'slider-bottom__link--disabled'
 	},
-})
+	pagination: {
+		clickable: true,
+		el: '.slider-bottom__pagination',
+		bulletClass: 'slider-bottom__bullet',
+		bulletActiveClass: 'slider-bottom__bullet--active',
+	},
+});
+
+let sliderBottom4 = new Swiper('.slider-bottom__container--4', {
+	slidesPerView: 4,
+	spaceBetween: 20,
+	navigation: {
+		nextEl: '.slider-bottom__link--next',
+		prevEl: '.slider-bottom__link--prev',
+		disabledClass: 'slider-bottom__link--disabled'
+	},
+	pagination: {
+		clickable: true,
+		el: '.slider-bottom__pagination',
+		bulletClass: 'slider-bottom__bullet',
+		bulletActiveClass: 'slider-bottom__bullet--active',
+	},
+});

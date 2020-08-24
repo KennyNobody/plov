@@ -33,9 +33,60 @@
                 <h1 class="title-h1 title-h1--single">
                     Препарат «Спинраза» для больных СМА включат в перечень жизненно необходимых лекарств
                 </h1>
+                <div class="single-header">
+                    <div class="single-header__main">
+                        <p class="single-header__tag">
+                            Актуальное
+                        </p>
+                        <div class="single-header__separator single-header__separator--large"></div>
+                        <div class="single-header__category">
+                            <a href="" class="single-header__name">
+                                Ирина Пиренеева
+                            </a>
+                            <p class="single-header__title">
+                                “Информация со вкусом”
+                            </p>
+                        </div>
+                    </div>
+                    <div class="single-header__info">
+                        <time class="single-header__date" datetime="2020-07-16 08:15">15 июля |  08:15</time>
+                        <div class="single-header__separator"></div>
+                        <div class="single-header__counter">
+                            <svg class="icon-svg single-header__counter-icon">
+                                <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
+                            </svg>
+                            <span class="article-card__counter-text">
+                                668
+                            </span>
+                        </div>
+                        <div class="single-header__separator"></div>
+                        <div class="single-header__counter">
+                            <svg class="icon-svg single-header__counter-icon">
+                                <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
+                            </svg>
+                            <span class="article-card__counter-text">
+                                5
+                            </span>
+                        </div>
+                    </div>
+                    <div class="single-header__toolbar">
+                        <a href="" class="btn btn--accent btn--180">
+                            <span>
+                                Обсудить
+                            </span>
+                        </a>
+                    </div>
+                </div>
                 <div class="layout layout--flex">
                     <div class="layout__column layout__column--8">
-
+                        <div class="single-content single-content--flex">
+                            <div class="single-content__side">
+                                @@include("../blocks/modules/social-side/social-side.html")
+                            </div>
+                            <div class="single-content__main">
+                                @@include("../blocks/modules/text/text.html")
+                            </div>
+                        </div>
                     </div>
                     <div class="layout__column layout__column--4">
                         <sidebar class="sidebar sidebar--gray">
@@ -43,7 +94,7 @@
                                 <div class="title-h2 title-h2--accent title-h2--side title-h2--bordered">
                                     <div class="title-h2__content">
                                         <h2 class="title-h2__text">
-                                            Поплуярное
+                                            Популярное
                                         </h2>
                                     </div>
                                 </div>
@@ -52,8 +103,8 @@
                                 <a href="" class="article-card article-card--side">
                                     <div class="article-card__content article-card__content--side">
                                         <p class="article-card__info">
-            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
-        </p>
+                                            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
+                                        </p>
                                         <h3 class="article-card__title">
                                             10 советов начинающему блоггеру
                                         </h3>
@@ -83,8 +134,8 @@
                                 <a href="" class="article-card article-card--side">
                                     <div class="article-card__content article-card__content--side">
                                         <p class="article-card__info">
-            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
-        </p>
+                                            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
+                                        </p>
                                         <h3 class="article-card__title">
                                             10 советов начинающему блоггеру
                                         </h3>
@@ -114,8 +165,8 @@
                                 <a href="" class="article-card article-card--side">
                                     <div class="article-card__content article-card__content--side">
                                         <p class="article-card__info">
-            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
-        </p>
+                                            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
+                                        </p>
                                         <h3 class="article-card__title">
                                             10 советов начинающему блоггеру
                                         </h3>
@@ -150,7 +201,13 @@
         </section>
         <section class="section">
             <div class="container">
-                Тулбар
+                <div class="layout layout--flex">
+                    <div class="layout__column layout__column--8">
+                        @@include("../blocks/modules/single-tags/single-tags.html")
+                        @@include("../blocks/modules/single-toolbar/single-toolbar.html")
+                        @@include("../blocks/modules/disquss/disquss.html")
+                    </div>
+                </div>
             </div>
         </section>
         <section class="section section--light">

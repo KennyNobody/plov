@@ -31,26 +31,133 @@
         <section class="section section--top section--light">
             <div class="container">
                 <h1 class="title-h1 title-h1--single">
-                    Точки роста
+                    Выставка «Калининград-Кёнигсберг: мост над временем»
                 </h1>
+                <div class="single-header">
+                    <div class="single-header__main">
+                        <p class="single-header__tag">
+                            Выставки
+                        </p>
+                        <div class="single-header__separator single-header__separator--large"></div>
+                        <div class="single-header__category">
+                            <p class="single-header__title">
+                                Источник
+                            </p>
+                            <a href="" class="single-header__from">
+                                Культура.РФ
+                            </a>
+                        </div>
+                    </div>
+                    <div class="single-header__toolbar">
+                        <a href="" class="btn btn--accent btn--180">
+                            <span>
+                                Подать заявку
+                            </span>
+                        </a>
+                        <a href="" class="btn btn--purple btn--180">
+                            <span>
+                                Задать вопрос
+                            </span>
+                            <svg class="icon-svg btn__icon btn__icon--large">
+                                <use xlink:href="img/sprites/sprite.svg#icon-btn-question"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
                 <div class="layout layout--flex">
                     <div class="layout__column layout__column--8">
-                        <div class="articles">
-                            <div class="articles__content articles__content--space-between">
-                                Контент
+                        <div class="single-content single-content--flex">
+                            <div class="single-content__side">
+                                @@include("../blocks/modules/social-side/social-side.html")
                             </div>
-                            <div class="articles__toolbar">
-                                <a href="" class="btn btn--230 btn--purple">
-                                    <span>
-                                        Показать еще
-                                    </span>
-                                </a>
+                            <div class="single-content__main">
+                                @@include("../blocks/modules/text/text.html")
                             </div>
                         </div>
                     </div>
                     <div class="layout__column layout__column--4">
                         <sidebar class="sidebar sidebar--gray">
-                            1
+                            <div class="sidebar__title">
+                                <div class="title-h2 title-h2--bordered title-h2--purple">
+                                    <div class="title-h2__content">
+                                        <h2 class="title-h2__text">
+                                            Похожие события
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sidebar__articles">
+                                <div class="sidebar__line">
+                                    <span class="sidebar__info">
+                                        Начало:
+                                    </span>
+                                    <span class="sidebar__strong">
+                                        21 июля
+                                    </span>
+                                </div>
+                                <div class="sidebar__line">
+                                    <span class="sidebar__info">
+                                        Время: 
+                                    </span>
+                                    <span class="sidebar__strong">
+                                        <time datetime="2001-05-15 18:00">18:00</time>
+                                    </span>
+                                </div>
+                                <div class="sidebar__line">
+                                    <span class="sidebar__info">
+                                        Адрес:
+                                    </span>
+                                    <span class="sidebar__strong">
+                                        г. Калининград, Московский пр-кт 24
+                                    </span>
+                                </div>
+                                <div class="sidebar__line">
+                                    <span class="sidebar__info">
+                                        Цены на билеты:
+                                    </span>
+                                    <span class="sidebar__strong">
+                                        100-500 руб.
+                                    </span>
+                                </div>
+                                <div class="sidebar__line">
+                                    <span class="sidebar__info">
+                                        Ограничение по возрасту:
+                                    </span>
+                                    <span class="sidebar__strong">
+                                        6+
+                                    </span>
+                                </div>
+                                <div class="sidebar__line">
+                                    <span class="sidebar__info">
+                                        Продолжительность:
+                                    </span>
+                                    <span class="sidebar__strong">
+                                        2 часа
+                                    </span>
+                                </div>
+                            </div>
+                        </sidebar>
+                        <sidebar class="sidebar sidebar--gray">
+                            <div class="sidebar__articles">
+                                <div class="sidebar__line sidebar__line--small">
+                                    <div class="sidebar__event">
+                                        <p class="sidebar__event-title">
+                                            Когда проходит:
+                                        </p>
+                                        <time datetime="2001-05-15 19:00" class="sidebar__event-time">
+                                            26 ноября | 15:00
+                                        </time>
+                                    </div>
+                                    <div class="sidebar__event">
+                                        <p class="sidebar__event-title">
+                                            Закончится:
+                                        </p>
+                                        <time datetime="2001-05-15 19:00" class="sidebar__event-time">
+                                            26 ноября | 21:00
+                                        </time>
+                                    </div>
+                                </div>
+                            </div>
                         </sidebar>
                     </div>
                 </div>
@@ -58,7 +165,12 @@
         </section>
         <section class="section">
             <div class="container">
-                
+                <div class="layout layout--flex">
+                    <div class="layout__column layout__column--8">
+                        @@include("../blocks/modules/single-toolbar/single-toolbar.html")
+                        @@include("../blocks/modules/disquss/disquss.html")
+                    </div>
+                </div>
             </div>
         </section>
         <section class="section section--light">

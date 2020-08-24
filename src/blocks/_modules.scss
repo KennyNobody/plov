@@ -2,6 +2,8 @@
 @import "modules/main/main";
 @import "modules/header/header";
 @import "modules/footer/footer";
+@import "modules/footer-top/footer-top";
+@import "modules/footer-bottom/footer-bottom";
 @import "modules/breadcrumbs/breadcrumbs";
 @import "modules/layout/layout";
 @import "modules/container/container";
@@ -12,11 +14,14 @@
 @import "modules/title-h2/title-h2";
 @import "modules/btn/btn";
 @import "modules/sidebar/sidebar";
+@import "modules/social-side/social-side";
 
 @import "modules/articles/articles";
 @import "modules/article-card/article-card";
 @import "modules/article-large/article-large";
 @import "modules/article-main/article-main";
+@import "modules/event-old/event-old";
+@import "modules/faq-item/faq-item";
 
 @import "modules/events-info/events-info";
 @import "modules/slider-bottom/slider-bottom";
@@ -27,8 +32,17 @@
 @import "modules/news-users/news-users";
 @import "modules/person/person";
 @import "modules/person-preview/person-preview";
-@import "modules/single/single";
 @import "modules/single-header/single-header";
+@import "modules/single-content/single-content";
+@import "modules/single-footer/single-footer";
+@import "modules/single-tags/single-tags";
+@import "modules/single-toolbar/single-toolbar";
 @import "modules/slider-main/slider-main";
 @import "modules/slider-news/slider-news";
 @import "modules/tabs/tabs";
+@import "modules/link/link";
+@import "modules/tag/tag";
+@import "modules/text/text";
+@import "modules/cloud/cloud";
+@import "modules/search-result/search-result";
+@import "modules/search-field/search-field";

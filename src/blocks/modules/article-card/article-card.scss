@@ -18,6 +18,9 @@
 			border-bottom: 0px;
 		}
 	}
+	&--slide {
+		min-height: 0px;
+	}
 	&:hover {
 		opacity: 0.7;
 	}

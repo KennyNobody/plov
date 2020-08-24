@@ -33,13 +33,222 @@
                 <h1 class="title-h1 title-h1--single title-h1--mb-small">
                     10 советов начинающему блогеру: как писать, выбирать картинки, найти друзей и получить грант от ЖЖ
                 </h1>
-                <div class="layout layout--flex">
-                    <div class="layout__column layout__column--9">
-
+                <div class="single-header">
+                    <div class="single-header__main">
+                        <p class="single-header__tag">
+                            Люди и блоги
+                        </p>
+                        <div class="single-header__separator single-header__separator--large"></div>
+                        <div class="single-header__category">
+                            <a href="" class="single-header__name">
+                                Екатерина Призова
+                            </a>
+                            <p class="single-header__title">
+                                18 минут на прочтение
+                            </p>
+                        </div>
                     </div>
-                    <div class="layout__column layout__column--3">
+                    <div class="single-header__info">
+                        <time class="single-header__date" datetime="2020-07-16 08:15">15 июля |  08:15</time>
+                        <div class="single-header__separator"></div>
+                        <div class="single-header__counter">
+                            <svg class="icon-svg single-header__counter-icon">
+                                <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
+                            </svg>
+                            <span class="article-card__counter-text">
+                                668
+                            </span>
+                        </div>
+                        <div class="single-header__separator"></div>
+                        <div class="single-header__counter">
+                            <svg class="icon-svg single-header__counter-icon">
+                                <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
+                            </svg>
+                            <span class="article-card__counter-text">
+                                5
+                            </span>
+                        </div>
+                    </div>
+                    <div class="single-header__toolbar">
+                        <a href="" class="btn btn--accent btn--180">
+                            <span>
+                                Обсудить
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="layout layout--flex">
+                    <div class="layout__column layout__column--8">
+                        <div class="single-content single-content--flex">
+                            <div class="single-content__side">
+                                @@include("../blocks/modules/social-side/social-side.html")
+                            </div>
+                            <div class="single-content__main">
+                                @@include("../blocks/modules/text/text.html")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layout__column layout__column--4">
                         <sidebar class="sidebar sidebar--gray">
-                            1
+                            <div class="sidebar__title">
+                                <div class="title-h2 title-h2--accent title-h2--side title-h2--bordered">
+                                    <div class="title-h2__content">
+                                        <h2 class="title-h2__text">
+                                            Популярное в блогах
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="sidebar__articles">
+                                <a href="" class="article-card article-card--side">
+                                    <div class="article-card__content article-card__content--side">
+                                        <p class="article-card__info">
+                                            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
+                                        </p>
+                                        <h3 class="article-card__title">
+                                            10 советов начинающему блоггеру
+                                        </h3>
+                                        <p class="article-card__text">
+                                            Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
+                                        </p>
+                                        <div class="article-card__counters">
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    5
+                                                </span>
+                                            </div>
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    163
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="" class="article-card article-card--side">
+                                    <div class="article-card__content article-card__content--side">
+                                        <p class="article-card__info">
+                                            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
+                                        </p>
+                                        <h3 class="article-card__title">
+                                            10 советов начинающему блоггеру
+                                        </h3>
+                                        <p class="article-card__text">
+                                            Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
+                                        </p>
+                                        <div class="article-card__counters">
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    5
+                                                </span>
+                                            </div>
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    163
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="" class="article-card article-card--side">
+                                    <div class="article-card__content article-card__content--side">
+                                        <p class="article-card__info">
+                                            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
+                                        </p>
+                                        <h3 class="article-card__title">
+                                            10 советов начинающему блоггеру
+                                        </h3>
+                                        <p class="article-card__text">
+                                            Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
+                                        </p>
+                                        <div class="article-card__counters">
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    5
+                                                </span>
+                                            </div>
+                                            <div class="article-card__counter">
+                                                <svg class="icon-svg article-card__counter-icon">
+                                                    <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
+                                                </svg>
+                                                <span class="article-card__counter-text">
+                                                    163
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </sidebar>
+                        <sidebar class="cloud cloud--border">
+                            <h4 class="cloud__title">
+                                Популярные теги
+                            </h4>
+                            <div class="cloud__links">
+                                <a href="" class="cloud__link">
+                                    #История
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Подборки
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Чек-лист
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Мысли в слух
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #История
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Подборки
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Чек-лист
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Мысли в слух
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #История
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Подборки
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Чек-лист
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Мысли в слух
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #История
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Подборки
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Чек-лист
+                                </a>
+                                <a href="" class="cloud__link">
+                                    #Мысли в слух
+                                </a>
+                            </div>
                         </sidebar>
                     </div>
                 </div>
@@ -47,12 +256,67 @@
         </section>
         <section class="section">
             <div class="container">
-                Тулбар
+                <div class="layout layout--flex">
+                    <div class="layout__column layout__column--8">
+                        @@include("../blocks/modules/single-tags/single-tags.html")
+                        @@include("../blocks/modules/single-toolbar/single-toolbar.html")
+                        @@include("../blocks/modules/disquss/disquss.html")
+                    </div>
+                </div>
             </div>
         </section>
         <section class="section section--light">
             <div class="container">
-                Читайте также в блогах
+                <div class="title-h2 title-h2--dark title-h2--bordered">
+                    <div class="title-h2__content">
+                        <h2 class="title-h2__text">
+                            Читайте также в блогах
+                        </h2>
+                    </div>
+                </div>
+                <div class="slider-bottom">
+                    <div class="swiper-container slider-bottom__container slider-bottom__container--4">
+                        <div class="swiper-wrapper slider-bottom__wrapper">
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/article-card/article-card--blog.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/article-card/article-card--blog.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/article-card/article-card--blog.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/article-card/article-card--blog.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/article-card/article-card--blog.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/article-card/article-card--blog.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/article-card/article-card--blog.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/article-card/article-card--blog.html")
+                            </div>
+                        </div>
+                        <div class="slider-bottom__control">
+                            <div class="slider-bottom__link slider-bottom__link--prev">
+                                <svg class="icon-svg">
+                                    <use xlink:href="img/sprites/sprite.svg#icon-slider-prev"></use>
+                                </svg>
+                            </div>
+                            <div class="slider-bottom__link slider-bottom__link--next">
+                                <svg class="icon-svg">
+                                    <use xlink:href="img/sprites/sprite.svg#icon-slider-next"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="slider-bottom__pagination"></div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
