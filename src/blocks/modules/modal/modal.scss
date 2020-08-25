@@ -1,3 +1,39 @@
+.modal {
+	padding: 57px 40px 50px 40px;
+	width: 100%;
+	max-width: 484px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+	&__content {
+
+	}
+	&__title {
+		font-weight: 600;
+		font-size: 24px;
+		padding-bottom: 15px;
+		border-bottom: 2px solid $dark;
+		margin-bottom: 31px;
+		&--accent {
+			border-bottom: 2px solid $accent;
+		}
+	}
+	&__form {
+		margin-bottom: 20px;
+	}
+	&__discript {
+		font-weight: 300;
+		font-size: 12px;
+		color: #828282;
+		a {
+			color: #828282;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
 @include r(1200) {
 	
 }

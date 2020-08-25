@@ -5,261 +5,242 @@
     @@include("../blocks/modules/head/head.html")
 </head>
 <body class="body">
-    @@include("../blocks/modules/header/header.html")
-    <main class="main">
-        <section class="section section--top">
-            <div class="container">
-                <div class="title-h2 title-h2--dark title-h2--bordered">
-                    <div class="title-h2__content">
-                        <svg class="icon-svg title-h2__icon">
-                            <use xlink:href="img/sprites/sprite.svg#icon-title-star"></use>
-                        </svg>
-                        <h2 class="title-h2__text">
-                            Популярные новости
-                        </h2>
+    <div class="page">
+        @@include("../blocks/modules/header/header.html")
+        <main class="main">
+            <section class="section section--top">
+                <div class="container">
+                    <div class="title-h2 title-h2--dark title-h2--bordered">
+                        <div class="title-h2__content">
+                            <svg class="icon-svg title-h2__icon">
+                                <use xlink:href="img/sprites/sprite.svg#icon-title-star"></use>
+                            </svg>
+                            <h2 class="title-h2__text">
+                                Популярные новости
+                            </h2>
+                        </div>
                     </div>
-                </div>
-                <div class="layout layout--flex">
-                    <div class="layout__column layout__column--9">
-                        <div class="articles">
-                            <div class="articles__content articles__content--space-between">
-                                <div class="articles__item">
-                                    <a href="" class="article-main">
-                                        <div class="article-main__thumb">
-                                            <picture class="article-main__picture">
-                                                <source media="(max-width: 400px)" srcset="https://placehold.it/600x400"></source>
-                                                <source media="(max-width: 800px)" srcset="https://placehold.it/800x600"></source>
-                                                <img src="https://placehold.it/900x460" alt="Название новости">
-                                            </picture>
-                                        </div>
-                                        <div class="article-main__content">
-                                            <div class="article-main__tags">
-                                                <span class="article-main__tag article-main__tag--yellow">
-                                                    Актуальное
-                                                </span>
-                                            </div>
-                                            <time class="article-main__time" datetime="2020-07-15 08:15">
-                                                15 июля | 08:15
-                                            </time>
-                                            <h2 class="article-main__title">
-                                                Новый порядок лечения больных коронавирусом в Узбекистане
+                    <div class="layout layout--flex">
+                        <div class="layout__column layout__column--9">
+                            <div class="articles">
+                                <div class="articles__content articles__content--space-between">
+                                    <div class="articles__item">
+                                        @@include("../blocks/modules/slider-main/slider-main.html")
+                                    </div>
+                                    <div class="articles__item articles__item--33">
+                                        @@include("../blocks/modules/article-card/article-card.html")
+                                    </div>
+                                    <div class="articles__item articles__item--33">
+                                        @@include("../blocks/modules/article-card/article-card.html")
+                                    </div>
+                                    <div class="articles__item articles__item--33">
+                                        @@include("../blocks/modules/article-card/article-card.html")
+                                    </div>
+                                    <div class="articles__item articles__item--33">
+                                        @@include("../blocks/modules/article-card/article-card--text.html")
+                                    </div>
+                                    <div class="articles__item articles__item--33">
+                                        @@include("../blocks/modules/article-card/article-card--text.html")
+                                    </div>
+                                    <div class="articles__item articles__item--33">
+                                        @@include("../blocks/modules/article-card/article-card--text.html")
+                                    </div>
+                                    <div class="articles__item articles__item--clear articles__item--33"></div>
+                                    <div class="articles__item articles__item--clear articles__item--33"></div>
+                                </div>
+                                <div class="articles__toolbar">
+                                    <a href="" class="btn btn--230 btn--accent">
+                                        <span>
+                                            Показать еще
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layout__column layout__column--3">
+                            <sidebar class="sidebar sidebar--light">
+                                <div class="sidebar__title">
+                                    <div class="title-h2 title-h2--accent title-h2--side title-h2--bordered">
+                                        <div class="title-h2__content">
+                                            <svg class="icon-svg title-h2__icon">
+                                                <use xlink:href="img/sprites/sprite.svg#icon-write"></use>
+                                            </svg>
+                                            <h2 class="title-h2__text">
+                                                Люди и блоги
                                             </h2>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="sidebar__articles">
+                                    <a href="" class="article-card article-card--side">
+                                        <div class="article-card__content article-card__content--side">
+                                            <div class="article-card__person">
+                                                @@include("../blocks/modules/person-preview/person-preview.html")
+                                            </div>
+                                            <h3 class="article-card__title">
+                                                10 советов начинающему блоггеру
+                                            </h3>
+                                            <p class="article-card__text">
+                                                Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
+                                            </p>
+                                            <div class="article-card__counters">
+                                                <div class="article-card__counter">
+                                                    <svg class="icon-svg article-card__counter-icon">
+                                                        <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
+                                                    </svg>
+                                                    <span class="article-card__counter-text">
+                                                        5
+                                                    </span>
+                                                </div>
+                                                <div class="article-card__counter">
+                                                    <svg class="icon-svg article-card__counter-icon">
+                                                        <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
+                                                    </svg>
+                                                    <span class="article-card__counter-text">
+                                                        163
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="" class="article-card article-card--side">
+                                        <div class="article-card__content article-card__content--side">
+                                            <div class="article-card__person">
+                                                @@include("../blocks/modules/person-preview/person-preview.html")
+                                            </div>
+                                            <h3 class="article-card__title">
+                                                10 советов начинающему блоггеру
+                                            </h3>
+                                            <p class="article-card__text">
+                                                Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
+                                            </p>
+                                            <div class="article-card__counters">
+                                                <div class="article-card__counter">
+                                                    <svg class="icon-svg article-card__counter-icon">
+                                                        <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
+                                                    </svg>
+                                                    <span class="article-card__counter-text">
+                                                        5
+                                                    </span>
+                                                </div>
+                                                <div class="article-card__counter">
+                                                    <svg class="icon-svg article-card__counter-icon">
+                                                        <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
+                                                    </svg>
+                                                    <span class="article-card__counter-text">
+                                                        163
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="" class="article-card article-card--side">
+                                        <div class="article-card__content article-card__content--side">
+                                            <div class="article-card__person">
+                                                @@include("../blocks/modules/person-preview/person-preview.html")
+                                            </div>
+                                            <h3 class="article-card__title">
+                                                10 советов начинающему блоггеру
+                                            </h3>
+                                            <p class="article-card__text">
+                                                Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
+                                            </p>
+                                            <div class="article-card__counters">
+                                                <div class="article-card__counter">
+                                                    <svg class="icon-svg article-card__counter-icon">
+                                                        <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
+                                                    </svg>
+                                                    <span class="article-card__counter-text">
+                                                        5
+                                                    </span>
+                                                </div>
+                                                <div class="article-card__counter">
+                                                    <svg class="icon-svg article-card__counter-icon">
+                                                        <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
+                                                    </svg>
+                                                    <span class="article-card__counter-text">
+                                                        163
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="articles__item articles__item--33">
-                                    @@include("../blocks/modules/article-card/article-card.html")
-                                </div>
-                                <div class="articles__item articles__item--33">
-                                    @@include("../blocks/modules/article-card/article-card.html")
-                                </div>
-                                <div class="articles__item articles__item--33">
-                                    @@include("../blocks/modules/article-card/article-card.html")
-                                </div>
-                                <div class="articles__item articles__item--33">
-                                    @@include("../blocks/modules/article-card/article-card--text.html")
-                                </div>
-                                <div class="articles__item articles__item--33">
-                                    @@include("../blocks/modules/article-card/article-card--text.html")
-                                </div>
-                                <div class="articles__item articles__item--33">
-                                    @@include("../blocks/modules/article-card/article-card--text.html")
-                                </div>
-                                <div class="articles__item articles__item--clear articles__item--33"></div>
-                                <div class="articles__item articles__item--clear articles__item--33"></div>
-                            </div>
-                            <div class="articles__toolbar">
-                                <a href="" class="btn btn--230 btn--accent">
+                                <a href="" class="btn btn--accent btn--grow">
                                     <span>
                                         Показать еще
                                     </span>
                                 </a>
-                            </div>
+                            </sidebar>
                         </div>
                     </div>
-                    <div class="layout__column layout__column--3">
-                        <sidebar class="sidebar sidebar--light">
-                            <div class="sidebar__title">
-                                <div class="title-h2 title-h2--accent title-h2--side title-h2--bordered">
-                                    <div class="title-h2__content">
-                                        <svg class="icon-svg title-h2__icon">
-                                            <use xlink:href="img/sprites/sprite.svg#icon-write"></use>
-                                        </svg>
-                                        <h2 class="title-h2__text">
-                                            Люди и блоги
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="sidebar__articles">
-                                <a href="" class="article-card article-card--side">
-                                    <div class="article-card__content article-card__content--side">
-                                        <div class="article-card__person">
-                                            @@include("../blocks/modules/person-preview/person-preview.html")
-                                        </div>
-                                        <h3 class="article-card__title">
-                                            10 советов начинающему блоггеру
-                                        </h3>
-                                        <p class="article-card__text">
-                                            Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
-                                        </p>
-                                        <div class="article-card__counters">
-                                            <div class="article-card__counter">
-                                                <svg class="icon-svg article-card__counter-icon">
-                                                    <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
-                                                </svg>
-                                                <span class="article-card__counter-text">
-                                                    5
-                                                </span>
-                                            </div>
-                                            <div class="article-card__counter">
-                                                <svg class="icon-svg article-card__counter-icon">
-                                                    <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
-                                                </svg>
-                                                <span class="article-card__counter-text">
-                                                    163
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="" class="article-card article-card--side">
-                                    <div class="article-card__content article-card__content--side">
-                                        <div class="article-card__person">
-                                            @@include("../blocks/modules/person-preview/person-preview.html")
-                                        </div>
-                                        <h3 class="article-card__title">
-                                            10 советов начинающему блоггеру
-                                        </h3>
-                                        <p class="article-card__text">
-                                            Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
-                                        </p>
-                                        <div class="article-card__counters">
-                                            <div class="article-card__counter">
-                                                <svg class="icon-svg article-card__counter-icon">
-                                                    <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
-                                                </svg>
-                                                <span class="article-card__counter-text">
-                                                    5
-                                                </span>
-                                            </div>
-                                            <div class="article-card__counter">
-                                                <svg class="icon-svg article-card__counter-icon">
-                                                    <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
-                                                </svg>
-                                                <span class="article-card__counter-text">
-                                                    163
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="" class="article-card article-card--side">
-                                    <div class="article-card__content article-card__content--side">
-                                        <div class="article-card__person">
-                                            @@include("../blocks/modules/person-preview/person-preview.html")
-                                        </div>
-                                        <h3 class="article-card__title">
-                                            10 советов начинающему блоггеру
-                                        </h3>
-                                        <p class="article-card__text">
-                                            Как подобрать качественный текст, подобрать картинки, найти друзей и получить грант... <span>читать далее</span>
-                                        </p>
-                                        <div class="article-card__counters">
-                                            <div class="article-card__counter">
-                                                <svg class="icon-svg article-card__counter-icon">
-                                                    <use xlink:href="img/sprites/sprite.svg#icon-comments"></use>
-                                                </svg>
-                                                <span class="article-card__counter-text">
-                                                    5
-                                                </span>
-                                            </div>
-                                            <div class="article-card__counter">
-                                                <svg class="icon-svg article-card__counter-icon">
-                                                    <use xlink:href="img/sprites/sprite.svg#icon-eye"></use>
-                                                </svg>
-                                                <span class="article-card__counter-text">
-                                                    163
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                </div>
+            </section>
+            <section class="section section--light">
+                <div class="container">
+                    <div class="title-h2 title-h2--bordered">
+                        <div class="title-h2__content">
+                            <svg class="icon-svg title-h2__icon">
+                                <use xlink:href="img/sprites/sprite.svg#icon-title-bag"></use>
+                            </svg>
+                            <h2 class="title-h2__text">
+                                Точки роста
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="articles">
+                        <div class="articles__content articles__content--space-between">
+                            <div class="articles__item articles__item--25">
+                                @@include("../blocks/modules/article-card/article-card--event.html")
                             </div>
-                            <a href="" class="btn btn--accent btn--grow">
+                            <div class="articles__item articles__item--25">
+                                @@include("../blocks/modules/article-card/article-card--event.html")
+                            </div>
+                            <div class="articles__item articles__item--25">
+                                @@include("../blocks/modules/article-card/article-card--event.html")
+                            </div>
+                            <div class="articles__item articles__item--25">
+                                @@include("../blocks/modules/article-card/article-card--event.html")
+                            </div>
+                            <div class="articles__item articles__item--clear articles__item--33"></div>
+                            <div class="articles__item articles__item--clear articles__item--33"></div>
+                        </div>
+                        <div class="articles__toolbar">
+                            <a href="" class="btn btn--230 btn--purple">
                                 <span>
                                     Показать еще
                                 </span>
                             </a>
-                        </sidebar>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="section section--light">
-            <div class="container">
-                <div class="title-h2 title-h2--bordered">
-                    <div class="title-h2__content">
-                        <svg class="icon-svg title-h2__icon">
-                            <use xlink:href="img/sprites/sprite.svg#icon-title-bag"></use>
-                        </svg>
-                        <h2 class="title-h2__text">
-                            Точки роста
-                        </h2>
+            </section>
+            <section class="section section--bottom">
+                <div class="container">
+                    <div class="title-h2">
+                        <div class="title-h2__content">
+                            <svg class="icon-svg title-h2__icon">
+                                <use xlink:href="img/sprites/sprite.svg#icon-title-gallery"></use>
+                            </svg>
+                            <h2 class="title-h2__text">
+                                Галерея
+                            </h2>
+                        </div>
+                        <div class="title-h2__toolbar">
+                            <a href="" class="btn btn--160 btn--accent">
+                                <span>
+                                    Показать еще
+                                </span>
+                            </a>
+                        </div>
                     </div>
+                    @@include("../blocks/modules/slider-bottom/slider-bottom.html")
                 </div>
-                <div class="articles">
-                    <div class="articles__content articles__content--space-between">
-                        <div class="articles__item articles__item--25">
-                            @@include("../blocks/modules/article-card/article-card--event.html")
-                        </div>
-                        <div class="articles__item articles__item--25">
-                            @@include("../blocks/modules/article-card/article-card--event.html")
-                        </div>
-                        <div class="articles__item articles__item--25">
-                            @@include("../blocks/modules/article-card/article-card--event.html")
-                        </div>
-                        <div class="articles__item articles__item--25">
-                            @@include("../blocks/modules/article-card/article-card--event.html")
-                        </div>
-                        <div class="articles__item articles__item--clear articles__item--33"></div>
-                        <div class="articles__item articles__item--clear articles__item--33"></div>
-                    </div>
-                    <div class="articles__toolbar">
-                        <a href="" class="btn btn--230 btn--purple">
-                            <span>
-                                Показать еще
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section section--bottom">
-            <div class="container">
-                <div class="title-h2">
-                    <div class="title-h2__content">
-                        <svg class="icon-svg title-h2__icon">
-                            <use xlink:href="img/sprites/sprite.svg#icon-title-gallery"></use>
-                        </svg>
-                        <h2 class="title-h2__text">
-                            Галерея
-                        </h2>
-                    </div>
-                    <div class="title-h2__toolbar">
-                        <a href="" class="btn btn--160 btn--accent">
-                            <span>
-                                Показать еще
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                @@include("../blocks/modules/slider-bottom/slider-bottom.html")
-            </div>
-        </section>
-    </main>
-    @@include("../blocks/modules/footer/footer.html")
-    <script src="js/main.js"></script>
-    <script src="js/vendor.js"></script>
+            </section>
+        </main>
+        @@include("../blocks/modules/footer/footer.html")
+        <script src="js/main.js"></script>
+        <script src="js/vendor.js"></script>
+    </div>
 </body>
 </html>

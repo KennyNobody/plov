@@ -4,13 +4,15 @@
 	display: block;
 	text-decoration: none;
 	color: $light;
+	&:hover {
+		opacity: 0.7;
+	}
 	&__thumb {
 		top: 0px;
 		left: 0px;
 		right: 0px;
 		bottom: 0px;
 		display: block;
-		background-color: red;
 		position: absolute;
 	}
 	&__picture {

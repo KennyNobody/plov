@@ -1,0 +1,122 @@
+<script>
+	var mmenuBottomContent = [
+	`
+	<div class='mm-navbar--custom-content'>
+		<div class='mm-navbar--custom-footer'>
+			<a class='mm-navbar--custom-link' href="">
+				<svg class="icon-svg">
+					<use xlink:href="img/sprites/sprite.svg#icon-footer-ok"></use>
+				</svg>
+			</a>
+			<a class='mm-navbar--custom-link' href="">
+				<svg class="icon-svg">
+					<use xlink:href="img/sprites/sprite.svg#icon-footer-fb"></use>
+				</svg>
+			</a>
+			<a class='mm-navbar--custom-link' href="">
+				<svg class="icon-svg">
+					<use xlink:href="img/sprites/sprite.svg#icon-footer-inst"></use>
+				</svg>
+			</a>
+			<a class='mm-navbar--custom-link' href="">
+				<svg class="icon-svg">
+					<use xlink:href="img/sprites/sprite.svg#icon-footer-vk"></use>
+				</svg>
+			</a>
+		</div>
+		<div class='mm-navbar--custom-footer'>
+			<a class='mm-navbar--custom-privacy' href="">
+				Политика конфиденциальности
+			</a>
+		</div>
+	</div>`,
+	]
+</script>
+
+<nav id="mmenu">
+	<ul>
+		<li><a href="/">Главная</a></li>
+		<li><span>Новости</span>
+			<ul>
+				<li><a href="/about/history">History</a></li>
+				<li><span>The team</span>
+					<ul>
+						<li><a href="">Пункт выпадающего меню</a></li>
+						<li><a href="">Пункт выпадающего меню</a></li>
+						<li><a href="">Пункт выпадающего меню</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><span>Люди и блоги</span>
+			<ul>
+				<li><a href="/about/history">Все блоги</a></li>
+			</ul>
+		</li>
+		<li><span>Точки роста</span>
+			<ul>
+				<li><a href="/about/history">History</a></li>
+				<li><span>The team</span>
+					<ul>
+						<li><a href="">Пункт выпадающего меню</a></li>
+						<li><a href="">Пункт выпадающего меню</a></li>
+						<li><a href="">Пункт выпадающего меню</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><span>Важно знать</span>
+			<ul>
+				<li><a href="">Пункт выпадающего меню</a></li>
+				<li><a href="">Пункт выпадающего меню</a></li>
+				<li><a href="">Пункт выпадающего меню</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/">Галерея</a>
+		</li>
+		<li>
+			<a href="/">О сайте</a>
+		</li>
+		<li class="mm-listitem--accent">
+			<a data-fancybox href="#modal-news">Предложить новость</a>
+		</li>
+	</ul>
+</nav>
+
+<section class="modal" id="modal-news">
+	<div class="modal__content">
+		<p class="modal__title modal__title--accent">
+			Предложить новость
+		</p>
+		<div class="modal__form">
+			<form action="" class="form">
+				<div class="form__inputs">
+					<label class="input input--accent">
+						<input type="text" class="input__field" placeholder="Ваше имя">
+					</label>
+					<label class="input input--accent">
+						<input type="text" class="input__field" placeholder="+7 (000) 000-00-00">
+					</label>
+					<label class="input input--accent">
+						<input type="email" class="input__field" placeholder="E-mail">
+					</label>
+					<label class="input input--accent">
+						<textarea class="input__field input__field--textarea" placeholder="Ваше имя"></textarea>
+					</label>
+				</div>
+				<div class="form__toolbar">
+					@@include("../file/file.html")
+					<button class="btn btn--accent btn--180">
+						<span>
+							Отправить
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+		<p class="modal__discript">
+			Заполняя данную форму вы моглашаетесь с <a href="" target="_blank" rel="nofollow noopener">Правилами обработки использования персональных данных</a>
+		</p>
+	</div>
+</section>

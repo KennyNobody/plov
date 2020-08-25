@@ -1,4 +1,4 @@
-// modules.define('modal', ['i-bem-dom'], function(provide, bemDom) {
+// modules.define('file', ['i-bem-dom'], function(provide, bemDom) {
 
 // provide(bemDom.declBlock(this.name, {
 //     onSetMod: {

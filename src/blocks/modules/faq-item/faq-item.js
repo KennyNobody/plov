@@ -27,12 +27,8 @@
 			this.parentNode.classList.toggle('faq-item--open');
 		}
 
-		
-
 	}
 
 	toggleFaqItem();
-
-	console.log('Лалла');
 
 })();

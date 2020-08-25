@@ -68,6 +68,9 @@
         "yargs": "^13.2.4"
     },
     "dependencies": {
+        "@fancyapps/fancybox": "^3.5.7",
+        "jquery": "^3.5.1",
+        "mmenu-js": "^8.5.15",
         "smart-grid": "^2.1.2",
         "swiper": "^5.4.5"
     },
