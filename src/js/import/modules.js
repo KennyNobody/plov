@@ -5,6 +5,7 @@ import "%modules%/footer/footer";
 import "%modules%/faq-item/faq-item";
 import "%modules%/mmenu/mmenu";
 import "%modules%/file/file";
+import "%modules%/top-link/top-link";
 import "%modules%/slider-main/slider-main";
 import "%modules%/slider-bottom/slider-bottom";
 import "%modules%/gallery-item/gallery-item";

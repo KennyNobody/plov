@@ -167,6 +167,17 @@
 			display: block;
 		}
 	}
+	&__event-date {
+		margin-bottom: 10px;
+		&--accent {
+			color: $accent;
+		}
+		&--purple {
+			font-size: 14px;
+			font-weight: normal;
+			color: $purple;
+		}
+	}
 }
 
 @include r(1200) {

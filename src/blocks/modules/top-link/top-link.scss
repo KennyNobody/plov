@@ -1,0 +1,14 @@
+.top-link {
+	display: block;
+	top: -175px;
+	right: -180px;
+	position: absolute;
+	&:hover {
+		opacity: 0.7;
+	}
+	&__icon {
+		display: block;
+		width: 60px;
+		height: 60px;
+	}
+}
