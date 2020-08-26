@@ -3,6 +3,8 @@
 	width: auto;
 	display: flex;
 	align-items: center;
+	min-width: 0px;
+	padding-right: 20px;
 	&__icon {
 		display: block;
 		width: 13px;
@@ -13,6 +15,8 @@
 		font-weight: 600;
 		font-size: 14px;
 		color: #BDBDBD;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 	&__field {
 		display: none;
