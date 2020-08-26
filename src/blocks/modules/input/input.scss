@@ -9,6 +9,13 @@
 			}
 		}
 	}
+	&--purple {
+		.input__field {
+			&:focus {
+				border: 1px solid $purple;
+			}
+		}
+	}
 	&__field {
 		display: block;
 		outline: none;
@@ -25,7 +32,7 @@
 		padding-left: 15px;
 		padding-right: 15px;
 		transition: 0.3s all;
-		&:placeholder {
+		&::placeholder {
 			font-weight: 300;
 			font-size: 14px;
 			color: #828282;
@@ -36,6 +43,16 @@
 			min-height: 120px;
 			height: auto;
 			resize: none;
+		}
+		&--error {
+			background-color: #F8DDDD;
+			border: 1px solid #FB1111;
+			background-image: url('../img/input-error.svg');
+			background-repeat: no-repeat;
+			background-position: 96% center;
+			&::placeholder {
+				color: #FB1111;
+			}
 		}
 	}
 }
