@@ -23,14 +23,15 @@
 
 	}
 	&__btn {
-		width: 22px;
-		height: 22px;
+		width: 14px;
+		height: 14px;
 		box-sizing: content-box;
 		border: none;
 		padding: 2px;
-		flex-shrink: 0px;
+		flex-shrink: 0;
 		margin-left: 20px;
 		background: none;
+		cursor: pointer;
 	}
 	&__main {
 		padding-top: 1px;
@@ -46,8 +47,8 @@
 	}
 	&__icon {
 		display: block;
-		height: 20px;
-		width: 20px;
+		height: 14px;
+		width: 14px;
 		fill: $dark;
 		transition: 0.3s all;
 		transform: rotate(45deg);

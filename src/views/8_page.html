@@ -66,9 +66,10 @@
                         </span>
                     </a>
                 </div>
+                <!-- Для владки "ВСЕ" первая новость в плитке широкая, как в примере ниже. Для остальных вкладок новости одинаковые 25%, как на следующей странице. В остальном 8_page.html и 9_page.html идентичны -->
                 <div class="articles">
                     <div class="articles__content articles__content--space-between">
-                        <div class="articles__item">
+                        <div class="articles__item articles__item--75">
                             <a href="" class="article-main">
                                 <div class="article-main__thumb">
                                     <picture class="article-main__picture">
@@ -108,7 +109,7 @@
                         <div class="articles__item articles__item--clear articles__item--33"></div>
                     </div>
                     <div class="articles__toolbar">
-                        <a href="" class="btn btn--230 btn--purple">
+                        <a href="" class="btn btn--180 btn--purple">
                             <span>
                                 Показать еще
                             </span>
@@ -120,6 +121,7 @@
                 </div>
             </div>
         </section>
+
         <section class="section section--light">
             <div class="container">
                 <div class="title-h2 title-h2--dark title-h2--bordered">
@@ -127,6 +129,18 @@
                         <h2 class="title-h2__text">
                             Прошедшие мероприятия
                         </h2>
+                    </div>
+                    <div class="title-h2__toolbar">
+                        <button class="slider-btn slider-btn--purple slider-btn--prev">
+                            <svg class="icon-svg">
+                                <use xlink:href="img/sprites/sprite.svg#icon-slider-prev"></use>
+                            </svg>
+                        </button>
+                        <button class="slider-btn slider-btn--purple slider-btn--next">
+                            <svg class="icon-svg">
+                                <use xlink:href="img/sprites/sprite.svg#icon-slider-next"></use>
+                            </svg>
+                        </button>
                     </div>
                 </div>
                 <div class="slider-bottom">
@@ -157,24 +171,11 @@
                                 @@include("../blocks/modules/event-old/event-old.html")
                             </div>
                         </div>
-                        <div class="slider-bottom__control">
-                            <div class="slider-bottom__link slider-bottom__link--prev">
-                                <svg class="icon-svg">
-                                    <use xlink:href="img/sprites/sprite.svg#icon-slider-prev"></use>
-                                </svg>
-                            </div>
-                            <div class="slider-bottom__link slider-bottom__link--next">
-                                <svg class="icon-svg">
-                                    <use xlink:href="img/sprites/sprite.svg#icon-slider-next"></use>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="slider-bottom__pagination"></div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="section">
+        <section class="section section--bottom">
             <div class="container">
                 <div class="title-h2 title-h2--accent title-h2--bordered">
                     <div class="title-h2__content">

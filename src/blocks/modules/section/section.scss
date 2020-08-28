@@ -8,6 +8,13 @@
 	}
 	&--light {
 		background-color: $light;
+		.article-card {
+			border: 1px solid #E0E0E0;
+		}
+		.article-card--side {
+			border: none;
+			border-bottom: 1px solid #E0E0E0;
+		}
 	}
 	&--gray {
 		background-color: #F2F2F2;

@@ -1,7 +1,6 @@
 .article-card {
 	display: flex;
 	flex-direction: column;
-	border: 1px solid #E0E0E0;
 	border-radius: 5px;
 	overflow: hidden;
 	background-color: $light;
@@ -23,7 +22,10 @@
 		min-height: 0px;
 	}
 	&:hover {
-		opacity: 0.7;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		.article-card__title {
+			color: $accent;
+		}
 	}
 	&__thumb {
 		height: 210px;
@@ -117,6 +119,7 @@
 	&__title {
 		font-weight: 600;
 		margin-bottom: 10px;
+		transition: 0.3s all;
 	}
 	&__text {
 		font-size: 14px;

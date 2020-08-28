@@ -252,7 +252,7 @@ function changeState(text, input) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fancyapps/fancybox */ "./node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js");
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fancyapps/fancybox */ "./node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js");
 /* harmony import */ var _fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_0__);
 // modules.define('gallery-item', ['i-bem-dom'], function(provide, bemDom) {
 // provide(bemDom.declBlock(this.name, {
@@ -265,6 +265,16 @@ __webpack_require__.r(__webpack_exports__);
 // }));
 // });
 
+$('[data-fancybox="gallery"]').fancybox({
+  infobar: false,
+  caption: function caption(instance, item) {
+    var caption = $(this).data('link') || '';
+    var title = $(this).data('title') || '';
+    var tag = $(this).data('tag') || '';
+    return '<div class="modal-discript"><p class="modal-discript__tag">' + tag + '</p><p class="modal-discript__link-wrapper"><a href="' + caption + '" class="modal-discript__link">' + title + '</a></p></div>';
+  }
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -369,8 +379,32 @@ var sliderBottom4 = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.slider-
     el: '.slider-bottom__pagination',
     bulletClass: 'slider-bottom__bullet',
     bulletActiveClass: 'slider-bottom__bullet--active'
+  },
+  on: {
+    init: function init() {
+      initTopButtons(this);
+    }
   }
 });
+
+function initTopButtons(slider) {
+  var btnPrev = document.querySelector('.slider-btn--prev');
+  var btnNext = document.querySelector('.slider-btn--next');
+
+  if (btnPrev && slider) {
+    btnPrev.addEventListener('click', function () {
+      slider.slidePrev();
+    });
+  }
+
+  if (btnNext && slider) {
+    btnNext.addEventListener('click', function () {
+      slider.slideNext();
+    });
+  }
+}
+
+;
 
 /***/ }),
 

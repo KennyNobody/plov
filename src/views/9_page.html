@@ -74,7 +74,7 @@
                         <div class="articles__item articles__item--clear articles__item--33"></div>
                     </div>
                     <div class="articles__toolbar">
-                        <a href="" class="btn btn--230 btn--purple">
+                        <a href="" class="btn btn--180 btn--purple">
                             <span>
                                 Показать еще
                             </span>
@@ -95,23 +95,65 @@
                         </h2>
                     </div>
                     <div class="title-h2__toolbar">
-                        <a href="" class="btn btn--160 btn--light">
-                            <span>
-                                Показать еще
-                            </span>
-                        </a>
+                        <button class="slider-btn slider-btn--purple slider-btn--prev">
+                            <svg class="icon-svg">
+                                <use xlink:href="img/sprites/sprite.svg#icon-slider-prev"></use>
+                            </svg>
+                        </button>
+                        <button class="slider-btn slider-btn--purple slider-btn--next">
+                            <svg class="icon-svg">
+                                <use xlink:href="img/sprites/sprite.svg#icon-slider-next"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="slider-bottom">
+                    <div class="swiper-container slider-bottom__container slider-bottom__container--4">
+                        <div class="swiper-wrapper slider-bottom__wrapper">
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                            <div class="swiper-slide slider-bottom__slide">
+                                @@include("../blocks/modules/event-old/event-old.html")
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="section">
+        <section class="section section--bottom">
             <div class="container">
                 <div class="title-h2 title-h2--accent title-h2--bordered">
                     <div class="title-h2__content">
                         <h2 class="title-h2__text">
-                            Мы и мир
+                            FAQ
                         </h2>
                     </div>
+                </div>
+                <div class="articles">
+                    @@include("../blocks/modules/faq-item/faq-item.html")
+                    @@include("../blocks/modules/faq-item/faq-item.html")
+                    @@include("../blocks/modules/faq-item/faq-item.html")
+                    @@include("../blocks/modules/faq-item/faq-item.html")
+                    @@include("../blocks/modules/faq-item/faq-item.html")
                 </div>
             </div>
         </section>

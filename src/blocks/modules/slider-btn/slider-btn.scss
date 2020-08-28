@@ -1,0 +1,25 @@
+.slider-btn {
+	padding: 4px;
+	cursor: pointer;
+	display: block;
+	background: none;
+	border: none;
+	&--accent {
+		svg {
+			fill: $accent;
+		}
+	}
+	&--purple {
+		svg {
+			fill: $purple;
+		}
+	}
+	svg {
+		display: block;
+		width: 8px;
+		height: 14px;
+	}
+	&:hover {
+		opacity: 0.7;
+	}
+}

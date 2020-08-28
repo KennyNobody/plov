@@ -44,4 +44,28 @@ let sliderBottom4 = new Swiper('.slider-bottom__container--4', {
 		bulletClass: 'slider-bottom__bullet',
 		bulletActiveClass: 'slider-bottom__bullet--active',
 	},
+	on: {
+		init: function() {
+			initTopButtons(this)
+		}
+	}
 });
+
+
+
+function initTopButtons(slider){
+	let btnPrev = document.querySelector('.slider-btn--prev');
+	let btnNext = document.querySelector('.slider-btn--next');
+
+	if (btnPrev && slider) {
+		btnPrev.addEventListener('click', function(){
+			slider.slidePrev();
+		})
+	}
+
+	if (btnNext && slider) {
+		btnNext.addEventListener('click', function(){
+			slider.slideNext();
+		})
+	}
+};

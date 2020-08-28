@@ -101,10 +101,10 @@
                             </div> 
                             <div class="sidebar__articles">
                                 <a href="" class="article-card article-card--side">
-                                    <div class="article-card__content article-card__content--side">
-                                        <p class="article-card__info">
-                                            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
-                                        </p>
+                                    <div class="article-card__content">
+                                        <div class="article-card__person">
+                                            @@include("../blocks/modules/person-preview/person-preview.html")
+                                        </div>
                                         <h3 class="article-card__title">
                                             10 советов начинающему блоггеру
                                         </h3>
@@ -132,10 +132,10 @@
                                     </div>
                                 </a>
                                 <a href="" class="article-card article-card--side">
-                                    <div class="article-card__content article-card__content--side">
-                                        <p class="article-card__info">
-                                            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
-                                        </p>
+                                    <div class="article-card__content">
+                                        <div class="article-card__person">
+                                            @@include("../blocks/modules/person-preview/person-preview.html")
+                                        </div>
                                         <h3 class="article-card__title">
                                             10 советов начинающему блоггеру
                                         </h3>
@@ -163,10 +163,10 @@
                                     </div>
                                 </a>
                                 <a href="" class="article-card article-card--side">
-                                    <div class="article-card__content article-card__content--side">
-                                        <p class="article-card__info">
-                                            <span class="article-card__category">Мы и мир</span> <time class="article-card__date">15 июля |  08:15</time>
-                                        </p>
+                                    <div class="article-card__content">
+                                        <div class="article-card__person">
+                                            @@include("../blocks/modules/person-preview/person-preview.html")
+                                        </div>
                                         <h3 class="article-card__title">
                                             10 советов начинающему блоггеру
                                         </h3>
@@ -259,7 +259,7 @@
                 <div class="layout layout--flex">
                     <div class="layout__column layout__column--8">
                         @@include("../blocks/modules/single-tags/single-tags.html")
-                        @@include("../blocks/modules/single-toolbar/single-toolbar.html")
+                        <!-- @@include("../blocks/modules/single-toolbar/single-toolbar.html") -->
                         @@include("../blocks/modules/disquss/disquss.html")
                     </div>
                 </div>
@@ -272,6 +272,18 @@
                         <h2 class="title-h2__text">
                             Читайте также в блогах
                         </h2>
+                    </div>
+                    <div class="title-h2__toolbar">
+                        <button class="slider-btn slider-btn--accent slider-btn--prev">
+                            <svg class="icon-svg">
+                                <use xlink:href="img/sprites/sprite.svg#icon-slider-prev"></use>
+                            </svg>
+                        </button>
+                        <button class="slider-btn slider-btn--accent slider-btn--next">
+                            <svg class="icon-svg">
+                                <use xlink:href="img/sprites/sprite.svg#icon-slider-next"></use>
+                            </svg>
+                        </button>
                     </div>
                 </div>
                 <div class="slider-bottom">
@@ -302,19 +314,6 @@
                                 @@include("../blocks/modules/article-card/article-card--blog.html")
                             </div>
                         </div>
-                        <div class="slider-bottom__control">
-                            <div class="slider-bottom__link slider-bottom__link--prev">
-                                <svg class="icon-svg">
-                                    <use xlink:href="img/sprites/sprite.svg#icon-slider-prev"></use>
-                                </svg>
-                            </div>
-                            <div class="slider-bottom__link slider-bottom__link--next">
-                                <svg class="icon-svg">
-                                    <use xlink:href="img/sprites/sprite.svg#icon-slider-next"></use>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="slider-bottom__pagination"></div>
                     </div>
                 </div>
             </div>

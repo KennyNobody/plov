@@ -1,4 +1,6 @@
 .social-side {
+	position: sticky;
+    top: 100px;
 	&__link {
 		display: flex;
 		justify-content: center;

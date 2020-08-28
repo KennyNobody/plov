@@ -2,8 +2,14 @@
     padding-top: 7px;
     padding-bottom: 7px;
     background-color: $light;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 2;
+    border-bottom: 1px solid $accent;
     @include r(1200) {
-        
+
     }
     &__content {
         display: flex;
