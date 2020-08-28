@@ -9,14 +9,40 @@
     z-index: 2;
     border-bottom: 1px solid $accent;
     @include r(1200) {
-
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    &__container {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: 1200px;
+        position: relative;
+        // @include r(1200) {
+        //     padding-right: 0px;
+        // }
     }
     &__content {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        position: relative;
+    }
+    &__logo-wrap {
+        @include r(1200) {
+            flex-grow: 1;
+            order: -5;
+        }
     }
     &__logo {
+        display: block;
+        @include r(1200) {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            height: 56px;
+        }
         &:hover {
             opacity: 0.7;
         }
@@ -24,10 +50,17 @@
             display: block;
             width: 156px;
             height: auto;
+            @include r(1200) {
+                width: auto;
+                height: 100%;
+            }
         }
     }
     &__nav {
         display: flex;
+        @include r(1200) {
+            display: none;
+        }
     }
     &__link {
         color: $dark;
@@ -49,6 +82,9 @@
     }
     &__langs {
         color: #e0e0e0;
+        @include r(1200) {
+            order: -4;
+        }
     }
     &__lang {
         text-decoration: none;
@@ -58,23 +94,55 @@
             color: $dark;
         }
     }
+    &__open-search {
+        display: none;
+        visibility: hidden;
+        @include r(1200) {
+            visibility: visible;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            order: -3;
+            height: 56px;
+            width: 54px;
+            background: none;
+            border-top: none;
+            border-bottom: none;
+            border-left: 1px solid #F2F2F2;
+            border-right: 1px solid #F2F2F2;
+            margin-left: 15px;
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
     &__btn {
-        box-sizing: content-box;
+        box-sizing: border-box;
         position: relative;
         right: -10px;
-        width: 28px;
-        height: 28px;
-        padding: 10px;
         cursor: pointer;
         border: none;
         background: none;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include r(1200) {
+            order: -2;
+            height: 56px;
+            right: 0px;
+        }
         &:hover {
             opacity: 0.7;
         }
         svg {
             display: block;
-            width: 100%;
-            height: 100%;
+            width: 28px;
+            height: 28px;
+            @include r(1200) {
+
+            }
         }
     }
 }

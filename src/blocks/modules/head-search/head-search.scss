@@ -1,6 +1,29 @@
 .head-search {
 	width: 200px;
+	background-color: $light;
+	transition: 0.3s all;
+	@include r(1200) {
+		width: 100%;
+		position: absolute;
+		bottom: 100%;
+		left: 0px;
+		right: 0px;
+		z-index: 2;
+		visibility: hidden;
+	}
+	&--open {
+		@include r(1200) {
+			visibility: visible;
+			width: 100%;
+			bottom: 0%;
+			z-index: 2;
+			height: 100%;
+			display: flex;
+			align-items: center;
+		}
+	}
 	&__label {
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		border: 1px solid #E0E0E0;
@@ -38,6 +61,15 @@
 		}
 		&:hover {
 			opacity: 0.7;
+		}
+		&--submit {
+
+		}
+		&--close {
+			display: none;
+			@include r(1200) {
+				display: flex;
+			}
 		}
 	}
 }

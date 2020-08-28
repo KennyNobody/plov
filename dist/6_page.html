@@ -28,11 +28,17 @@
 </head>
 <body class="body">
     <header class="header">
-	<div class="container">
+	<div class="header__container">
 		<div class="header__content">
-			<a href="/" class="header__logo">
-				<img src="img/logo.svg" alt="Логотип">
-			</a>
+			<div class="header__logo-wrap">
+				<a href="/" class="header__logo">
+					<picture>
+						<source media="(max-width: 1200px)" srcset="img/logo-small.svg"></source>
+						<img src="img/logo.svg" alt="Плов">
+					</picture>
+				</a>
+			</div>
+			
 			<nav class="header__nav">
 				<a href="" class="header__link header__link--active">
 					Новости
@@ -56,7 +62,17 @@
 					Uz
 				</a>
 			</div>
+			<button class="header__open-search">
+				<svg class="icon-svg">
+					<use xlink:href="img/sprites/sprite.svg#icon-search"></use>
+				</svg>
+			</button>
 			<form action="" class="head-search">
+	<button class="head-search__btn head-search__btn--close">
+		<svg class="icon-svg">
+			<use xlink:href="img/sprites/sprite.svg#icon-close"></use>
+		</svg>
+	</button>
 	<label class="head-search__label">
 		<input type="text" class="head-search__field" placeholder="Поиск...">
 		<button class="head-search__btn">
