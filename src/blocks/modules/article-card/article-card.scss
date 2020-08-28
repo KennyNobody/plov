@@ -18,6 +18,13 @@
 			border-bottom: 0px;
 		}
 	}
+	&--main {
+		padding: 0px;
+		color: $light;
+		background: none;
+		min-height: 0px;
+		height: auto;
+	}
 	&--slide {
 		min-height: 0px;
 	}
@@ -77,6 +84,9 @@
 		&--side {
 			padding-left: 0px;
 			padding-right: 0px;
+		}
+		&--main {
+			padding: 0px;
 		}
 	}
 	&__avatar {
@@ -147,6 +157,15 @@
 		color: #828282;
 		&:last-of-type {
 			margin-right: 0px;
+		}
+		svg {
+			fill: #828282;
+		}
+		&--light {
+			color: $light;
+			svg {
+				fill: $light;
+			}
 		}
 	}
 	&__counter-icon {

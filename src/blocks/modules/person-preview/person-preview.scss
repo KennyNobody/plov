@@ -25,9 +25,15 @@
 		&--purple {
 			color: $purple;
 		}
+		&--light {
+			color: $light;
+		}
 	}
 	&__date {
 		font-weight: 300;
 		color: #828282;
+		&--light {
+			color: $light;
+		}
 	}
 }
