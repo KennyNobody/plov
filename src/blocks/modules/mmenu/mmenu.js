@@ -20,7 +20,8 @@ import Mmenu from 'mmenu-js';
 		"slidingSubmenus": false,
 		"extensions": [
 		"position-front",
-		"pagedim-black"
+		"pagedim-black",
+		"multiline"
 		],
 		"navbar": {
 			"title": 'Меню'
@@ -28,7 +29,7 @@ import Mmenu from 'mmenu-js';
 		"navbars": [
 		{
 			"position": "bottom",
-			"content": mmenuBottomContent || undefined
+			"content": mmenuBottomContent
 		},
 		]
 	});

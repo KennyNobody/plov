@@ -4,6 +4,9 @@
 	display: block;
 	text-decoration: none;
 	color: $light;
+	@include r(680) {
+		height: 240px;
+	}
 	&__thumb {
 		display: block;
 		position: absolute;
@@ -31,11 +34,17 @@
 		flex-direction: column;
 		justify-content: flex-end;
 		background-image: linear-gradient(-180deg,rgba(0,0,0,0) 7%,rgba(0,0,0,.08) 12%,rgba(0,0,0,.16) 17%,rgba(0,0,0,.22) 21%,rgba(0,0,0,.32) 26%,rgba(0,0,0,.42) 32%,rgba(0,0,0,.52) 38%,rgba(0,0,0,.62) 47%,rgba(0,0,0,.72) 57%,rgba(0,0,0,.82) 65%);
+		@include r(1200) {
+			padding: 15px;
+		}
 	}
 	&__tags {
 		display: flex;
 		flex-wrap: wrap;
 		margin-bottom: 5px;
+		@include r(1200) {
+			margin-bottom: 0px;
+		}
 	}
 	&__tag {
 		font-size: 12px;
@@ -44,6 +53,9 @@
 		border-radius: 20px;
 		margin-right: 10px;
 		margin-bottom: 10px;
+		@include r(1200) {
+			margin-bottom: 5px;
+		}
 		&--yellow {
 			color: $dark;
 			background-color: $yellow;
@@ -57,13 +69,15 @@
 		margin-bottom: 15px;
 		font-weight: 600;
 		font-size: 14px;
+		@include r(1200) {
+			margin-bottom: 10px;
+		}
 	}
 	&__title {
 		font-weight: bold;
 		font-size: 24px;
+		@include r(1200) {
+			font-size: 16px;
+		}
 	}
-}
-
-@include r(1200) {
-	
 }

@@ -2,4 +2,7 @@
 	font-weight: 300;
 	font-size: 14px;
 	margin-bottom: 40px;
+	@include r(1200) {
+		margin-bottom: 20px;
+	}
 }

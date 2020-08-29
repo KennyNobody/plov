@@ -7,6 +7,7 @@
 	max-width: 1200px;
 	position: relative;
 	@include r(1200) {
-		
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 }

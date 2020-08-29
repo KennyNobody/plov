@@ -32,6 +32,9 @@
 		padding-left: 15px;
 		padding-right: 15px;
 		transition: 0.3s all;
+		@include r(1200) {
+			text-align: center;
+		}
 		&::placeholder {
 			font-weight: 300;
 			font-size: 14px;

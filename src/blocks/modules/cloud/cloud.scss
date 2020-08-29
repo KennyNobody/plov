@@ -3,6 +3,9 @@
 	background-color: $light;
 	border-radius: 5px;
 	display: block;
+	@include r(1200) {
+		padding: 21px 16px;
+	}
 	&--border {
 		border: 1px solid #E0E0E0;
 		padding: 20px;

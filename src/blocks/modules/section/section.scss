@@ -1,10 +1,17 @@
 .section {
 	padding-top: 40px;
 	padding-bottom: 40px;
+	@include r(1200) {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
 	&--breadcrumbs {
 		padding-top: 16px;
 		padding-bottom: 16px;
 		background-color: #F2F2F2;
+		@include r(1200) {
+			display: none;
+		}
 	}
 	&--light {
 		background-color: $light;
@@ -25,12 +32,16 @@
 	&--top {
 		padding-top: 50px;
 		padding-bottom: 40px;
+		@include r(1200) {
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
 	}
 	&--bottom {
 		padding-bottom: 60px;
+		@include r(1200) {
+			padding-bottom: 30px;
+		}
 	}
 }
 
-@include r(1200) {
-	
-}

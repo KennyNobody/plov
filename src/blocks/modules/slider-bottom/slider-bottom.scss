@@ -3,16 +3,26 @@
 
 	}
 	&__wrapper {
-		margin-bottom: 20px;
+		margin-bottom: 20px !important;
+		@include r(1200) {
+			margin-bottom: 15px !important;
+		}
 	}
 	&__slide {
-
+		@include r(1200) {
+			width: 250px;
+		}
 	}
 	&__control {
-
+		@include r(1200) {
+			display: none;
+		}
 	}
 	&__pagination {
 		text-align: center;
+		@include r(1200) {
+			margin-bottom: 15px;
+		}
 	}
 	&__bullet {
 		border-radius: 10px;
@@ -52,6 +62,12 @@
 		&--disabled {
 			cursor: auto;
 			opacity: 0.5;
+		}
+	}
+	&__more {
+		display: none;
+		@include r(1200) {
+			display: block;
 		}
 	}
 }

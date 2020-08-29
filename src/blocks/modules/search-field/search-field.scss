@@ -1,11 +1,12 @@
 .search-field {
 	margin-bottom: 40px;
+	@include r(1200) {
+		margin-bottom: 20px;
+	}
 	&__label {
 		position: relative;
 		display: block;
 		width: 100%;
-		// display: flex;
-		// justify-content: space-between;
 		border-bottom: 1px solid $accent;
 	}
 	&__input {
@@ -19,6 +20,12 @@
 		font-size: 24px;
 		font-family: 'Open Sans', sans-serif;
 		padding-right: 75px;
+		@include r(1200) {
+			padding-right: 0px;
+			padding-top: 0px;
+			padding-bottom: 0px;
+			margin-bottom: 15px;
+		}
 		&:placeholder {
 			font-weight: 300;
 			font-size: 24px;
@@ -39,6 +46,9 @@
 		background: none;
 		transform: translateY(-50%);
 		cursor: pointer;
+		@include r(1200) {
+			display: none;	
+		}
 		svg {
 			width: 18px;
 			height: 18px;

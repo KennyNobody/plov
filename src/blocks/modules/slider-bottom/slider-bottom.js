@@ -15,8 +15,9 @@
 import Swiper from 'swiper';
 
 let sliderBottom3 = new Swiper('.slider-bottom__container--3', {
-	slidesPerView: 3,
+	slidesPerView: 'auto',
 	spaceBetween: 20,
+	freeMode: true,
 	navigation: {
 		nextEl: '.slider-bottom__link--next',
 		prevEl: '.slider-bottom__link--prev',
@@ -28,11 +29,19 @@ let sliderBottom3 = new Swiper('.slider-bottom__container--3', {
 		bulletClass: 'slider-bottom__bullet',
 		bulletActiveClass: 'slider-bottom__bullet--active',
 	},
+	breakpoints: {
+		1200: {
+			freeMode: false,
+			slidesPerView: 3,
+			spaceBetween: 20
+		},
+	}
 });
 
 let sliderBottom4 = new Swiper('.slider-bottom__container--4', {
-	slidesPerView: 4,
+	slidesPerView: 'auto',
 	spaceBetween: 20,
+	freeMode: true,
 	navigation: {
 		nextEl: '.slider-bottom__link--next',
 		prevEl: '.slider-bottom__link--prev',
@@ -43,6 +52,14 @@ let sliderBottom4 = new Swiper('.slider-bottom__container--4', {
 		el: '.slider-bottom__pagination',
 		bulletClass: 'slider-bottom__bullet',
 		bulletActiveClass: 'slider-bottom__bullet--active',
+	},
+	breakpoints: {
+		1200: {
+			freeMode: false,
+			slidesPerView: 4,
+			freeMode: false,
+			spaceBetween: 20
+		},
 	},
 	on: {
 		init: function() {

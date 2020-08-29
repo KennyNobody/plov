@@ -11,11 +11,30 @@ a {
 }
 
 .fancybox-slide--html .fancybox-close-small {
-    right: 10px;
-    top: 10px;
+	right: 10px;
+	top: 10px;
 }
 
 .hidden {
 	visibility: hidden;
 	display: none;
 }
+
+.hidden-680 {
+	@include r(680) {
+		display: none !important;
+	}
+}
+
+.hidden-1200 {
+	@include r(1200) {
+		display: none !important;
+	}
+}
+
+// .fancybox-button {
+// 	@include r(1200) {
+// 		right: 0px !important;
+// 		top: 0px !important;
+// 	}
+// }

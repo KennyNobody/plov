@@ -3,8 +3,7 @@
 	align-items: center;
 	flex-wrap: wrap;
 	margin-bottom: 35px;
-}
-
-@include r(1200) {
-	
+	@include r(1200) {
+		display: none;
+	}
 }

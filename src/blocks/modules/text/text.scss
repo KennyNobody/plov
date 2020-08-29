@@ -42,6 +42,9 @@
 	figure {
 		display: block;
 		margin-bottom: 1.5em;
+		@include r(1200) {
+			margin-bottom: 1rem;
+		}
 	}
 	picture {
 		display: block;
@@ -53,6 +56,10 @@
 		padding-left: 48px;
 		margin-bottom: 1.5em;
 		position: relative;
+		@include r(1200) {
+			font-size: 16px;
+			padding-left: 32px;
+		}
 		p {
 			&:last-of-type {
 				margin-bottom: 0px;
@@ -98,6 +105,8 @@
 	}
 	iframe {
 		margin-bottom: 1.5em;
+		display: block;
+		width: 100%;
 	}
 }
 
@@ -107,6 +116,10 @@
 	position: relative;
 	margin-bottom: 1em;
 	font-style: italic;
+	@include r(1200) {
+		padding: 10px;
+		padding-left: 15px;
+	}
 	p {
 		&:last-of-type {
 			margin-bottom: 0px;
@@ -121,6 +134,9 @@
 		bottom: 25px;
 		background-color: $accent;
 		left: 20px;
+		@include r(1200) {
+			display: none;
+		}
 	}
 }
 

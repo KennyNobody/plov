@@ -349,13 +349,13 @@ __webpack_require__.r(__webpack_exports__);
 (function initMmenu() {
   new mmenu_js__WEBPACK_IMPORTED_MODULE_1__["default"]("#mmenu", {
     "slidingSubmenus": false,
-    "extensions": ["position-front", "pagedim-black"],
+    "extensions": ["position-front", "pagedim-black", "multiline"],
     "navbar": {
       "title": 'Меню'
     },
     "navbars": [{
       "position": "bottom",
-      "content": mmenuBottomContent || undefined
+      "content": mmenuBottomContent
     }]
   });
 })();
@@ -372,6 +372,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/js/swiper.esm.bundle.js");
+var _;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 // modules.define('slider-bottom', ['i-bem-dom'], function(provide, bemDom) {
 // provide(bemDom.declBlock(this.name, {
 //     onSetMod: {
@@ -384,8 +388,9 @@ __webpack_require__.r(__webpack_exports__);
 // });
 
 var sliderBottom3 = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.slider-bottom__container--3', {
-  slidesPerView: 3,
+  slidesPerView: 'auto',
   spaceBetween: 20,
+  freeMode: true,
   navigation: {
     nextEl: '.slider-bottom__link--next',
     prevEl: '.slider-bottom__link--prev',
@@ -396,11 +401,19 @@ var sliderBottom3 = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.slider-
     el: '.slider-bottom__pagination',
     bulletClass: 'slider-bottom__bullet',
     bulletActiveClass: 'slider-bottom__bullet--active'
+  },
+  breakpoints: {
+    1200: {
+      freeMode: false,
+      slidesPerView: 3,
+      spaceBetween: 20
+    }
   }
 });
 var sliderBottom4 = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.slider-bottom__container--4', {
-  slidesPerView: 4,
+  slidesPerView: 'auto',
   spaceBetween: 20,
+  freeMode: true,
   navigation: {
     nextEl: '.slider-bottom__link--next',
     prevEl: '.slider-bottom__link--prev',
@@ -411,6 +424,12 @@ var sliderBottom4 = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.slider-
     el: '.slider-bottom__pagination',
     bulletClass: 'slider-bottom__bullet',
     bulletActiveClass: 'slider-bottom__bullet--active'
+  },
+  breakpoints: {
+    1200: (_ = {
+      freeMode: false,
+      slidesPerView: 4
+    }, _defineProperty(_, "freeMode", false), _defineProperty(_, "spaceBetween", 20), _)
   },
   on: {
     init: function init() {

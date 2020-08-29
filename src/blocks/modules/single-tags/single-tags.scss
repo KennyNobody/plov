@@ -1,5 +1,5 @@
 .single-tags {
-	margin-bottom: 33px;
+	margin-bottom: 28px;
 	&__title {
 		padding-bottom: 10px;
 		border-bottom: 1px solid #E0E0E0;
@@ -7,6 +7,9 @@
 		font-weight: 600;
 		font-size: 14px;
 		color: #828282;
+		@include r(1200) {
+			margin-bottom: 10px;
+		}
 	}
 	&__tags {
 		display: flex;
@@ -20,6 +23,7 @@
 		padding: 3px 9px;
 		margin-right: 5px;
 		text-decoration: none;
+		margin-bottom: 5px;
 		color: $light;
 		font-size: 12px;
 		&:hover {

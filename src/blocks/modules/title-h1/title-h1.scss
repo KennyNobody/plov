@@ -4,11 +4,23 @@
 	margin-top: 0px;
 	margin-bottom: 40px;
 	text-transform: uppercase;
+	@include r(1200) {
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
 	&--single {
 		font-size: 24px;
 		text-transform: unset;
 	}
 	&--mb-small {
 		margin-bottom: 30px;
+		@include r(1200) {
+			margin-bottom: 20px;
+		}
+	}
+	&--centered-680 {
+		@include r(680) {
+			text-align: center;
+		}
 	}
 }

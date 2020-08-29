@@ -3,14 +3,24 @@
 	&--flex {
 		display: flex;
 		justify-content: space-between;
+		@include r(1200) {
+			flex-direction: column;
+		}
 	}
 	&__side {
 		width: 52px;
 		flex-shrink: 0;
 		margin-right: 28px;
+		@include r(1200) {
+			width: 100%;
+			margin-right: 0px;
+		}
 	}
 	&__main {
 		flex-grow: 1;
 		min-width: 0px;
+		@include r(1200) {
+			order: -1;	
+		}
 	}
 }

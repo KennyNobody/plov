@@ -1,6 +1,12 @@
 .articles {
+	@include r(1200) {
+		padding-bottom: 30px;
+	}
 	&__content {
 		margin-bottom: 10px;
+		@include r(1200) {
+			// margin-bottom: 0px;
+		}
 		&--space-between {
 			display: flex;
 			justify-content: space-between;
@@ -9,6 +15,9 @@
 		&--clamps {
 			column-count: 2;
 			column-gap: 20px;
+			@include r(1200) {
+				column-count: 1;
+			}
 		}
 	}
 	&__item {
@@ -17,30 +26,64 @@
 		border-radius: 5px;
 		margin-bottom: 20px;
 		width: 100%;
+		overflow: hidden;
+		@include r(1200) {
+			margin-bottom: 10px;
+		}
 		&--75 {
 			width: calc(75% - 5px);
+			@include r(1200) {
+				width: calc(50% - 5px);
+			}
+			@include r(680) {
+				width: 100%;
+			}
 		}
 		&--33 {
 			width: calc(33% - 12px);
+			@include r(1200) {
+				width: calc(50% - 5px);
+			}
+			@include r(680) {
+				width: 100%;
+			}
 		}
 		&--25 {
 			width: calc(25% - 15px);
+			@include r(1200) {
+				width: calc(50% - 5px);
+			}
+			@include r(680) {
+				width: 100%;
+			}
 		}
 		&--clear {
-			margin: 0px;
+			margin: 0px !important;
 			padding: 0px;
 			height: 0px;
 			visibility: hidden;
 			overflow: hidden;
 			min-height: 0px;
 		}
+		&--hidden-1200 {
+			@include r(1200) {
+				display: none;	
+			}
+		}
+		&--hidden-680 {
+			@include r(680) {
+				display: none;	
+			}
+		}
 	}
 	&__toolbar {
 		display: flex;
 		justify-content: center;
+		&--mobile {
+			display: none;
+			@include r(1200) {
+				display: flex;	
+			}
+		}
 	}
-}
-
-@include r(1200) {
-	
 }

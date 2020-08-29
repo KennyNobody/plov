@@ -9,13 +9,28 @@
 	margin-bottom: 38px;
 	border-top: 1px solid #E0E0E0;
 	border-bottom: 1px solid $dark;
+	@include r(1200) {
+		flex-direction: column;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		align-items: flex-start;
+	}
 	&__main {
 		display: flex;
 		align-items: center;
+		@include r(1200) {
+			display: block;
+			width: 100%;
+		}
 	}
 	&__tag {
 		text-transform: uppercase;
 		font-weight: 600;
+		@include r(1200) {
+			padding-top: 17px;
+			padding-bottom: 17px;
+			border-bottom: 1px solid #E0E0E0;
+		}
 	}
 	&__separator {
 		width: 1px;
@@ -24,6 +39,9 @@
 		background-color: #BDBDBD;
 		margin-left: 18px;
 		margin-right: 18px;
+		@include r(1200) {
+			// display: none;
+		}
 		&--large {
 			margin-left: 30px;
 			margin-right: 30px;
@@ -33,6 +51,10 @@
 		display: flex;
 		align-items: center;
 		color: #828282;
+		@include r(1200) {
+			padding-top: 17px;
+			padding-bottom: 17px;
+		}
 	}
 	&__name {
 		color: $accent;
@@ -50,6 +72,13 @@
 			opacity: 0.7;
 		}
 	}
+	&__category {
+		@include r(1200) {
+			padding-top: 17px;
+			padding-bottom: 17px;
+			border-bottom: 1px solid #E0E0E0;
+		}
+	}
 	&__counter {
 		display: flex;
 		align-items: center;
@@ -65,9 +94,23 @@
 	&__toolbar {
 		display: flex;
 		align-items: center;
+		@include r(1200) {
+			display: block;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			width: 100%;
+		}
 		.btn {
 			margin-left: 20px;
+			@include r(1200) {
+				margin-left: 0px;
+				margin-bottom: 10px;
+				&:last-of-type {
+					margin-bottom: 0px;
+				}
+			}
 		}
+
 	}
 }
 

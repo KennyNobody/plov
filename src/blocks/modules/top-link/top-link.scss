@@ -3,6 +3,15 @@
 	top: -175px;
 	right: -180px;
 	position: absolute;
+	@include r(1600) {
+		right: -100px;
+	}
+	@include r(1500) {
+		right: -70px;
+	}
+	@include r(1400) {
+		display: none;
+	}
 	&:hover {
 		opacity: 0.7;
 	}
