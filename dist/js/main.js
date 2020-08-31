@@ -386,9 +386,7 @@ __webpack_require__.r(__webpack_exports__);
 // }));
 // });
 
- // $( '[data-fancybox]' ).fancybox({
-// });
-// $("body").delegate("[data-fancybox='modal']", "click", function(event) {
+ // $("body").delegate("[data-fancybox='modal']", "click", function(event) {
 // 	event.preventDefault();
 // 	$.fancybox({
 // 		'title': this.title,

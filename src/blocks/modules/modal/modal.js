@@ -13,10 +13,6 @@
 import $ from 'jquery';
 import fancybox from '@fancyapps/fancybox';
 
-// $( '[data-fancybox]' ).fancybox({
-
-// });
-
 // $("body").delegate("[data-fancybox='modal']", "click", function(event) {
 // 	event.preventDefault();
 // 	$.fancybox({
