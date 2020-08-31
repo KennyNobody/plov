@@ -16,6 +16,8 @@
 		height: 52px;
 		color: #E0E0E0;
 		text-decoration: none;
+		background-color: $light;
+		cursor: pointer;
 		@include r(1200) {
 			border-top: 1px solid #E0E0E0;
 			border-bottom: 1px solid #E0E0E0;

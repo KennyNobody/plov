@@ -362,6 +362,50 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/blocks/modules/modal/modal.js":
+/*!*******************************************!*\
+  !*** ./src/blocks/modules/modal/modal.js ***!
+  \*******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fancyapps/fancybox */ "./node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js");
+/* harmony import */ var _fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_1__);
+// modules.define('modal', ['i-bem-dom'], function(provide, bemDom) {
+// provide(bemDom.declBlock(this.name, {
+//     onSetMod: {
+//         js: {
+//             inited: function() {
+//             }
+//         }
+//     }
+// }));
+// });
+
+ // $( '[data-fancybox]' ).fancybox({
+// });
+// $("body").delegate("[data-fancybox='modal']", "click", function(event) {
+// 	event.preventDefault();
+// 	$.fancybox({
+// 		'title': this.title,
+// 		'href': this.href,
+// 	});
+// });
+
+document.addEventListener('click', function (e) {
+  if (e.target && e.target.id == 'callNewsModal') {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.fancybox.open({
+      src: '#modal-news'
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./src/blocks/modules/slider-bottom/slider-bottom.js":
 /*!***********************************************************!*\
   !*** ./src/blocks/modules/slider-bottom/slider-bottom.js ***!
@@ -497,6 +541,31 @@ var sliderMain = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.slider-mai
 
 /***/ }),
 
+/***/ "./src/blocks/modules/social-side/social-side.js":
+/*!*******************************************************!*\
+  !*** ./src/blocks/modules/social-side/social-side.js ***!
+  \*******************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sharer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sharer.js */ "./node_modules/sharer.js/sharer.js");
+/* harmony import */ var sharer_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sharer_js__WEBPACK_IMPORTED_MODULE_0__);
+// modules.define('social-side', ['i-bem-dom'], function(provide, bemDom) {
+// provide(bemDom.declBlock(this.name, {
+//     onSetMod: {
+//         js: {
+//             inited: function() {
+//             }
+//         }
+//     }
+// }));
+// });
+
+
+/***/ }),
+
 /***/ "./src/blocks/modules/top-link/top-link.js":
 /*!*************************************************!*\
   !*** ./src/blocks/modules/top-link/top-link.js ***!
@@ -548,13 +617,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_mmenu_mmenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! %modules%/mmenu/mmenu */ "./src/blocks/modules/mmenu/mmenu.js");
 /* harmony import */ var _modules_file_file__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! %modules%/file/file */ "./src/blocks/modules/file/file.js");
 /* harmony import */ var _modules_file_file__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_modules_file_file__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _modules_top_link_top_link__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! %modules%/top-link/top-link */ "./src/blocks/modules/top-link/top-link.js");
-/* harmony import */ var _modules_top_link_top_link__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_modules_top_link_top_link__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _modules_slider_main_slider_main__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! %modules%/slider-main/slider-main */ "./src/blocks/modules/slider-main/slider-main.js");
-/* harmony import */ var _modules_slider_bottom_slider_bottom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! %modules%/slider-bottom/slider-bottom */ "./src/blocks/modules/slider-bottom/slider-bottom.js");
-/* harmony import */ var _modules_gallery_item_gallery_item__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! %modules%/gallery-item/gallery-item */ "./src/blocks/modules/gallery-item/gallery-item.js");
+/* harmony import */ var _modules_modal_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! %modules%/modal/modal */ "./src/blocks/modules/modal/modal.js");
+/* harmony import */ var _modules_top_link_top_link__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! %modules%/top-link/top-link */ "./src/blocks/modules/top-link/top-link.js");
+/* harmony import */ var _modules_top_link_top_link__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_modules_top_link_top_link__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _modules_slider_main_slider_main__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! %modules%/slider-main/slider-main */ "./src/blocks/modules/slider-main/slider-main.js");
+/* harmony import */ var _modules_slider_bottom_slider_bottom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! %modules%/slider-bottom/slider-bottom */ "./src/blocks/modules/slider-bottom/slider-bottom.js");
+/* harmony import */ var _modules_gallery_item_gallery_item__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! %modules%/gallery-item/gallery-item */ "./src/blocks/modules/gallery-item/gallery-item.js");
+/* harmony import */ var _modules_social_side_social_side__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! %modules%/social-side/social-side */ "./src/blocks/modules/social-side/social-side.js");
 
  // import "%modules%/slider-header/slider-header";
+
+
 
 
 
