@@ -11,6 +11,12 @@
 	@include r(680) {
 		min-height: 0px;
 	}
+	&:hover {
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		.article-card__title {
+			color: $accent;
+		}
+	}
 	&--side {
 		border: none;
 		padding: 0px;
@@ -19,6 +25,9 @@
 		background-color: inherit;
 		&:last-of-type {
 			border-bottom: 0px;
+		}
+		&:hover {
+			box-shadow: none;
 		}
 	}
 	&--main {
@@ -30,12 +39,6 @@
 	}
 	&--slide {
 		min-height: 0px;
-	}
-	&:hover {
-		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-		.article-card__title {
-			color: $accent;
-		}
 	}
 	&__thumb {
 		height: 210px;

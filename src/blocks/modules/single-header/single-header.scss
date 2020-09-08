@@ -26,10 +26,15 @@
 	&__tag {
 		text-transform: uppercase;
 		font-weight: 600;
+		color: $dark;
+		text-decoration: none;
 		@include r(1200) {
 			padding-top: 17px;
 			padding-bottom: 17px;
 			border-bottom: 1px solid #E0E0E0;
+		}
+		&:hover {
+			opacity: 0.7;
 		}
 	}
 	&__separator {
