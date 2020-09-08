@@ -22921,8 +22921,6 @@ _oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].prototype._open
     var options = this.opts.offCanvas;
     //	Close other menus
     this.closeAllOthers();
-    //	Store style and position
-    _oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].node.page['mmStyle'] = _oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].node.page.getAttribute('style') || '';
     //	Trigger window-resize to measure height
     _modules_eventlisteners__WEBPACK_IMPORTED_MODULE_4__["trigger"](window, 'resize.page', { force: true });
     var clsn = ['mm-wrapper_opened'];
@@ -22984,8 +22982,6 @@ _oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.close
         });
         //  Better browsers:
         // this.node.wrpr.classList.remove(...classnames);
-        //	Restore style and position
-        _oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].node.page.setAttribute('style', _oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].node.page['mmStyle']);
         _this.vars.opened = false;
         _this.trigger('close:finish');
     }, this.conf.transitionDuration);
@@ -24796,7 +24792,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, deprecated, description, devDependencies, homepage, keywords, license, main, module, name, repository, scripts, version, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"_from\":\"mmenu-js@^8.5.15\",\"_id\":\"mmenu-js@8.5.15\",\"_inBundle\":false,\"_integrity\":\"sha512-cLt1e4rJZOgsEnACpixkmant0WHAjaJmHjItqcP1iVpo1hHlZ7EgZhttDUtwIgsDJ81OLKCa42BmyyM42Upn1w==\",\"_location\":\"/mmenu-js\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"range\",\"registry\":true,\"raw\":\"mmenu-js@^8.5.15\",\"name\":\"mmenu-js\",\"escapedName\":\"mmenu-js\",\"rawSpec\":\"^8.5.15\",\"saveSpec\":null,\"fetchSpec\":\"^8.5.15\"},\"_requiredBy\":[\"/\"],\"_resolved\":\"https://registry.npmjs.org/mmenu-js/-/mmenu-js-8.5.15.tgz\",\"_shasum\":\"ea5508bc96a05db47abac5609efe512125a6c114\",\"_spec\":\"mmenu-js@^8.5.15\",\"_where\":\"C:\\\\work\\\\plov\",\"author\":{\"name\":\"Fred Heusschen\",\"email\":\"info@frebsite.nl\"},\"bugs\":{\"url\":\"https://github.com/FrDH/mmenu-js/issues\"},\"bundleDependencies\":false,\"deprecated\":false,\"description\":\"The best javascript plugin for app look-alike on- and off-canvas menus with sliding submenus for your website and webapp.\",\"devDependencies\":{\"gulp\":\"^4.0.2\",\"gulp-autoprefixer\":\"^6.1.0\",\"gulp-clean-css\":\"^4.3.0\",\"gulp-concat\":\"^2.6.1\",\"gulp-sass\":\"^4.1.0\",\"gulp-typescript\":\"^5.0.1\",\"typescript\":\"^3.9.7\",\"webpack-stream\":\"^5.2.1\"},\"homepage\":\"https://github.com/FrDH/mmenu-js#readme\",\"keywords\":[\"app\",\"list\",\"listview\",\"megamenu\",\"menu\",\"mmenu\",\"mobile\",\"navigation\",\"off-canvas\",\"on-canvas\",\"curtain\",\"panels\",\"submenu\"],\"license\":\"CC-BY-NC-4.0\",\"main\":\"dist/mmenu.js\",\"module\":\"src/mmenu.js\",\"name\":\"mmenu-js\",\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/FrDH/mmenu-js.git\"},\"scripts\":{\"build\":\"gulp default\"},\"version\":\"8.5.15\"}");
+module.exports = JSON.parse("{\"_from\":\"mmenu-js@^8.5.15\",\"_id\":\"mmenu-js@8.5.16\",\"_inBundle\":false,\"_integrity\":\"sha512-gpjMs5V+6ePahyZ1iYM0qgmqDPlT7fGUYHQKIlRTrydmXnXCzehzdP9ydVnZdhFBXWmzYcUyW+dYWoU88qQV+g==\",\"_location\":\"/mmenu-js\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"range\",\"registry\":true,\"raw\":\"mmenu-js@^8.5.15\",\"name\":\"mmenu-js\",\"escapedName\":\"mmenu-js\",\"rawSpec\":\"^8.5.15\",\"saveSpec\":null,\"fetchSpec\":\"^8.5.15\"},\"_requiredBy\":[\"/\"],\"_resolved\":\"https://registry.npmjs.org/mmenu-js/-/mmenu-js-8.5.16.tgz\",\"_shasum\":\"9981b027b6523e205f571810aaf98ccca2f7252a\",\"_spec\":\"mmenu-js@^8.5.15\",\"_where\":\"C:\\\\Work\\\\plov\",\"author\":{\"name\":\"Fred Heusschen\",\"email\":\"info@frebsite.nl\"},\"bugs\":{\"url\":\"https://github.com/FrDH/mmenu-js/issues\"},\"bundleDependencies\":false,\"deprecated\":false,\"description\":\"The best javascript plugin for app look-alike on- and off-canvas menus with sliding submenus for your website and webapp.\",\"devDependencies\":{\"gulp\":\"^4.0.2\",\"gulp-autoprefixer\":\"^6.1.0\",\"gulp-clean-css\":\"^4.3.0\",\"gulp-concat\":\"^2.6.1\",\"gulp-sass\":\"^4.1.0\",\"gulp-typescript\":\"^5.0.1\",\"typescript\":\"^3.9.7\",\"webpack-stream\":\"^5.2.1\"},\"homepage\":\"https://github.com/FrDH/mmenu-js#readme\",\"keywords\":[\"app\",\"list\",\"listview\",\"megamenu\",\"menu\",\"mmenu\",\"mobile\",\"navigation\",\"off-canvas\",\"on-canvas\",\"curtain\",\"panels\",\"submenu\"],\"license\":\"CC-BY-NC-4.0\",\"main\":\"dist/mmenu.js\",\"module\":\"src/mmenu.js\",\"name\":\"mmenu-js\",\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/FrDH/mmenu-js.git\"},\"scripts\":{\"build\":\"gulp default\"},\"version\":\"8.5.16\"}");
 
 /***/ }),
 
