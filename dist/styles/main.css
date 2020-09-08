@@ -1648,7 +1648,6 @@ a {
 .header__link--active {
   color: #00787C;
   font-weight: 600;
-  pointer-events: none;
 }
 
 .header__langs {
