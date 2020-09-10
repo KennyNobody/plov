@@ -375,30 +375,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fancyapps/fancybox */ "./node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js");
 /* harmony import */ var _fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_fancyapps_fancybox__WEBPACK_IMPORTED_MODULE_1__);
-// modules.define('modal', ['i-bem-dom'], function(provide, bemDom) {
-// provide(bemDom.declBlock(this.name, {
-//     onSetMod: {
-//         js: {
-//             inited: function() {
-//             }
-//         }
-//     }
-// }));
-// });
 
- // $("body").delegate("[data-fancybox='modal']", "click", function(event) {
-// 	event.preventDefault();
-// 	$.fancybox({
-// 		'title': this.title,
-// 		'href': this.href,
-// 	});
-// });
 
 document.addEventListener('click', function (e) {
   if (e.target && e.target.id == 'callNewsModal') {
     jquery__WEBPACK_IMPORTED_MODULE_0___default.a.fancybox.open({
       src: '#modal-news'
     });
+  }
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-fancybox]').fancybox({
+  beforeClose: function beforeClose() {
+    var item = document.querySelector(this.src);
+    var inputs = item.querySelectorAll('[required]');
+    var valid = false;
+
+    for (var i = 0; i < inputs.length; i++) {
+      checkInput(inputs[i]);
+
+      if (inputs[i].value == '') {
+        inputs[i].classList.add('input__field--error');
+        valid = false;
+      } else {
+        valid = true;
+      }
+    }
+
+    function checkInput(el) {
+      el.addEventListener('change', function () {
+        if (el.value == '') {
+          el.classList.add('input__field--error');
+        } else {
+          el.classList.remove('input__field--error');
+        }
+      });
+    }
+
+    if (valid == false) {
+      return false;
+    }
   }
 });
 
