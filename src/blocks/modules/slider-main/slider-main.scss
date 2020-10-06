@@ -8,8 +8,23 @@
 	&__control {
 
 	}
+	&__wrapper {
+		@include r(1200) {
+			margin-bottom: 7px;
+		}
+	}
 	&__pagination {
 		text-align: center;
+		display: none;
+		@include r(1200) {
+			display: block;
+		}
+	}
+	&__navigation {
+		display: block;
+		@include r(1200) {
+			display: none;
+		}
 	}
 	&__bullet {
 		border-radius: 10px;

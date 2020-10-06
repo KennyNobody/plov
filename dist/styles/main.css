@@ -5505,6 +5505,11 @@ body.modal-open .mm-slideout {
 
 .slider-main__pagination {
   text-align: center;
+  display: none;
+}
+
+.slider-main__navigation {
+  display: block;
 }
 
 .slider-main__bullet {
@@ -6597,6 +6602,18 @@ body.modal-open .mm-slideout {
 
   .single-tags__title {
     margin-bottom: 10px;
+  }
+
+  .slider-main__wrapper {
+    margin-bottom: 7px;
+  }
+
+  .slider-main__pagination {
+    display: block;
+  }
+
+  .slider-main__navigation {
+    display: none;
   }
 
   .tabs {
