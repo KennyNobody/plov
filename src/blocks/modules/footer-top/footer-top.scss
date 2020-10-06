@@ -1,41 +1,44 @@
 .footer-top {
 	display: flex;
 	justify-content: space-between;
-	font-size: 14px;
-	margin-bottom: 40px;
 	@include r(1200) {
 		font-weight: 300;
 		flex-direction: column;
 		align-items: center;
 	}
 	&__column {
+		margin-bottom: 15px;
 		@include r(1200) {
+			width: 100%;
 			max-width: 480px;
 		}
-		&--2 {
-			width: calc(100% / 12 * 2 - 10px);
-			@include r(1200) {
-				width: 100%;
-			}
+		&--info {
+			width: calc(100% / 12 * 3);
 		}
-		&--5 {
-			width: calc(100% / 12 * 5 - 10px);
-			@include r(1200) {
-				width: 100%;	
-			}
-		}
-		&--4 {
-			width: calc(100% / 12 * 4 - 10px);
-			@include r(1200) {
-				width: 100%;
-			}
-		}
-		&--3 {
-			width: calc(100% / 12 * 3 - 10px);
-			@include r(1200) {
-				width: 100%;
-			}
-		}
+		// &--2 {
+		// 	width: calc(100% / 12 * 2 - 10px);
+		// 	@include r(1200) {
+		// 		width: 100%;
+		// 	}
+		// }
+		// &--5 {
+		// 	width: calc(100% / 12 * 5 - 10px);
+		// 	@include r(1200) {
+		// 		width: 100%;	
+		// 	}
+		// }
+		// &--4 {
+		// 	width: calc(100% / 12 * 4 - 10px);
+		// 	@include r(1200) {
+		// 		width: 100%;
+		// 	}
+		// }
+		// &--3 {
+		// 	width: calc(100% / 12 * 3 - 10px);
+		// 	@include r(1200) {
+		// 		width: 100%;
+		// 	}
+		// }
 		&--mob-order {
 			&-1 {
 				@include r(1200) {
@@ -63,11 +66,17 @@
 		}
 	}
 	&__text {
-		padding-right: 20px;
+		margin-bottom: 1rem;
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+		&--small {
+			font-size: 14px;
+		}
 		@include r(1200) {
-			padding-right: 0px;
-			padding-top: 20px;
-			padding-bottom: 20px;
+			// padding-right: 0px;
+			// padding-top: 20px;
+			// padding-bottom: 20px;
 		}
 		a {
 			color: #FF6060;
