@@ -1,4 +1,1 @@
-<svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect y="9.1377" width="12.9158" height="1.23007" transform="rotate(-45.0202 0 9.1377)" fill="#FB1111"/>
-<rect width="12.9158" height="1.23007" transform="matrix(-0.706858 -0.707356 -0.707356 0.706858 10 9.1377)" fill="#FB1111"/>
-</svg>
+<svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#FB1111" d="M0 9.138L9.13.002l.87.87-9.13 9.135z"/><path fill="#FB1111" d="M10 9.138L.87 0 0 .871l9.13 9.136z"/></svg>

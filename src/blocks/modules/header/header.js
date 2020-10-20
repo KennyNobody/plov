@@ -11,9 +11,9 @@
 		btnClose.addEventListener('click', close);
 	}
 	
-	if (block) {
-		window.addEventListener('resize', close);
-	}
+	// if (block) {
+	// 	window.addEventListener('resize', close);
+	// }
 	
 	function open() {
 		if (window.innerWidth < 1200) {
