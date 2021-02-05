@@ -67,6 +67,9 @@
 			fill: $light;
 		}
 	}
+	&--bordered {
+		border: 1px solid $accent;
+	}
 	&--footer {
 		background-color: #25878A;
 	}
