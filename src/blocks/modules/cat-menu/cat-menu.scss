@@ -1,0 +1,19 @@
+.cat-menu {
+	&__link {
+		color: $dark;
+		font-size: 16px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		text-decoration: none;
+		text-transform: uppercase;
+		display: inline-block;
+		margin-right: 52px;
+		&:last-of-type {
+			margin-right: 0px;
+		}
+		&--active {
+			color: $purple;
+			font-weight: 700;
+		}
+	}
+}
