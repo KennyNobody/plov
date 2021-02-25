@@ -1,17 +1,3 @@
-// modules.define('top-link', ['i-bem-dom'], function(provide, bemDom) {
-
-// provide(bemDom.declBlock(this.name, {
-//     onSetMod: {
-//         js: {
-//             inited: function() {
-
-//             }
-//         }
-//     }
-// }));
-
-// });
-
 (function toTop(){
 	let link = document.querySelector('.top-link');
 
@@ -22,6 +8,22 @@
 				top: 0,
 				behavior: "smooth"
 			});
-		})
+		});
+
+		document.addEventListener('scroll', function() {
+			call(link);
+		});
 	}
+
+	function call(link) {
+		let height = window.innerHeight;
+		let scrolled = window.pageYOffset;
+		
+		if (scrolled > height) {
+			link.classList.remove('top-link--hidden');
+		} else {
+			link.classList.add('top-link--hidden');
+		}
+	}
+
 })();

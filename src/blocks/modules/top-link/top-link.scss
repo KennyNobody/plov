@@ -1,15 +1,15 @@
 .top-link {
 	display: block;
-	top: -175px;
-	right: -180px;
-	position: absolute;
-	@include r(1600) {
-		right: -100px;
+	bottom: 50px;
+	right: 80px;
+	position: fixed;
+	transition: 0.3s all;
+	opacity: 1;
+	&--hidden {
+		opacity: 0;
+		visibility: hidden;
 	}
-	@include r(1500) {
-		right: -70px;
-	}
-	@include r(1400) {
+	@include r(1200) {
 		display: none;
 	}
 	&:hover {

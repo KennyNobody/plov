@@ -580,16 +580,6 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// modules.define('top-link', ['i-bem-dom'], function(provide, bemDom) {
-// provide(bemDom.declBlock(this.name, {
-//     onSetMod: {
-//         js: {
-//             inited: function() {
-//             }
-//         }
-//     }
-// }));
-// });
 (function toTop() {
   var link = document.querySelector('.top-link');
 
@@ -601,6 +591,20 @@ __webpack_require__.r(__webpack_exports__);
         behavior: "smooth"
       });
     });
+    document.addEventListener('scroll', function () {
+      call(link);
+    });
+  }
+
+  function call(link) {
+    var height = window.innerHeight;
+    var scrolled = window.pageYOffset;
+
+    if (scrolled > height) {
+      link.classList.remove('top-link--hidden');
+    } else {
+      link.classList.add('top-link--hidden');
+    }
   }
 })();
 

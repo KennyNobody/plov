@@ -5919,9 +5919,16 @@ body.modal-open .mm-slideout {
 
 .top-link {
   display: block;
-  top: -175px;
-  right: -180px;
-  position: absolute;
+  bottom: 50px;
+  right: 80px;
+  position: fixed;
+  transition: 0.3s all;
+  opacity: 1;
+}
+
+.top-link--hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .top-link:hover {
@@ -6113,24 +6120,6 @@ body.modal-open .mm-slideout {
   .mm-wrapper_opening .mm-menu_fullscreen.mm-menu_position-right.mm-menu_opened ~ .mm-slideout {
     -webkit-transform: translate3d(-10000px, 0, 0);
     transform: translate3d(-10000px, 0, 0);
-  }
-}
-
-@media only screen and (max-width: 1600px) {
-  .top-link {
-    right: -100px;
-  }
-}
-
-@media only screen and (max-width: 1500px) {
-  .top-link {
-    right: -70px;
-  }
-}
-
-@media only screen and (max-width: 1400px) {
-  .top-link {
-    display: none;
   }
 }
 
@@ -6687,6 +6676,10 @@ body.modal-open .mm-slideout {
   }
 
   .accent:before {
+    display: none;
+  }
+
+  .top-link {
     display: none;
   }
 
