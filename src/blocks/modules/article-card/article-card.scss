@@ -4,10 +4,11 @@
 	border-radius: 5px;
 	overflow: hidden;
 	background-color: $light;
-	color: $dark;
+	// color: $dark;
 	text-decoration: none;
 	min-height: 444px;
 	height: 100%;
+	color: inherit;
 	@include r(680) {
 		min-height: 0px;
 	}
