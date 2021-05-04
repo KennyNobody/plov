@@ -1,0 +1,20 @@
+.article-partner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	transition: 0.3s all;
+	border: 1px solid #E0E0E0;
+	box-sizing: border-box;
+	border-radius: 5px;
+	height: 126px;
+	&:hover {
+		opacity: 0.7;
+	}
+	&__logo {
+		display: block;
+		height: 80%;
+		width: 80%;
+		object-fit: contain;
+	}
+}

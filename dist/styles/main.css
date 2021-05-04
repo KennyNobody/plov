@@ -4916,6 +4916,31 @@ body.modal-open .mm-slideout {
 
 /* V */
 
+.article-partner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: 0.3s all;
+  border: 1px solid #E0E0E0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 126px;
+}
+
+.article-partner:hover {
+  opacity: 0.7;
+}
+
+.article-partner__logo {
+  display: block;
+  height: 80%;
+  width: 80%;
+  object-fit: contain;
+}
+
+/* V */
+
 .item-special {
   display: block;
   text-decoration: none;
@@ -5324,6 +5349,8 @@ body.modal-open .mm-slideout {
   flex-shrink: 0;
   border-radius: 20px;
   overflow: hidden;
+  width: 36px;
+  height: 36px;
 }
 
 .person-preview__thumb img {
