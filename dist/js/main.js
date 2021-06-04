@@ -573,6 +573,37 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/blocks/modules/tg-block/tg-block.js":
+/*!*************************************************!*\
+  !*** ./src/blocks/modules/tg-block/tg-block.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+document.addEventListener('DOMContentLoaded', function () {
+  initTgBlock();
+});
+
+function initTgBlock() {
+  var flag = localStorage.getItem('tg-flag');
+  var block = document.querySelector('.tg-block');
+
+  if (flag) {
+    console.log('Отмечено, не показываем');
+  } else {
+    console.log('Не отмечено, показываем');
+    block.classList.add('tg-block--visible');
+  }
+
+  var button = document.querySelector('.tg-block__button');
+  button.addEventListener('click', function () {
+    localStorage.setItem('tg-flag', true);
+    block.classList.remove('tg-block--visible');
+  });
+}
+
+/***/ }),
+
 /***/ "./src/blocks/modules/top-link/top-link.js":
 /*!*************************************************!*\
   !*** ./src/blocks/modules/top-link/top-link.js ***!
@@ -635,8 +666,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_slider_bottom_slider_bottom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! %modules%/slider-bottom/slider-bottom */ "./src/blocks/modules/slider-bottom/slider-bottom.js");
 /* harmony import */ var _modules_gallery_item_gallery_item__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! %modules%/gallery-item/gallery-item */ "./src/blocks/modules/gallery-item/gallery-item.js");
 /* harmony import */ var _modules_social_side_social_side__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! %modules%/social-side/social-side */ "./src/blocks/modules/social-side/social-side.js");
+/* harmony import */ var _modules_tg_block_tg_block__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! %modules%/tg-block/tg-block */ "./src/blocks/modules/tg-block/tg-block.js");
+/* harmony import */ var _modules_tg_block_tg_block__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_modules_tg_block_tg_block__WEBPACK_IMPORTED_MODULE_11__);
 
  // import "%modules%/slider-header/slider-header";
+
 
 
 
