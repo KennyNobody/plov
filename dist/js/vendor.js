@@ -7100,17 +7100,17 @@ function scroll(...args) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.5.1
+ * jQuery JavaScript Library v3.6.0
  * https://jquery.com/
  *
  * Includes Sizzle.js
  * https://sizzlejs.com/
  *
- * Copyright JS Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2020-05-04T22:49Z
+ * Date: 2021-03-02T17:08Z
  */
 ( function( global, factory ) {
 
@@ -7177,12 +7177,16 @@ var support = {};
 
 var isFunction = function isFunction( obj ) {
 
-      // Support: Chrome <=57, Firefox <=52
-      // In some browsers, typeof returns "function" for HTML <object> elements
-      // (i.e., `typeof document.createElement( "object" ) === "function"`).
-      // We don't want to classify *any* DOM node as a function.
-      return typeof obj === "function" && typeof obj.nodeType !== "number";
-  };
+		// Support: Chrome <=57, Firefox <=52
+		// In some browsers, typeof returns "function" for HTML <object> elements
+		// (i.e., `typeof document.createElement( "object" ) === "function"`).
+		// We don't want to classify *any* DOM node as a function.
+		// Support: QtWeb <=3.8.5, WebKit <=534.34, wkhtmltopdf tool <=0.12.5
+		// Plus for old WebKit, typeof returns "function" for HTML collections
+		// (e.g., `typeof document.getElementsByTagName("div") === "function"`). (gh-4756)
+		return typeof obj === "function" && typeof obj.nodeType !== "number" &&
+			typeof obj.item !== "function";
+	};
 
 
 var isWindow = function isWindow( obj ) {
@@ -7248,7 +7252,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.5.1",
+	version = "3.6.0",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -7502,7 +7506,7 @@ jQuery.extend( {
 			if ( isArrayLike( Object( arr ) ) ) {
 				jQuery.merge( ret,
 					typeof arr === "string" ?
-					[ arr ] : arr
+						[ arr ] : arr
 				);
 			} else {
 				push.call( ret, arr );
@@ -7597,9 +7601,9 @@ if ( typeof Symbol === "function" ) {
 
 // Populate the class2type map
 jQuery.each( "Boolean Number String Function Array Date RegExp Object Error Symbol".split( " " ),
-function( _i, name ) {
-	class2type[ "[object " + name + "]" ] = name.toLowerCase();
-} );
+	function( _i, name ) {
+		class2type[ "[object " + name + "]" ] = name.toLowerCase();
+	} );
 
 function isArrayLike( obj ) {
 
@@ -7619,14 +7623,14 @@ function isArrayLike( obj ) {
 }
 var Sizzle =
 /*!
- * Sizzle CSS Selector Engine v2.3.5
+ * Sizzle CSS Selector Engine v2.3.6
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
  * https://js.foundation/
  *
- * Date: 2020-03-14
+ * Date: 2021-02-16
  */
 ( function( window ) {
 var i,
@@ -8209,8 +8213,8 @@ support = Sizzle.support = {};
  * @returns {Boolean} True iff elem is a non-HTML XML node
  */
 isXML = Sizzle.isXML = function( elem ) {
-	var namespace = elem.namespaceURI,
-		docElem = ( elem.ownerDocument || elem ).documentElement;
+	var namespace = elem && elem.namespaceURI,
+		docElem = elem && ( elem.ownerDocument || elem ).documentElement;
 
 	// Support: IE <=8
 	// Assume HTML when documentElement doesn't yet exist, such as inside loading iframes
@@ -10125,9 +10129,9 @@ var rneedsContext = jQuery.expr.match.needsContext;
 
 function nodeName( elem, name ) {
 
-  return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
+	return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
 
-};
+}
 var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i );
 
 
@@ -11098,8 +11102,8 @@ jQuery.extend( {
 			resolveContexts = Array( i ),
 			resolveValues = slice.call( arguments ),
 
-			// the master Deferred
-			master = jQuery.Deferred(),
+			// the primary Deferred
+			primary = jQuery.Deferred(),
 
 			// subordinate callback factory
 			updateFunc = function( i ) {
@@ -11107,30 +11111,30 @@ jQuery.extend( {
 					resolveContexts[ i ] = this;
 					resolveValues[ i ] = arguments.length > 1 ? slice.call( arguments ) : value;
 					if ( !( --remaining ) ) {
-						master.resolveWith( resolveContexts, resolveValues );
+						primary.resolveWith( resolveContexts, resolveValues );
 					}
 				};
 			};
 
 		// Single- and empty arguments are adopted like Promise.resolve
 		if ( remaining <= 1 ) {
-			adoptValue( singleValue, master.done( updateFunc( i ) ).resolve, master.reject,
+			adoptValue( singleValue, primary.done( updateFunc( i ) ).resolve, primary.reject,
 				!remaining );
 
 			// Use .then() to unwrap secondary thenables (cf. gh-3000)
-			if ( master.state() === "pending" ||
+			if ( primary.state() === "pending" ||
 				isFunction( resolveValues[ i ] && resolveValues[ i ].then ) ) {
 
-				return master.then();
+				return primary.then();
 			}
 		}
 
 		// Multiple arguments are aggregated like Promise.all array elements
 		while ( i-- ) {
-			adoptValue( resolveValues[ i ], updateFunc( i ), master.reject );
+			adoptValue( resolveValues[ i ], updateFunc( i ), primary.reject );
 		}
 
-		return master.promise();
+		return primary.promise();
 	}
 } );
 
@@ -11281,8 +11285,8 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 			for ( ; i < len; i++ ) {
 				fn(
 					elems[ i ], key, raw ?
-					value :
-					value.call( elems[ i ], i, fn( elems[ i ], key ) )
+						value :
+						value.call( elems[ i ], i, fn( elems[ i ], key ) )
 				);
 			}
 		}
@@ -12190,10 +12194,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 }
 
 
-var
-	rkeyEvent = /^key/,
-	rmouseEvent = /^(?:mouse|pointer|contextmenu|drag|drop)|click/,
-	rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
+var rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
 
 function returnTrue() {
 	return true;
@@ -12488,8 +12489,8 @@ jQuery.event = {
 			event = jQuery.event.fix( nativeEvent ),
 
 			handlers = (
-					dataPriv.get( this, "events" ) || Object.create( null )
-				)[ event.type ] || [],
+				dataPriv.get( this, "events" ) || Object.create( null )
+			)[ event.type ] || [],
 			special = jQuery.event.special[ event.type ] || {};
 
 		// Use the fix-ed jQuery.Event rather than the (read-only) native event
@@ -12613,12 +12614,12 @@ jQuery.event = {
 			get: isFunction( hook ) ?
 				function() {
 					if ( this.originalEvent ) {
-							return hook( this.originalEvent );
+						return hook( this.originalEvent );
 					}
 				} :
 				function() {
 					if ( this.originalEvent ) {
-							return this.originalEvent[ name ];
+						return this.originalEvent[ name ];
 					}
 				},
 
@@ -12757,7 +12758,13 @@ function leverageNative( el, type, expectSync ) {
 						// Cancel the outer synthetic event
 						event.stopImmediatePropagation();
 						event.preventDefault();
-						return result.value;
+
+						// Support: Chrome 86+
+						// In Chrome, if an element having a focusout handler is blurred by
+						// clicking outside of it, it invokes the handler synchronously. If
+						// that handler calls `.remove()` on the element, the data is cleared,
+						// leaving `result` undefined. We need to guard against this.
+						return result && result.value;
 					}
 
 				// If this is an inner synthetic event for an event with a bubbling surrogate
@@ -12922,34 +12929,7 @@ jQuery.each( {
 	targetTouches: true,
 	toElement: true,
 	touches: true,
-
-	which: function( event ) {
-		var button = event.button;
-
-		// Add which for key events
-		if ( event.which == null && rkeyEvent.test( event.type ) ) {
-			return event.charCode != null ? event.charCode : event.keyCode;
-		}
-
-		// Add which for click: 1 === left; 2 === middle; 3 === right
-		if ( !event.which && button !== undefined && rmouseEvent.test( event.type ) ) {
-			if ( button & 1 ) {
-				return 1;
-			}
-
-			if ( button & 2 ) {
-				return 3;
-			}
-
-			if ( button & 4 ) {
-				return 2;
-			}
-
-			return 0;
-		}
-
-		return event.which;
-	}
+	which: true
 }, jQuery.event.addProp );
 
 jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateType ) {
@@ -12972,6 +12952,12 @@ jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateTyp
 			leverageNative( this, type );
 
 			// Return non-false to allow normal event-path propagation
+			return true;
+		},
+
+		// Suppress native focus or blur as it's already being fired
+		// in leverageNative.
+		_default: function() {
 			return true;
 		},
 
@@ -13642,6 +13628,10 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 		// set in CSS while `offset*` properties report correct values.
 		// Behavior in IE 9 is more subtle than in newer versions & it passes
 		// some versions of this test; make sure not to make it pass there!
+		//
+		// Support: Firefox 70+
+		// Only Firefox includes border widths
+		// in computed dimensions. (gh-4529)
 		reliableTrDimensions: function() {
 			var table, tr, trChild, trStyle;
 			if ( reliableTrDimensionsVal == null ) {
@@ -13649,9 +13639,22 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 				tr = document.createElement( "tr" );
 				trChild = document.createElement( "div" );
 
-				table.style.cssText = "position:absolute;left:-11111px";
+				table.style.cssText = "position:absolute;left:-11111px;border-collapse:separate";
+				tr.style.cssText = "border:1px solid";
+
+				// Support: Chrome 86+
+				// Height set through cssText does not get applied.
+				// Computed height then comes back as 0.
 				tr.style.height = "1px";
 				trChild.style.height = "9px";
+
+				// Support: Android 8 Chrome 86+
+				// In our bodyBackground.html iframe,
+				// display for all div elements is set to "inline",
+				// which causes a problem only in Android 8 Chrome 86.
+				// Ensuring the div is display: block
+				// gets around this issue.
+				trChild.style.display = "block";
 
 				documentElement
 					.appendChild( table )
@@ -13659,7 +13662,9 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 					.appendChild( trChild );
 
 				trStyle = window.getComputedStyle( tr );
-				reliableTrDimensionsVal = parseInt( trStyle.height ) > 3;
+				reliableTrDimensionsVal = ( parseInt( trStyle.height, 10 ) +
+					parseInt( trStyle.borderTopWidth, 10 ) +
+					parseInt( trStyle.borderBottomWidth, 10 ) ) === tr.offsetHeight;
 
 				documentElement.removeChild( table );
 			}
@@ -14123,10 +14128,10 @@ jQuery.each( [ "height", "width" ], function( _i, dimension ) {
 					// Running getBoundingClientRect on a disconnected node
 					// in IE throws an error.
 					( !elem.getClientRects().length || !elem.getBoundingClientRect().width ) ?
-						swap( elem, cssShow, function() {
-							return getWidthOrHeight( elem, dimension, extra );
-						} ) :
-						getWidthOrHeight( elem, dimension, extra );
+					swap( elem, cssShow, function() {
+						return getWidthOrHeight( elem, dimension, extra );
+					} ) :
+					getWidthOrHeight( elem, dimension, extra );
 			}
 		},
 
@@ -14185,7 +14190,7 @@ jQuery.cssHooks.marginLeft = addGetHookIf( support.reliableMarginLeft,
 					swap( elem, { marginLeft: 0 }, function() {
 						return elem.getBoundingClientRect().left;
 					} )
-				) + "px";
+			) + "px";
 		}
 	}
 );
@@ -14324,7 +14329,7 @@ Tween.propHooks = {
 			if ( jQuery.fx.step[ tween.prop ] ) {
 				jQuery.fx.step[ tween.prop ]( tween );
 			} else if ( tween.elem.nodeType === 1 && (
-					jQuery.cssHooks[ tween.prop ] ||
+				jQuery.cssHooks[ tween.prop ] ||
 					tween.elem.style[ finalPropName( tween.prop ) ] != null ) ) {
 				jQuery.style( tween.elem, tween.prop, tween.now + tween.unit );
 			} else {
@@ -14569,7 +14574,7 @@ function defaultPrefilter( elem, props, opts ) {
 
 			anim.done( function() {
 
-			/* eslint-enable no-loop-func */
+				/* eslint-enable no-loop-func */
 
 				// The final step of a "hide" animation is actually hiding the element
 				if ( !hidden ) {
@@ -14689,7 +14694,7 @@ function Animation( elem, properties, options ) {
 			tweens: [],
 			createTween: function( prop, end ) {
 				var tween = jQuery.Tween( elem, animation.opts, prop, end,
-						animation.opts.specialEasing[ prop ] || animation.opts.easing );
+					animation.opts.specialEasing[ prop ] || animation.opts.easing );
 				animation.tweens.push( tween );
 				return tween;
 			},
@@ -14862,7 +14867,8 @@ jQuery.fn.extend( {
 					anim.stop( true );
 				}
 			};
-			doAnimation.finish = doAnimation;
+
+		doAnimation.finish = doAnimation;
 
 		return empty || optall.queue === false ?
 			this.each( doAnimation ) :
@@ -15502,8 +15508,8 @@ jQuery.fn.extend( {
 				if ( this.setAttribute ) {
 					this.setAttribute( "class",
 						className || value === false ?
-						"" :
-						dataPriv.get( this, "__className__" ) || ""
+							"" :
+							dataPriv.get( this, "__className__" ) || ""
 					);
 				}
 			}
@@ -15518,7 +15524,7 @@ jQuery.fn.extend( {
 		while ( ( elem = this[ i++ ] ) ) {
 			if ( elem.nodeType === 1 &&
 				( " " + stripAndCollapse( getClass( elem ) ) + " " ).indexOf( className ) > -1 ) {
-					return true;
+				return true;
 			}
 		}
 
@@ -15808,9 +15814,7 @@ jQuery.extend( jQuery.event, {
 				special.bindType || type;
 
 			// jQuery handler
-			handle = (
-					dataPriv.get( cur, "events" ) || Object.create( null )
-				)[ event.type ] &&
+			handle = ( dataPriv.get( cur, "events" ) || Object.create( null ) )[ event.type ] &&
 				dataPriv.get( cur, "handle" );
 			if ( handle ) {
 				handle.apply( cur, data );
@@ -15957,7 +15961,7 @@ var rquery = ( /\?/ );
 
 // Cross-browser xml parsing
 jQuery.parseXML = function( data ) {
-	var xml;
+	var xml, parserErrorElem;
 	if ( !data || typeof data !== "string" ) {
 		return null;
 	}
@@ -15966,12 +15970,17 @@ jQuery.parseXML = function( data ) {
 	// IE throws on parseFromString with invalid input.
 	try {
 		xml = ( new window.DOMParser() ).parseFromString( data, "text/xml" );
-	} catch ( e ) {
-		xml = undefined;
-	}
+	} catch ( e ) {}
 
-	if ( !xml || xml.getElementsByTagName( "parsererror" ).length ) {
-		jQuery.error( "Invalid XML: " + data );
+	parserErrorElem = xml && xml.getElementsByTagName( "parsererror" )[ 0 ];
+	if ( !xml || parserErrorElem ) {
+		jQuery.error( "Invalid XML: " + (
+			parserErrorElem ?
+				jQuery.map( parserErrorElem.childNodes, function( el ) {
+					return el.textContent;
+				} ).join( "\n" ) :
+				data
+		) );
 	}
 	return xml;
 };
@@ -16072,16 +16081,14 @@ jQuery.fn.extend( {
 			// Can add propHook for "elements" to filter or add form elements
 			var elements = jQuery.prop( this, "elements" );
 			return elements ? jQuery.makeArray( elements ) : this;
-		} )
-		.filter( function() {
+		} ).filter( function() {
 			var type = this.type;
 
 			// Use .is( ":disabled" ) so that fieldset[disabled] works
 			return this.name && !jQuery( this ).is( ":disabled" ) &&
 				rsubmittable.test( this.nodeName ) && !rsubmitterTypes.test( type ) &&
 				( this.checked || !rcheckableType.test( type ) );
-		} )
-		.map( function( _i, elem ) {
+		} ).map( function( _i, elem ) {
 			var val = jQuery( this ).val();
 
 			if ( val == null ) {
@@ -16134,7 +16141,8 @@ var
 
 	// Anchor tag for parsing the document origin
 	originAnchor = document.createElement( "a" );
-	originAnchor.href = location.href;
+
+originAnchor.href = location.href;
 
 // Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport
 function addToPrefiltersOrTransports( structure ) {
@@ -16515,8 +16523,8 @@ jQuery.extend( {
 			// Context for global events is callbackContext if it is a DOM node or jQuery collection
 			globalEventContext = s.context &&
 				( callbackContext.nodeType || callbackContext.jquery ) ?
-					jQuery( callbackContext ) :
-					jQuery.event,
+				jQuery( callbackContext ) :
+				jQuery.event,
 
 			// Deferreds
 			deferred = jQuery.Deferred(),
@@ -16828,8 +16836,10 @@ jQuery.extend( {
 				response = ajaxHandleResponses( s, jqXHR, responses );
 			}
 
-			// Use a noop converter for missing script
-			if ( !isSuccess && jQuery.inArray( "script", s.dataTypes ) > -1 ) {
+			// Use a noop converter for missing script but not if jsonp
+			if ( !isSuccess &&
+				jQuery.inArray( "script", s.dataTypes ) > -1 &&
+				jQuery.inArray( "json", s.dataTypes ) < 0 ) {
 				s.converters[ "text script" ] = function() {};
 			}
 
@@ -17567,12 +17577,6 @@ jQuery.offset = {
 			options.using.call( elem, props );
 
 		} else {
-			if ( typeof props.top === "number" ) {
-				props.top += "px";
-			}
-			if ( typeof props.left === "number" ) {
-				props.left += "px";
-			}
 			curElem.css( props );
 		}
 	}
@@ -17741,8 +17745,11 @@ jQuery.each( [ "top", "left" ], function( _i, prop ) {
 
 // Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
 jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
-	jQuery.each( { padding: "inner" + name, content: type, "": "outer" + name },
-		function( defaultExtra, funcName ) {
+	jQuery.each( {
+		padding: "inner" + name,
+		content: type,
+		"": "outer" + name
+	}, function( defaultExtra, funcName ) {
 
 		// Margin is only for outerHeight, outerWidth
 		jQuery.fn[ funcName ] = function( margin, value ) {
@@ -17827,7 +17834,8 @@ jQuery.fn.extend( {
 	}
 } );
 
-jQuery.each( ( "blur focus focusin focusout resize scroll click dblclick " +
+jQuery.each(
+	( "blur focus focusin focusout resize scroll click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
 	"change select submit keydown keypress keyup contextmenu" ).split( " " ),
 	function( _i, name ) {
@@ -17838,7 +17846,8 @@ jQuery.each( ( "blur focus focusin focusout resize scroll click dblclick " +
 				this.on( name, null, data, fn ) :
 				this.trigger( name );
 		};
-	} );
+	}
+);
 
 
 
@@ -20893,7 +20902,6 @@ __webpack_require__.r(__webpack_exports__);
     //	Add screenreader / text support
     this.bind('setPage:after:sr-text', function () {
         close.innerHTML = _core_oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].sr_text(_this.i18n(_this.conf.screenReader.text.closeMenu));
-        _core_oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].sr_aria(close, 'owns', close.getAttribute('href').slice(1));
     });
 });
 
@@ -23170,16 +23178,13 @@ var options = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _package_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../package.json */ "./node_modules/mmenu-js/package.json");
-var _package_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../../package.json */ "./node_modules/mmenu-js/package.json", 1);
-/* harmony import */ var _options__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_options */ "./node_modules/mmenu-js/dist/core/oncanvas/_options.js");
-/* harmony import */ var _configs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_configs */ "./node_modules/mmenu-js/dist/core/oncanvas/_configs.js");
-/* harmony import */ var _translations_translate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./translations/translate */ "./node_modules/mmenu-js/dist/core/oncanvas/translations/translate.js");
-/* harmony import */ var _modules_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_modules/dom */ "./node_modules/mmenu-js/dist/_modules/dom.js");
-/* harmony import */ var _modules_i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_modules/i18n */ "./node_modules/mmenu-js/dist/_modules/i18n.js");
-/* harmony import */ var _modules_matchmedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_modules/matchmedia */ "./node_modules/mmenu-js/dist/_modules/matchmedia.js");
-/* harmony import */ var _modules_helpers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../_modules/helpers */ "./node_modules/mmenu-js/dist/_modules/helpers.js");
-
+/* harmony import */ var _options__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_options */ "./node_modules/mmenu-js/dist/core/oncanvas/_options.js");
+/* harmony import */ var _configs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_configs */ "./node_modules/mmenu-js/dist/core/oncanvas/_configs.js");
+/* harmony import */ var _translations_translate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./translations/translate */ "./node_modules/mmenu-js/dist/core/oncanvas/translations/translate.js");
+/* harmony import */ var _modules_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_modules/dom */ "./node_modules/mmenu-js/dist/_modules/dom.js");
+/* harmony import */ var _modules_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_modules/i18n */ "./node_modules/mmenu-js/dist/_modules/i18n.js");
+/* harmony import */ var _modules_matchmedia__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_modules/matchmedia */ "./node_modules/mmenu-js/dist/_modules/matchmedia.js");
+/* harmony import */ var _modules_helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_modules/helpers */ "./node_modules/mmenu-js/dist/_modules/helpers.js");
 
 
 
@@ -23188,7 +23193,7 @@ var _package_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpac
 
 
 //  Add the translations.
-Object(_translations_translate__WEBPACK_IMPORTED_MODULE_3__["default"])();
+Object(_translations_translate__WEBPACK_IMPORTED_MODULE_2__["default"])();
 /**
  * Class for a mobile menu.
  */
@@ -23201,8 +23206,8 @@ var Mmenu = /** @class */ (function () {
      */
     function Mmenu(menu, options, configs) {
         //	Extend options and configuration from defaults.
-        this.opts = Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_7__["extend"])(options, Mmenu.options);
-        this.conf = Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_7__["extend"])(configs, Mmenu.configs);
+        this.opts = Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_6__["extend"])(options, Mmenu.options);
+        this.conf = Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_6__["extend"])(configs, Mmenu.configs);
         //	Methods to expose in the API.
         this._api = [
             'bind',
@@ -23233,7 +23238,7 @@ var Mmenu = /** @class */ (function () {
         this._initPanels();
         this._initOpened();
         this._initAnchors();
-        _modules_matchmedia__WEBPACK_IMPORTED_MODULE_6__["watch"]();
+        _modules_matchmedia__WEBPACK_IMPORTED_MODULE_5__["watch"]();
         return this;
     }
     /**
@@ -23262,14 +23267,14 @@ var Mmenu = /** @class */ (function () {
         //	Open a "vertical" panel.
         if (panel.parentElement.matches('.mm-listitem_vertical')) {
             //	Open current and all vertical parent panels.
-            _modules_dom__WEBPACK_IMPORTED_MODULE_4__["parents"](panel, '.mm-listitem_vertical').forEach(function (listitem) {
+            _modules_dom__WEBPACK_IMPORTED_MODULE_3__["parents"](panel, '.mm-listitem_vertical').forEach(function (listitem) {
                 listitem.classList.add('mm-listitem_opened');
-                _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](listitem, '.mm-panel').forEach(function (panel) {
+                _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](listitem, '.mm-panel').forEach(function (panel) {
                     panel.classList.remove('mm-hidden');
                 });
             });
             //	Open first non-vertical parent panel.
-            var parents = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["parents"](panel, '.mm-panel').filter(function (panel) { return !panel.parentElement.matches('.mm-listitem_vertical'); });
+            var parents = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["parents"](panel, '.mm-panel').filter(function (panel) { return !panel.parentElement.matches('.mm-listitem_vertical'); });
             this.trigger('openPanel:start', [panel]);
             if (parents.length) {
                 this.openPanel(parents[0]);
@@ -23281,7 +23286,7 @@ var Mmenu = /** @class */ (function () {
             if (panel.matches('.mm-panel_opened')) {
                 return;
             }
-            var panels = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](this.node.pnls, '.mm-panel'), current_1 = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](this.node.pnls, '.mm-panel_opened')[0];
+            var panels = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](this.node.pnls, '.mm-panel'), current_1 = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](this.node.pnls, '.mm-panel_opened')[0];
             //	Close all child panels.
             panels
                 .filter(function (parent) { return parent !== panel; })
@@ -23345,7 +23350,7 @@ var Mmenu = /** @class */ (function () {
                 //	Without the timeout the animation will not work because the element had display: none;
                 setTimeout(function () {
                     //	Callback
-                    Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_7__["transitionend"])(panel, function () {
+                    Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_6__["transitionend"])(panel, function () {
                         openPanelFinish_1();
                     }, _this.conf.transitionDuration);
                     openPanelStart_1();
@@ -23391,8 +23396,8 @@ var Mmenu = /** @class */ (function () {
             listitem.classList.remove('mm-listitem_opened');
         });
         //	Close all "horizontal" panels.
-        var panels = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](this.node.pnls, '.mm-panel'), opened = panel ? panel : panels[0];
-        _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](this.node.pnls, '.mm-panel').forEach(function (panel) {
+        var panels = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](this.node.pnls, '.mm-panel'), opened = panel ? panel : panels[0];
+        _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](this.node.pnls, '.mm-panel').forEach(function (panel) {
             if (panel !== opened) {
                 panel.classList.remove('mm-panel_opened');
                 panel.classList.remove('mm-panel_opened-parent');
@@ -23426,7 +23431,7 @@ var Mmenu = /** @class */ (function () {
         //	Invoke "before" hook.
         this.trigger('setSelected:before', [listitem]);
         //	First, remove the selected class from all listitems.
-        _modules_dom__WEBPACK_IMPORTED_MODULE_4__["find"](this.node.menu, '.mm-listitem_selected').forEach(function (li) {
+        _modules_dom__WEBPACK_IMPORTED_MODULE_3__["find"](this.node.menu, '.mm-listitem_selected').forEach(function (li) {
             li.classList.remove('mm-listitem_selected');
         });
         //	Next, add the selected class to the provided listitem.
@@ -23518,7 +23523,7 @@ var Mmenu = /** @class */ (function () {
         //	Invoke "before" hook.
         this.trigger('initExtensions:before');
         //	Convert array to object with array.
-        if (Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_7__["type"])(this.opts.extensions) == 'array') {
+        if (Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_6__["type"])(this.opts.extensions) == 'array') {
             this.opts.extensions = {
                 all: this.opts.extensions,
             };
@@ -23527,7 +23532,7 @@ var Mmenu = /** @class */ (function () {
         Object.keys(this.opts.extensions).forEach(function (query) {
             var classnames = _this.opts.extensions[query].map(function (extension) { return 'mm-menu_' + extension; });
             if (classnames.length) {
-                _modules_matchmedia__WEBPACK_IMPORTED_MODULE_6__["add"](query, function () {
+                _modules_matchmedia__WEBPACK_IMPORTED_MODULE_5__["add"](query, function () {
                     //  IE11:
                     classnames.forEach(function (classname) {
                         _this.node.menu.classList.add(classname);
@@ -23558,10 +23563,10 @@ var Mmenu = /** @class */ (function () {
         this.node.wrpr = this.node.wrpr || this.node.menu.parentElement;
         this.node.wrpr.classList.add('mm-wrapper');
         //	Add an ID to the menu if it does not yet have one.
-        this.node.menu.id = this.node.menu.id || Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_7__["uniqueId"])();
+        this.node.menu.id = this.node.menu.id || Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_6__["uniqueId"])();
         //	Wrap the panels in a node.
-        var panels = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["create"]('div.mm-panels');
-        _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](this.node.menu).forEach(function (panel) {
+        var panels = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["create"]('div.mm-panels');
+        _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](this.node.menu).forEach(function (panel) {
             if (_this.conf.panelNodetype.indexOf(panel.nodeName.toLowerCase()) >
                 -1) {
                 panels.append(panel);
@@ -23587,7 +23592,7 @@ var Mmenu = /** @class */ (function () {
                 var href = anchor.getAttribute('href');
                 if (href && href.length > 1 && href.slice(0, 1) == '#') {
                     try {
-                        var panel = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["find"](_this.node.menu, href)[0];
+                        var panel = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["find"](_this.node.menu, href)[0];
                         if (panel && panel.matches('.mm-panel')) {
                             if (anchor.parentElement.matches('.mm-listitem_vertical')) {
                                 _this.togglePanel(panel);
@@ -23603,7 +23608,7 @@ var Mmenu = /** @class */ (function () {
             }
         });
         /** The panels to initiate */
-        var panels = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](this.node.pnls);
+        var panels = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](this.node.pnls);
         panels.forEach(function (panel) {
             _this.initPanel(panel);
         });
@@ -23627,11 +23632,11 @@ var Mmenu = /** @class */ (function () {
                 /** The sub panels. */
                 var children_1 = [];
                 //	Find panel > panel
-                children_1.push.apply(children_1, _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](panel, '.' + this.conf.classNames.panel));
+                children_1.push.apply(children_1, _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](panel, '.' + this.conf.classNames.panel));
                 //	Find panel listitem > panel
-                _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](panel, '.mm-listview').forEach(function (listview) {
-                    _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](listview, '.mm-listitem').forEach(function (listitem) {
-                        children_1.push.apply(children_1, _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](listitem, panelNodetype));
+                _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](panel, '.mm-listview').forEach(function (listview) {
+                    _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](listview, '.mm-listitem').forEach(function (listitem) {
+                        children_1.push.apply(children_1, _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](listitem, panelNodetype));
                     });
                 });
                 //  Initiate subpanel(s).
@@ -23651,9 +23656,9 @@ var Mmenu = /** @class */ (function () {
         //	Invoke "before" hook.
         this.trigger('initPanel:before', [panel]);
         //	Refactor panel classnames
-        _modules_dom__WEBPACK_IMPORTED_MODULE_4__["reClass"](panel, this.conf.classNames.panel, 'mm-panel');
-        _modules_dom__WEBPACK_IMPORTED_MODULE_4__["reClass"](panel, this.conf.classNames.nopanel, 'mm-nopanel');
-        _modules_dom__WEBPACK_IMPORTED_MODULE_4__["reClass"](panel, this.conf.classNames.inset, 'mm-listview_inset');
+        _modules_dom__WEBPACK_IMPORTED_MODULE_3__["reClass"](panel, this.conf.classNames.panel, 'mm-panel');
+        _modules_dom__WEBPACK_IMPORTED_MODULE_3__["reClass"](panel, this.conf.classNames.nopanel, 'mm-nopanel');
+        _modules_dom__WEBPACK_IMPORTED_MODULE_3__["reClass"](panel, this.conf.classNames.inset, 'mm-listview_inset');
         if (panel.matches('.mm-listview_inset')) {
             panel.classList.add('mm-nopanel');
         }
@@ -23662,7 +23667,7 @@ var Mmenu = /** @class */ (function () {
             return null;
         }
         /** The original ID on the node. */
-        var id = panel.id || Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_7__["uniqueId"])();
+        var id = panel.id || Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_6__["uniqueId"])();
         //  Vertical panel.
         var vertical = panel.matches('.' + this.conf.classNames.vertical) ||
             !this.opts.slidingSubmenus;
@@ -23671,7 +23676,7 @@ var Mmenu = /** @class */ (function () {
         if (panel.matches('ul, ol')) {
             panel.removeAttribute('id');
             /** The panel. */
-            var wrapper = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["create"]('div');
+            var wrapper = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["create"]('div');
             //	Wrap the listview in the panel.
             panel.before(wrapper);
             wrapper.append(panel);
@@ -23698,12 +23703,12 @@ var Mmenu = /** @class */ (function () {
             panel['mmParent'] = parent;
             //	Add open link to parent listitem
             if (parent && parent.matches('.mm-listitem')) {
-                if (!_modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](parent, '.mm-btn').length) {
+                if (!_modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](parent, '.mm-btn').length) {
                     /** The text node. */
-                    var item = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](parent, '.mm-listitem__text')[0];
+                    var item = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](parent, '.mm-listitem__text')[0];
                     if (item) {
                         /** The open link. */
-                        var button = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["create"]('a.mm-btn.mm-btn_next.mm-listitem__btn');
+                        var button = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["create"]('a.mm-btn.mm-btn_next.mm-listitem__btn');
                         button.setAttribute('href', '#' + panel.id);
                         //  If the item has no link,
                         //      Replace the item with the open link.
@@ -23715,14 +23720,14 @@ var Mmenu = /** @class */ (function () {
                         }
                         //  Otherwise, insert the button after the text.
                         else {
-                            parent.insertBefore(button, _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](parent, '.mm-panel')[0]);
+                            parent.insertBefore(button, _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](parent, '.mm-panel')[0]);
                         }
                     }
                 }
             }
         }
         this._initNavbar(panel);
-        _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](panel, 'ul, ol').forEach(function (listview) {
+        _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](panel, 'ul, ol').forEach(function (listview) {
             _this.initListview(listview);
         });
         //	Invoke "after" hook.
@@ -23737,7 +23742,7 @@ var Mmenu = /** @class */ (function () {
         //	Invoke "before" hook.
         this.trigger('initNavbar:before', [panel]);
         //	Only one navbar per panel.
-        if (_modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](panel, '.mm-navbar').length) {
+        if (_modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](panel, '.mm-navbar').length) {
             return;
         }
         /** The parent listitem. */
@@ -23746,7 +23751,7 @@ var Mmenu = /** @class */ (function () {
         var parentPanel = null;
         //  The parent panel was specified in the data-mm-parent attribute.
         if (panel.getAttribute('data-mm-parent')) {
-            parentPanel = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["find"](this.node.pnls, panel.getAttribute('data-mm-parent'))[0];
+            parentPanel = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["find"](this.node.pnls, panel.getAttribute('data-mm-parent'))[0];
         }
         // if (panel.dataset.mmParent) { // IE10 has no dataset
         // parentPanel = DOM.find(this.node.pnls, panel.dataset.mmParent)[0];
@@ -23763,7 +23768,7 @@ var Mmenu = /** @class */ (function () {
             return;
         }
         /** The navbar element. */
-        var navbar = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["create"]('div.mm-navbar');
+        var navbar = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["create"]('div.mm-navbar');
         //  Hide navbar if specified in options.
         if (!this.opts.navbar.add) {
             navbar.classList.add('mm-hidden');
@@ -23775,7 +23780,7 @@ var Mmenu = /** @class */ (function () {
         //  Add the back button.
         if (parentPanel) {
             /** The back button. */
-            var prev = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["create"]('a.mm-btn.mm-btn_prev.mm-navbar__btn');
+            var prev = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["create"]('a.mm-btn.mm-btn_prev.mm-navbar__btn');
             prev.setAttribute('href', '#' + parentPanel.id);
             navbar.append(prev);
         }
@@ -23783,15 +23788,15 @@ var Mmenu = /** @class */ (function () {
         var opener = null;
         //  The anchor is in a listitem.
         if (parentListitem) {
-            opener = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](parentListitem, '.mm-listitem__text')[0];
+            opener = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](parentListitem, '.mm-listitem__text')[0];
         }
         //  The anchor is in a panel.
         else if (parentPanel) {
-            opener = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["find"](parentPanel, 'a[href="#' + panel.id + '"]')[0];
+            opener = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["find"](parentPanel, 'a[href="#' + panel.id + '"]')[0];
         }
         //  Add the title.
-        var title = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["create"]('a.mm-navbar__title');
-        var titleText = _modules_dom__WEBPACK_IMPORTED_MODULE_4__["create"]('span');
+        var title = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["create"]('a.mm-navbar__title');
+        var titleText = _modules_dom__WEBPACK_IMPORTED_MODULE_3__["create"]('span');
         title.append(titleText);
         titleText.innerHTML =
             // panel.dataset.mmTitle || // IE10 has no dataset :(
@@ -23824,13 +23829,13 @@ var Mmenu = /** @class */ (function () {
         var _this = this;
         //	Invoke "before" hook.
         this.trigger('initListview:before', [listview]);
-        _modules_dom__WEBPACK_IMPORTED_MODULE_4__["reClass"](listview, this.conf.classNames.nolistview, 'mm-nolistview');
+        _modules_dom__WEBPACK_IMPORTED_MODULE_3__["reClass"](listview, this.conf.classNames.nolistview, 'mm-nolistview');
         if (!listview.matches('.mm-nolistview')) {
             listview.classList.add('mm-listview');
-            _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](listview).forEach(function (listitem) {
+            _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](listview).forEach(function (listitem) {
                 listitem.classList.add('mm-listitem');
-                _modules_dom__WEBPACK_IMPORTED_MODULE_4__["reClass"](listitem, _this.conf.classNames.selected, 'mm-listitem_selected');
-                _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](listitem, 'a, span').forEach(function (item) {
+                _modules_dom__WEBPACK_IMPORTED_MODULE_3__["reClass"](listitem, _this.conf.classNames.selected, 'mm-listitem_selected');
+                _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](listitem, 'a, span').forEach(function (item) {
                     if (!item.matches('.mm-btn')) {
                         item.classList.add('mm-listitem__text');
                     }
@@ -23862,7 +23867,7 @@ var Mmenu = /** @class */ (function () {
         /**	The current opened panel. */
         var current = lastitem
             ? lastitem.closest('.mm-panel')
-            : _modules_dom__WEBPACK_IMPORTED_MODULE_4__["children"](this.node.pnls, '.mm-panel')[0];
+            : _modules_dom__WEBPACK_IMPORTED_MODULE_3__["children"](this.node.pnls, '.mm-panel')[0];
         //	Open the current opened panel.
         this.openPanel(current, false);
         //	Invoke "after" hook.
@@ -23901,23 +23906,23 @@ var Mmenu = /** @class */ (function () {
                         evnt.preventDefault();
                         return;
                     }
-                    if (Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_7__["type"])(click) == 'object') {
-                        onClick = Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_7__["extend"])(click, onClick);
+                    if (Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_6__["type"])(click) == 'object') {
+                        onClick = Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_6__["extend"])(click, onClick);
                     }
                 }
             }
             //	Default behavior for anchors in lists.
             if (args.inMenu && args.inListview && !args.toExternal) {
                 //	Set selected item, Default: true
-                if (Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_7__["valueOrFn"])(target, _this.opts.onClick.setSelected, onClick.setSelected)) {
+                if (Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_6__["valueOrFn"])(target, _this.opts.onClick.setSelected, onClick.setSelected)) {
                     _this.setSelected(target.parentElement);
                 }
                 //	Prevent default / don't follow link. Default: false.
-                if (Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_7__["valueOrFn"])(target, _this.opts.onClick.preventDefault, onClick.preventDefault)) {
+                if (Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_6__["valueOrFn"])(target, _this.opts.onClick.preventDefault, onClick.preventDefault)) {
                     evnt.preventDefault();
                 }
                 //	Close menu. Default: false
-                if (Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_7__["valueOrFn"])(target, _this.opts.onClick.close, onClick.close)) {
+                if (Object(_modules_helpers__WEBPACK_IMPORTED_MODULE_6__["valueOrFn"])(target, _this.opts.onClick.close, onClick.close)) {
                     if (_this.opts.offCanvas &&
                         typeof _this.close == 'function') {
                         _this.close();
@@ -23934,14 +23939,12 @@ var Mmenu = /** @class */ (function () {
      * @return {string}			The translated text.
      */
     Mmenu.prototype.i18n = function (text) {
-        return _modules_i18n__WEBPACK_IMPORTED_MODULE_5__["get"](text, this.conf.language);
+        return _modules_i18n__WEBPACK_IMPORTED_MODULE_4__["get"](text, this.conf.language);
     };
-    /**	Plugin version. */
-    Mmenu.version = _package_json__WEBPACK_IMPORTED_MODULE_0__["version"];
     /**	Default options for menus. */
-    Mmenu.options = _options__WEBPACK_IMPORTED_MODULE_1__["default"];
+    Mmenu.options = _options__WEBPACK_IMPORTED_MODULE_0__["default"];
     /**	Default configuration for menus. */
-    Mmenu.configs = _configs__WEBPACK_IMPORTED_MODULE_2__["default"];
+    Mmenu.configs = _configs__WEBPACK_IMPORTED_MODULE_1__["default"];
     /**	Available add-ons for the plugin. */
     Mmenu.addons = {};
     /** Available wrappers for the plugin. */
@@ -24201,16 +24204,16 @@ _oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].configs.screenR
         this.bind('closePanel', function (panel) {
             _oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].sr_aria(panel, 'hidden', true);
         });
-        //	Add aria-haspopup and aria-owns to prev- and next buttons.
-        this.bind('initPanel:after', function (panel) {
-            _modules_dom__WEBPACK_IMPORTED_MODULE_4__["find"](panel, '.mm-btn').forEach(function (button) {
-                _oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].sr_aria(button, 'haspopup', true);
-                var href = button.getAttribute('href');
-                if (href) {
-                    _oncanvas_mmenu_oncanvas__WEBPACK_IMPORTED_MODULE_0__["default"].sr_aria(button, 'owns', href.replace('#', ''));
-                }
-            });
-        });
+        // //	Add aria-haspopup and aria-owns to prev- and next buttons.
+        // this.bind('initPanel:after', (panel: HTMLElement) => {
+        //     DOM.find(panel, '.mm-btn').forEach(button => {
+        //         Mmenu.sr_aria(button, 'haspopup', true);
+        //         let href = button.getAttribute('href');
+        //         if (href) {
+        //             Mmenu.sr_aria(button, 'owns', href.replace('#', ''));
+        //         }
+        //     });
+        // });
         //	Add aria-hidden for navbars in panels.
         this.bind('initNavbar:after', function (panel) {
             /** The navbar in the panel. */
@@ -24785,17 +24788,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/mmenu-js/package.json":
-/*!********************************************!*\
-  !*** ./node_modules/mmenu-js/package.json ***!
-  \********************************************/
-/*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, deprecated, description, devDependencies, homepage, keywords, license, main, module, name, repository, scripts, version, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"_from\":\"mmenu-js@^8.5.15\",\"_id\":\"mmenu-js@8.5.16\",\"_inBundle\":false,\"_integrity\":\"sha512-gpjMs5V+6ePahyZ1iYM0qgmqDPlT7fGUYHQKIlRTrydmXnXCzehzdP9ydVnZdhFBXWmzYcUyW+dYWoU88qQV+g==\",\"_location\":\"/mmenu-js\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"range\",\"registry\":true,\"raw\":\"mmenu-js@^8.5.15\",\"name\":\"mmenu-js\",\"escapedName\":\"mmenu-js\",\"rawSpec\":\"^8.5.15\",\"saveSpec\":null,\"fetchSpec\":\"^8.5.15\"},\"_requiredBy\":[\"/\"],\"_resolved\":\"https://registry.npmjs.org/mmenu-js/-/mmenu-js-8.5.16.tgz\",\"_shasum\":\"9981b027b6523e205f571810aaf98ccca2f7252a\",\"_spec\":\"mmenu-js@^8.5.15\",\"_where\":\"C:\\\\Work\\\\plov\",\"author\":{\"name\":\"Fred Heusschen\",\"email\":\"info@frebsite.nl\"},\"bugs\":{\"url\":\"https://github.com/FrDH/mmenu-js/issues\"},\"bundleDependencies\":false,\"deprecated\":false,\"description\":\"The best javascript plugin for app look-alike on- and off-canvas menus with sliding submenus for your website and webapp.\",\"devDependencies\":{\"gulp\":\"^4.0.2\",\"gulp-autoprefixer\":\"^6.1.0\",\"gulp-clean-css\":\"^4.3.0\",\"gulp-concat\":\"^2.6.1\",\"gulp-sass\":\"^4.1.0\",\"gulp-typescript\":\"^5.0.1\",\"typescript\":\"^3.9.7\",\"webpack-stream\":\"^5.2.1\"},\"homepage\":\"https://github.com/FrDH/mmenu-js#readme\",\"keywords\":[\"app\",\"list\",\"listview\",\"megamenu\",\"menu\",\"mmenu\",\"mobile\",\"navigation\",\"off-canvas\",\"on-canvas\",\"curtain\",\"panels\",\"submenu\"],\"license\":\"CC-BY-NC-4.0\",\"main\":\"dist/mmenu.js\",\"module\":\"src/mmenu.js\",\"name\":\"mmenu-js\",\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/FrDH/mmenu-js.git\"},\"scripts\":{\"build\":\"gulp default\"},\"version\":\"8.5.16\"}");
-
-/***/ }),
-
 /***/ "./node_modules/mmenu-js/src/mmenu.js":
 /*!********************************************!*\
   !*** ./node_modules/mmenu-js/src/mmenu.js ***!
@@ -24839,9 +24831,6 @@ __webpack_require__.r(__webpack_exports__);
  *
  * Copyright (c) Fred Heusschen
  * frebsite.nl
- *
- * License: CC-BY-NC-4.0
- * http://creativecommons.org/licenses/by-nc/4.0/
  */
 
 //	Core
@@ -24926,12 +24915,12 @@ if (window) {
 }
 
 //	jQuery plugin
-(function($) {
+(function ($) {
     if ($) {
-        $.fn.mmenu = function(options, configs) {
+        $.fn.mmenu = function (options, configs) {
             var $result = $();
 
-            this.each(function(e, element) {
+            this.each(function (e, element) {
                 //	Don't proceed if the element already is a mmenu.
                 if (element.mmApi) {
                     return;
@@ -24967,504 +24956,504 @@ if (window) {
  * Sharer.js
  *
  * @description Create your own social share buttons
- * @version 0.4.0
+ * @version 0.4.1
  * @author Ellison Leao <ellisonleao@gmail.com>
  * @license GPLv3
  *
  */
 
-(function(window, document) {
-  'use strict';
-  /**
+(function (window, document) {
+    'use strict';
+    /**
    * @constructor
    */
-  var Sharer = function(elem) {
-    this.elem = elem;
-  };
+    var Sharer = function (elem) {
+        this.elem = elem;
+    };
 
-  /**
+    /**
    *  @function init
    *  @description bind the events for multiple sharer elements
    *  @returns {Empty}
    */
-  Sharer.init = function() {
-    var elems = document.querySelectorAll('[data-sharer]'),
-      i,
-      l = elems.length;
+    Sharer.init = function () {
+        var elems = document.querySelectorAll('[data-sharer]'),
+            i,
+            l = elems.length;
 
-    for (i = 0; i < l; i++) {
-      elems[i].addEventListener('click', Sharer.add);
-    }
-  };
+        for (i = 0; i < l; i++) {
+            elems[i].addEventListener('click', Sharer.add);
+        }
+    };
 
-  /**
+    /**
    *  @function add
    *  @description bind the share event for a single dom element
    *  @returns {Empty}
    */
-  Sharer.add = function(elem) {
-    var target = elem.currentTarget || elem.srcElement;
-    var sharer = new Sharer(target);
-    sharer.share();
-  };
+    Sharer.add = function (elem) {
+        var target = elem.currentTarget || elem.srcElement;
+        var sharer = new Sharer(target);
+        sharer.share();
+    };
 
-  // instance methods
-  Sharer.prototype = {
-    constructor: Sharer,
-    /**
+    // instance methods
+    Sharer.prototype = {
+        constructor: Sharer,
+        /**
      *  @function getValue
      *  @description Helper to get the attribute of a DOM element
      *  @param {String} attr DOM element attribute
      *  @returns {String|Empty} returns the attr value or empty string
      */
-    getValue: function(attr) {
-      var val = this.elem.getAttribute('data-' + attr);
-      // handing facebook hashtag attribute
-      if (val && attr === 'hashtag') {
-        if (!val.startsWith('#')) {
-          val = '#' + val;
-        }
-      }
-      return val;
-    },
+        getValue: function (attr) {
+            var val = this.elem.getAttribute('data-' + attr);
+            // handing facebook hashtag attribute
+            if (val && attr === 'hashtag') {
+                if (!val.startsWith('#')) {
+                    val = '#' + val;
+                }
+            }
+            return val;
+        },
 
-    /**
+        /**
      * @event share
      * @description Main share event. Will pop a window or redirect to a link
      * based on the data-sharer attribute.
      */
-    share: function() {
-      var sharer = this.getValue('sharer').toLowerCase(),
-        sharers = {
-          facebook: {
-            shareUrl: 'https://www.facebook.com/sharer/sharer.php',
-            params: {
-              u: this.getValue('url'),
-              hashtag: this.getValue('hashtag')
-            }
-          },
-          linkedin: {
-            shareUrl: 'https://www.linkedin.com/shareArticle',
-            params: {
-              url: this.getValue('url'),
-              mini: true
-            }
-          },
-          twitter: {
-            shareUrl: 'https://twitter.com/intent/tweet/',
-            params: {
-              text: this.getValue('title'),
-              url: this.getValue('url'),
-              hashtags: this.getValue('hashtags'),
-              via: this.getValue('via')
-            }
-          },
-          email: {
-            shareUrl: 'mailto:' + this.getValue('to') || false,
-            params: {
-              subject: this.getValue('subject'),
-              body: this.getValue('title') + '\n' + this.getValue('url')
-            },
-            isLink: true
-          },
-          whatsapp: {
-            shareUrl: this.getValue('web') !== null ? 'https://api.whatsapp.com/send' : 'whatsapp://send',
-            params: {
-              text: this.getValue('title') + ' ' + this.getValue('url')
-            },
-            isLink: true
-          },
-          telegram: {
-            shareUrl: this.getValue('web') !== null ? 'https://telegram.me/share' : 'tg://msg_url',
-            params: {
-              text: this.getValue('title'),
-              url: this.getValue('url'),
-              to: this.getValue('to')
-            },
-            isLink: true
-          },
-          viber: {
-            shareUrl: 'viber://forward',
-            params: {
-              text: this.getValue('title') + ' ' + this.getValue('url')
-            },
-            isLink: true
-          },
-          line: {
-            shareUrl:
+        share: function () {
+            var sharer = this.getValue('sharer').toLowerCase(),
+                sharers = {
+                    facebook: {
+                        shareUrl: 'https://www.facebook.com/sharer/sharer.php',
+                        params: {
+                            u: this.getValue('url'),
+                            hashtag: this.getValue('hashtag'),
+                        },
+                    },
+                    linkedin: {
+                        shareUrl: 'https://www.linkedin.com/shareArticle',
+                        params: {
+                            url: this.getValue('url'),
+                            mini: true,
+                        },
+                    },
+                    twitter: {
+                        shareUrl: 'https://twitter.com/intent/tweet/',
+                        params: {
+                            text: this.getValue('title'),
+                            url: this.getValue('url'),
+                            hashtags: this.getValue('hashtags'),
+                            via: this.getValue('via'),
+                        },
+                    },
+                    email: {
+                        shareUrl: 'mailto:' + this.getValue('to') || false,
+                        params: {
+                            subject: this.getValue('subject'),
+                            body: this.getValue('title') + '\n' + this.getValue('url'),
+                        },
+                        isLink: true,
+                    },
+                    whatsapp: {
+                        shareUrl: this.getValue('web') !== null ? 'https://api.whatsapp.com/send' : 'https://wa.me/',
+                        params: {
+                            text: this.getValue('title') + ' ' + this.getValue('url'),
+                        },
+                        isLink: true,
+                    },
+                    telegram: {
+                        shareUrl: this.getValue('web') !== null ? 'https://telegram.me/share' : 'tg://msg_url',
+                        params: {
+                            text: this.getValue('title'),
+                            url: this.getValue('url'),
+                        },
+                        isLink: true,
+                    },
+                    viber: {
+                        shareUrl: 'viber://forward',
+                        params: {
+                            text: this.getValue('title') + ' ' + this.getValue('url'),
+                        },
+                        isLink: true,
+                    },
+                    line: {
+                        shareUrl:
               'http://line.me/R/msg/text/?' + encodeURIComponent(this.getValue('title') + ' ' + this.getValue('url')),
-            isLink: true
-          },
-          pinterest: {
-            shareUrl: 'https://www.pinterest.com/pin/create/button/',
-            params: {
-              url: this.getValue('url'),
-              media: this.getValue('image'),
-              description: this.getValue('description')
-            }
-          },
-          tumblr: {
-            shareUrl: 'http://tumblr.com/widgets/share/tool',
-            params: {
-              canonicalUrl: this.getValue('url'),
-              content: this.getValue('url'),
-              posttype: 'link',
-              title: this.getValue('title'),
-              caption: this.getValue('caption'),
-              tags: this.getValue('tags')
-            }
-          },
-          hackernews: {
-            shareUrl: 'https://news.ycombinator.com/submitlink',
-            params: {
-              u: this.getValue('url'),
-              t: this.getValue('title')
-            }
-          },
-          reddit: {
-            shareUrl: 'https://www.reddit.com/submit',
-            params: { url: this.getValue('url') }
-          },
-          vk: {
-            shareUrl: 'http://vk.com/share.php',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title'),
-              description: this.getValue('caption'),
-              image: this.getValue('image')
-            }
-          },
-          xing: {
-            shareUrl: 'https://www.xing.com/app/user',
-            params: {
-              op: 'share',
-              url: this.getValue('url'),
-              title: this.getValue('title')
-            }
-          },
-          buffer: {
-            shareUrl: 'https://buffer.com/add',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title'),
-              via: this.getValue('via'),
-              picture: this.getValue('picture')
-            }
-          },
-          instapaper: {
-            shareUrl: 'http://www.instapaper.com/edit',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title'),
-              description: this.getValue('description')
-            }
-          },
-          pocket: {
-            shareUrl: 'https://getpocket.com/save',
-            params: {
-              url: this.getValue('url')
-            }
-          },
-          digg: {
-            shareUrl: 'http://www.digg.com/submit',
-            params: {
-              url: this.getValue('url')
-            }
-          },
-          stumbleupon: {
-            // Usage deprecated, leaving for backwards compatibility.
-            shareUrl: 'http://www.stumbleupon.com/submit',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title')
-            }
-          },
-          mashable: {
-            shareUrl: 'https://mashable.com/submit',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title')
-            }
-          },
-          mix: {
-            shareUrl: 'https://mix.com/add',
-            params: {
-              url: this.getValue('url')
-            }
-          },
-          flipboard: {
-            shareUrl: 'https://share.flipboard.com/bookmarklet/popout',
-            params: {
-              v: 2,
-              title: this.getValue('title'),
-              url: this.getValue('url'),
-              t: Date.now()
-            }
-          },
-          weibo: {
-            shareUrl: 'http://service.weibo.com/share/share.php',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title'),
-              pic: this.getValue('image'),
-              appkey: this.getValue('appkey'),
-              ralateUid: this.getValue('ralateuid'),
-              language: 'zh_cn'
-            }
-          },
-          renren: {
-            shareUrl: 'http://share.renren.com/share/buttonshare',
-            params: {
-              link: this.getValue('url')
-            }
-          },
-          myspace: {
-            shareUrl: 'https://myspace.com/post',
-            params: {
-              u: this.getValue('url'),
-              t: this.getValue('title'),
-              c: this.getValue('description')
-            }
-          },
-          blogger: {
-            shareUrl: 'https://www.blogger.com/blog-this.g',
-            params: {
-              u: this.getValue('url'),
-              n: this.getValue('title'),
-              t: this.getValue('description')
-            }
-          },
-          baidu: {
-            shareUrl: 'http://cang.baidu.com/do/add',
-            params: {
-              it: this.getValue('title'),
-              iu: this.getValue('url')
-            }
-          },
-          douban: {
-            shareUrl: 'https://www.douban.com/share/service',
-            params: {
-              name: this.getValue('title'),
-              href: this.getValue('url'),
-              image: this.getValue('image')
-            }
-          },
-          okru: {
-            shareUrl: 'https://connect.ok.ru/dk',
-            params: {
-              'st.cmd': 'WidgetSharePreview',
-              'st.shareUrl': this.getValue('url'),
-              title: this.getValue('title')
-            }
-          },
-          mailru: {
-            shareUrl: 'http://connect.mail.ru/share',
-            params: {
-              share_url: this.getValue('url'),
-              linkname: this.getValue('title'),
-              linknote: this.getValue('description'),
-              type: 'page'
-            }
-          },
-          evernote: {
-            shareUrl: 'http://www.evernote.com/clip.action',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title')
-            }
-          },
-          skype: {
-            shareUrl: 'https://web.skype.com/share',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title')
-            }
-          },
-          quora: {
-            shareUrl: 'https://www.quora.com/share',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title')
-            }
-          },
-          delicious: {
-            shareUrl: 'https://del.icio.us/post',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title')
-            }
-          },
-          sms: {
-            shareUrl: 'sms://',
-            params: {
-              body: this.getValue('body')
-            }
-          },
-          trello: {
-            shareUrl: 'https://trello.com/add-card',
-            params: {
-              url: this.getValue('url'),
-              name: this.getValue('title'),
-              desc: this.getValue('description'),
-              mode: 'popup'
-            }
-          },
-          messenger: {
-            shareUrl: 'fb-messenger://share',
-            params: {
-              link: this.getValue('url')
-            }
-          },
-          odnoklassniki: {
-            shareUrl: 'https://connect.ok.ru/dk',
-            params: {
-              st: {
-                cmd: 'WidgetSharePreview',
-                deprecated: 1,
-                shareUrl: this.getValue('url')
-              }
-            }
-          },
-          meneame: {
-            shareUrl: 'https://www.meneame.net/submit',
-            params: {
-              url: this.getValue('url')
-            }
-          },
-          diaspora: {
-            shareUrl: 'https://share.diasporafoundation.org',
-            params: {
-              title: this.getValue('title'),
-              url: this.getValue('url')
-            }
-          },
-          googlebookmarks: {
-            shareUrl: 'https://www.google.com/bookmarks/mark',
-            params: {
-              op: 'edit',
-              bkmk: this.getValue('url'),
-              title: this.getValue('title')
-            }
-          },
-          qzone: {
-            shareUrl: 'https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey',
-            params: {
-              url: this.getValue('url')
-            }
-          },
-          refind: {
-            shareUrl: 'https://refind.com',
-            params: {
-              url: this.getValue('url')
-            }
-          },
-          surfingbird: {
-            shareUrl: 'https://surfingbird.ru/share',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title'),
-              description: this.getValue('description')
-            }
-          },
-          yahoomail: {
-            shareUrl: 'http://compose.mail.yahoo.com',
-            params: {
-              to: this.getValue('to'),
-              subject: this.getValue('subject'),
-              body: this.getValue('body')
-            }
-          },
-          wordpress: {
-            shareUrl: 'https://wordpress.com/wp-admin/press-this.php',
-            params: {
-              u: this.getValue('url'),
-              t: this.getValue('title'),
-              s: this.getValue('title')
-            }
-          },
-          amazon: {
-            shareUrl: 'https://www.amazon.com/gp/wishlist/static-add',
-            params: {
-              u: this.getValue('url'),
-              t: this.getValue('title')
-            }
-          },
-          pinboard: {
-            shareUrl: 'https://pinboard.in/add',
-            params: {
-              url: this.getValue('url'),
-              title: this.getValue('title'),
-              description: this.getValue('description')
-            }
-          },
-          threema: {
-            shareUrl: 'threema://compose',
-            params: {
-              text: this.getValue('text'),
-              id: this.getValue('id')
-            }
-          }
-        },
-        s = sharers[sharer];
+                        isLink: true,
+                    },
+                    pinterest: {
+                        shareUrl: 'https://www.pinterest.com/pin/create/button/',
+                        params: {
+                            url: this.getValue('url'),
+                            media: this.getValue('image'),
+                            description: this.getValue('description'),
+                        },
+                    },
+                    tumblr: {
+                        shareUrl: 'http://tumblr.com/widgets/share/tool',
+                        params: {
+                            canonicalUrl: this.getValue('url'),
+                            content: this.getValue('url'),
+                            posttype: 'link',
+                            title: this.getValue('title'),
+                            caption: this.getValue('caption'),
+                            tags: this.getValue('tags'),
+                        },
+                    },
+                    hackernews: {
+                        shareUrl: 'https://news.ycombinator.com/submitlink',
+                        params: {
+                            u: this.getValue('url'),
+                            t: this.getValue('title'),
+                        },
+                    },
+                    reddit: {
+                        shareUrl: 'https://www.reddit.com/submit',
+                        params: { url: this.getValue('url') },
+                    },
+                    vk: {
+                        shareUrl: 'http://vk.com/share.php',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                            description: this.getValue('caption'),
+                            image: this.getValue('image'),
+                        },
+                    },
+                    xing: {
+                        shareUrl: 'https://www.xing.com/social/share/spi',
+                        params: {
+                            url: this.getValue('url'),
+                        },
+                    },
+                    buffer: {
+                        shareUrl: 'https://buffer.com/add',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                            via: this.getValue('via'),
+                            picture: this.getValue('picture'),
+                        },
+                    },
+                    instapaper: {
+                        shareUrl: 'http://www.instapaper.com/edit',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                            description: this.getValue('description'),
+                        },
+                    },
+                    pocket: {
+                        shareUrl: 'https://getpocket.com/save',
+                        params: {
+                            url: this.getValue('url'),
+                        },
+                    },
+                    stumbleupon: {
+                        // Usage deprecated, leaving for backwards compatibility.
+                        shareUrl: 'http://www.stumbleupon.com/submit',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                        },
+                    },
+                    mashable: {
+                        shareUrl: 'https://mashable.com/submit',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                        },
+                    },
+                    mix: {
+                        shareUrl: 'https://mix.com/add',
+                        params: {
+                            url: this.getValue('url'),
+                        },
+                    },
+                    flipboard: {
+                        shareUrl: 'https://share.flipboard.com/bookmarklet/popout',
+                        params: {
+                            v: 2,
+                            title: this.getValue('title'),
+                            url: this.getValue('url'),
+                            t: Date.now(),
+                        },
+                    },
+                    weibo: {
+                        shareUrl: 'http://service.weibo.com/share/share.php',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                            pic: this.getValue('image'),
+                            appkey: this.getValue('appkey'),
+                            ralateUid: this.getValue('ralateuid'),
+                            language: 'zh_cn',
+                        },
+                    },
+                    renren: {
+                        shareUrl: 'http://share.renren.com/share/buttonshare',
+                        params: {
+                            link: this.getValue('url'),
+                        },
+                    },
+                    myspace: {
+                        shareUrl: 'https://myspace.com/post',
+                        params: {
+                            u: this.getValue('url'),
+                            t: this.getValue('title'),
+                            c: this.getValue('description'),
+                        },
+                    },
+                    blogger: {
+                        shareUrl: 'https://www.blogger.com/blog-this.g',
+                        params: {
+                            u: this.getValue('url'),
+                            n: this.getValue('title'),
+                            t: this.getValue('description'),
+                        },
+                    },
+                    baidu: {
+                        shareUrl: 'http://cang.baidu.com/do/add',
+                        params: {
+                            it: this.getValue('title'),
+                            iu: this.getValue('url'),
+                        },
+                    },
+                    douban: {
+                        shareUrl: 'https://www.douban.com/share/service',
+                        params: {
+                            name: this.getValue('name'),
+                            href: this.getValue('url'),
+                            image: this.getValue('image'),
+                            comment: this.getValue('description'),
+                        },
+                    },
+                    okru: {
+                        shareUrl: 'https://connect.ok.ru/dk',
+                        params: {
+                            'st.cmd': 'WidgetSharePreview',
+                            'st.shareUrl': this.getValue('url'),
+                            title: this.getValue('title'),
+                        },
+                    },
+                    mailru: {
+                        shareUrl: 'http://connect.mail.ru/share',
+                        params: {
+                            share_url: this.getValue('url'),
+                            linkname: this.getValue('title'),
+                            linknote: this.getValue('description'),
+                            type: 'page',
+                        },
+                    },
+                    evernote: {
+                        shareUrl: 'https://www.evernote.com/clip.action',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                        },
+                    },
+                    skype: {
+                        shareUrl: 'https://web.skype.com/share',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                        },
+                    },
+                    quora: {
+                        shareUrl: 'https://www.quora.com/share',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                        },
+                    },
+                    delicious: {
+                        shareUrl: 'https://del.icio.us/post',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                        },
+                    },
+                    sms: {
+                        shareUrl: 'sms://',
+                        params: {
+                            body: this.getValue('body'),
+                        },
+                    },
+                    trello: {
+                        shareUrl: 'https://trello.com/add-card',
+                        params: {
+                            url: this.getValue('url'),
+                            name: this.getValue('title'),
+                            desc: this.getValue('description'),
+                            mode: 'popup',
+                        },
+                    },
+                    messenger: {
+                        shareUrl: 'fb-messenger://share',
+                        params: {
+                            link: this.getValue('url'),
+                        },
+                    },
+                    odnoklassniki: {
+                        shareUrl: 'https://connect.ok.ru/dk',
+                        params: {
+                            st: {
+                                cmd: 'WidgetSharePreview',
+                                deprecated: 1,
+                                shareUrl: this.getValue('url'),
+                            },
+                        },
+                    },
+                    meneame: {
+                        shareUrl: 'https://www.meneame.net/submit',
+                        params: {
+                            url: this.getValue('url'),
+                        },
+                    },
+                    diaspora: {
+                        shareUrl: 'https://share.diasporafoundation.org',
+                        params: {
+                            title: this.getValue('title'),
+                            url: this.getValue('url'),
+                        },
+                    },
+                    googlebookmarks: {
+                        shareUrl: 'https://www.google.com/bookmarks/mark',
+                        params: {
+                            op: 'edit',
+                            bkmk: this.getValue('url'),
+                            title: this.getValue('title'),
+                        },
+                    },
+                    qzone: {
+                        shareUrl: 'https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey',
+                        params: {
+                            url: this.getValue('url'),
+                        },
+                    },
+                    refind: {
+                        shareUrl: 'https://refind.com',
+                        params: {
+                            url: this.getValue('url'),
+                        },
+                    },
+                    surfingbird: {
+                        shareUrl: 'https://surfingbird.ru/share',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                            description: this.getValue('description'),
+                        },
+                    },
+                    yahoomail: {
+                        shareUrl: 'http://compose.mail.yahoo.com',
+                        params: {
+                            to: this.getValue('to'),
+                            subject: this.getValue('subject'),
+                            body: this.getValue('body'),
+                        },
+                    },
+                    wordpress: {
+                        shareUrl: 'https://wordpress.com/wp-admin/press-this.php',
+                        params: {
+                            u: this.getValue('url'),
+                            t: this.getValue('title'),
+                            s: this.getValue('title'),
+                        },
+                    },
+                    amazon: {
+                        shareUrl: 'https://www.amazon.com/gp/wishlist/static-add',
+                        params: {
+                            u: this.getValue('url'),
+                            t: this.getValue('title'),
+                        },
+                    },
+                    pinboard: {
+                        shareUrl: 'https://pinboard.in/add',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                            description: this.getValue('description'),
+                        },
+                    },
+                    threema: {
+                        shareUrl: 'threema://compose',
+                        params: {
+                            text: this.getValue('text'),
+                            id: this.getValue('id'),
+                        },
+                    },
+                    kakaostory: {
+                        shareUrl: 'https://story.kakao.com/share',
+                        params: {
+                            url: this.getValue('url'),
+                        },
+                    },
+                    yummly: {
+                        shareUrl: 'http://www.yummly.com/urb/verify',
+                        params: {
+                            url: this.getValue('url'),
+                            title: this.getValue('title'),
+                            yumtype: 'button',
+                        },
+                    },
+                },
+                s = sharers[sharer];
 
-      // custom popups sizes
-      if (s) {
-        s.width = this.getValue('width');
-        s.height = this.getValue('height');
-      }
-      return s !== undefined ? this.urlSharer(s) : false;
-    },
-    /**
+            // custom popups sizes
+            if (s) {
+                s.width = this.getValue('width');
+                s.height = this.getValue('height');
+            }
+            return s !== undefined ? this.urlSharer(s) : false;
+        },
+        /**
      * @event urlSharer
      * @param {Object} sharer
      */
-    urlSharer: function(sharer) {
-      var p = sharer.params || {},
-        keys = Object.keys(p),
-        i,
-        str = keys.length > 0 ? '?' : '';
-      for (i = 0; i < keys.length; i++) {
-        if (str !== '?') {
-          str += '&';
-        }
-        if (p[keys[i]]) {
-          str += keys[i] + '=' + encodeURIComponent(p[keys[i]]);
-        }
-      }
-      sharer.shareUrl += str;
+        urlSharer: function (sharer) {
+            var p = sharer.params || {},
+                keys = Object.keys(p),
+                i,
+                str = keys.length > 0 ? '?' : '';
+            for (i = 0; i < keys.length; i++) {
+                if (str !== '?') {
+                    str += '&';
+                }
+                if (p[keys[i]]) {
+                    str += keys[i] + '=' + encodeURIComponent(p[keys[i]]);
+                }
+            }
+            sharer.shareUrl += str;
 
-      if (!sharer.isLink) {
-        var popWidth = sharer.width || 600,
-          popHeight = sharer.height || 480,
-          left = window.innerWidth / 2 - popWidth / 2 + window.screenX,
-          top = window.innerHeight / 2 - popHeight / 2 + window.screenY,
-          popParams = 'scrollbars=no, width=' + popWidth + ', height=' + popHeight + ', top=' + top + ', left=' + left,
-          newWindow = window.open(sharer.shareUrl, '', popParams);
+            if (!sharer.isLink) {
+                var popWidth = sharer.width || 600,
+                    popHeight = sharer.height || 480,
+                    left = window.innerWidth / 2 - popWidth / 2 + window.screenX,
+                    top = window.innerHeight / 2 - popHeight / 2 + window.screenY,
+                    popParams = 'scrollbars=no, width=' + popWidth + ', height=' + popHeight + ', top=' + top + ', left=' + left,
+                    newWindow = window.open(sharer.shareUrl, '', popParams);
 
-        if (window.focus) {
-          newWindow.focus();
-        }
-      } else {
-        window.location.href = sharer.shareUrl;
-      }
+                if (window.focus) {
+                    newWindow.focus();
+                }
+            } else {
+                window.location.href = sharer.shareUrl;
+            }
+        },
+    };
+
+    // adding sharer events on domcontentload
+    if (document.readyState === 'complete' || document.readyState !== 'loading') {
+        Sharer.init();
+    } else {
+        document.addEventListener('DOMContentLoaded', Sharer.init);
     }
-  };
 
-  // adding sharer events on domcontentload
-  if (document.readyState === 'complete' || document.readyState !== 'loading') {
-    Sharer.init();
-  } else {
-    document.addEventListener('DOMContentLoaded', Sharer.init);
-  }
-
-  // turbolinks 3 compatibility
-  window.addEventListener('page:load', Sharer.init);
-
-  // turbolinks 5 compatibility
-  window.addEventListener('turbolinks:load', Sharer.init);
-
-  // exporting sharer for external usage
-  window.Sharer = Sharer;
+    // exporting sharer for external usage
+    window.Sharer = Sharer;
 })(window, document);
 
 
